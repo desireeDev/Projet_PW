@@ -1,0 +1,6 @@
+amélioration : 
+
+créer une classe connexion qui possede un attribut pdo et c'est cette classe qu'on instanciera pour avoir acces à un objet pdo 
+(regarder maintenant,  le constructeur de ContactDAO et l'utilisation de $this->connexion->pdo dans les méthodes)
+
+dans les controlleurs, on instanciera contactDAO (avec un objet de type connexion, qui fournira pdo)

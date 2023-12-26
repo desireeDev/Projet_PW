@@ -11,7 +11,7 @@ class HomeController {
         $categories = $this->CategoriesDAO->getAll();
 
         // Inclure la vue pour afficher la liste des contacts
-        include('../views/categories/create.php');
+        include('../views/categories/home.php');
     }
 }
 

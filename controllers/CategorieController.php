@@ -9,8 +9,8 @@ class CategorieController {
 
     private $categorieDAO;
 
-    public function __construct() {
-        $this->CategoriesDAO = new CategorieDAO();
+    public function __construct(Connexion $connexion) {
+        $this->CategoriesDAO = new CategoriesDAO($connexion);
     }
 
     public function index() {
@@ -19,15 +19,15 @@ class CategorieController {
         include '../views/categories/index.php';
     }
 
-    public function create() {
+    public function create($Code_Raccourci,$Nom_Cat) {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire by SAD
-            $Code_Raccourci = $_POST['Code_Raccourci'];
-            $Nom_Cat = $_POST['Nom_Cat'];
+            // $Code_Raccourci = $_POST['Code_Raccourci'];
+            // $Nom_Cat = $_POST['Nom_Cat'];
 
             // Créer un nouvel objet CategorieModel avec les données du formulaire
-            $nouvelleCategorie = new CategorieModel(0, $Code_Raccourci, $Nom_Cat);
+            $nouvelleCategorie = new Categories($Code_Raccourci, $Nom_Cat);
 
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
             if ($this->CategoriesDAO->create($nouvelleCategorie)) {
@@ -40,9 +40,9 @@ class CategorieController {
             }
 
         
-        }
+        // }
 
-        include '../views/categories/create.php';
+        // include '../views/categories/create.php';
     }
 //Fonction Store
     public function store($data) {

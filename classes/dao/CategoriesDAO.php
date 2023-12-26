@@ -9,7 +9,7 @@ class CategoriesDAO {
     // MÃ©thode pour insÃ©rer une nouvelle categorie dans la base de donnÃ©es
     public function create(Categories $categorie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO categories (Code_Raccourci, Nom_Cat) VALUES (?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO categories(Code_Raccourci, Nom_Cat) VALUES (?, ?)");
             $stmt->execute([ $categorie->getCodeRaccourci(), $categorie->getCat()]);
             return true;
         } catch (PDOException $e) {

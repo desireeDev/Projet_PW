@@ -11,12 +11,12 @@
     <h1>Ajouter une catégorie</h1>
     <a href="CategorieController.php">Retour à la liste des categories</a>
 
-    <form action="../index.php?action=store"  method="post" >
-        <label for="nom">NomCategorie :</label>
-        <input type="text" id="nom" name="nom" required><br>
+    <form action=""  method="post" >
+        <label for="libelle">NomCategorie :</label>
+        <input type="text" id="libelle" name="libelle" required><br>
 
-        <label for="prenom">codeRaccourci:</label>
-        <input type="text" id="prenom" name="prenom" required><br>
+        <label for="code">codeRaccourci:</label>
+        <input type="text" id="code" name="code" required><br>
 
        
 
@@ -24,7 +24,27 @@
     </form>
 
     <?php
-    // Inclure ici la logique pour traiter le formulaire d'ajout de contact
+    // Inclure ici la logique pour traiter le formulaire d'ajout de categorie 
+
+        require_once("../config/config.php") ;
+        require_once("../config/config.php") ;
+        require_once("../classes/dao/CategoriesDAO.php") ;
+        require_once("../classes/models/Categories.php") ;
+        require_once("../controllers/CategorieController.php") ;
+        
+
+        $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
+
+        if($action == "Ajouter"){
+            $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+            $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+
+            if(!empty($libelle) and !empty($code)){
+                $controller = new CategorieController(new Connexion()) ;
+
+                $controller->create($code,$libelle);
+            }
+        }
     ?>
 
 </body>

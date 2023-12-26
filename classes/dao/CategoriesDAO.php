@@ -36,7 +36,7 @@ class CategoriesDAO {
         }
     }
 
-    // MÃ©thode pour rÃ©cupÃ©rer la liste de tous les contacts
+    // MÃ©thode pour rÃ©cupÃ©rer la liste de tous les categories
     public function getAll() {
         try {
             $stmt = $this->connexion->pdo->query("SELECT * FROM categories");

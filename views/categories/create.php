@@ -8,10 +8,10 @@
    
 </head>
 <body>
-    <h1>Ajouter un Contact</h1>
+    <h1>Ajouter une catégorie</h1>
     <a href="CategorieController.php">Retour à la liste des categories</a>
 
-    <form action="index.php?action=store"  method="post" >
+    <form action="../index.php?action=store"  method="post" >
         <label for="nom">NomCategorie :</label>
         <input type="text" id="nom" name="nom" required><br>
 

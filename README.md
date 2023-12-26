@@ -1,2 +1,9 @@
 # Projet_Pw
-Projet de fin de cours
+Autheurs :
+
+ATTHOH Syntiche
+TOMBEZE Noah
+
+1) PHP/MVC,DAO
+
+2) Symfony

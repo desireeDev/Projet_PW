@@ -76,7 +76,6 @@ class CategorieController {
     
 
 
-
     public function delete($Code_Raccourci) {
         // Supprime une catégorie
         $this->CategoriesDAO->deleteByCode($Code_Raccourci);
@@ -103,5 +102,15 @@ if($action == "Ajouter"){
         $controller->create($code,$libelle);
     }
 }
+//Code php pour la page update
+if($action == "Modifier"){
+$libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+$code =  isset($_POST['code']) ? $_POST['code'] : '' ;
 
+if(!empty($libelle) and !empty($code)){
+    $controller = new CategorieController(new Connexion()) ;
+
+    $controller->Update($code,$libelle);
+}
+}
 ?>

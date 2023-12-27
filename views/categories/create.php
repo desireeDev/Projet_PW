@@ -12,20 +12,31 @@
     <a href=" ../../controllers/HomeController.php "> List  </a>
  
 
-    <form action="../controllers/CategorieController.php "  method="post" >
+    <form action="../../controllers/CategorieController.php "  method="post" >
         <label for="libelle">NomCategorie :</label>
         <input type="text" id="libelle" name="libelle" required><br>
 
         <label for="code">codeRaccourci:</label>
         <input type="text" id="code" name="code" required><br>
 
-       
-
         <input type="submit" name="action" value="Ajouter">
     </form>
 
  
 
-</body>
-</html>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

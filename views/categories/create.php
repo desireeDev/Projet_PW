@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Ajouter une catégorie</h1>
-    <a href=" ../../controllers/HomeController.php "> List  </a>
+    <a href="../../controllers/HomeController.php"> List  </a>
  
 
     <form action="../../controllers/CategorieController.php "  method="post" >

@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Supprimer une categorie</h1>
-    <a href="CategorieController.php">Retour à la liste des categories</a>
+    <a href="../../controllers/HomeController.php">Retour à la liste des categories</a>
 
 
-    <form action=""  method="post" >
+    <form action="../../controllers/CategorieController.php"  method="post" >
         <label for="libelle">NomCategorie :</label>
         <input type="text" id="libelle" name="libelle" required><br>
 
@@ -21,30 +21,7 @@
         <input type="submit" name="action" value="Supprimer">
     </form>
     
-    <?php
-    // Inclure ici la logique pour traiter le formulaire d'ajout de categorie 
-
-   //Fonction ajouter categorieok
-        require_once("../config/config.php") ;
-        require_once("../config/config.php") ;
-        require_once("../classes/dao/CategoriesDAO.php") ;
-        require_once("../classes/models/Categories.php") ;
-        require_once("../controllers/CategorieController.php") ;
-        
-
-        $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
-
-        if($action == "Supprimer"){
-            $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-            $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-
-            if(!empty($libelle) and !empty($code)){
-                $controller = new CategorieController(new Connexion()) ;
-
-                $controller->create($code,$libelle);
-            }
-        }
-    ?>
+    
 
 
 

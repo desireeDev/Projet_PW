@@ -48,22 +48,12 @@ class CategorieController {
         include 'views/categorie/edit.php';
     }
 
-    public function Update($id, $data) {
-        // Met à jour une catégorie avec les données du formulaire
-        if (is_array($data) && isset($data['Nom_Cat']) && isset($data['Code_Raccourci'])) {
-
-            $categorie = new Categories($data['Nom_Cat'], $data['Code_Raccourci']);
-     }
-     else {
-        $categorie->setCodeRaccourci($data['Code_Raccourci']);
-        
-        $this->CategoriesDAO->update($categorie);
-
-     }
-          // Redirige vers la liste des catégories
-          header('Location: index.php?action=index');  
-    
-    
+    public function Update($code, $libelle) {
+        $categorie = new Categories($code,$libelle);
+        // $categorie->setCodeRaccourci($code);
+        // $categorie->setCat($code);
+        $this->CategoriesDAO->update($categorie); 
+        header('Location:HomeController.php');
     }
     
     public function list() {
@@ -89,28 +79,38 @@ class CategorieController {
     // Autres méthodes liées à la gestion des catégories
     // ...
 }
-//Code php pour la page create
+//Code php pour les differentes pages
 $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 
-if($action == "Ajouter"){
-    $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-    $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+switch($action){
+    case "Ajouter":
+        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+        $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+        if(!empty($libelle) and !empty($code)){
+            $controller = new CategorieController(new Connexion()) ;
+            $controller->create($code,$libelle);
+        }
+        break;
+    case "Modifier":
+        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+        $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+        if(!empty($libelle) and !empty($code)){
+            $controller = new CategorieController(new Connexion()) ;
+            $controller->Update($code,$libelle);
+        }
+        break;
 
-    if(!empty($libelle) and !empty($code)){
-        $controller = new CategorieController(new Connexion()) ;
+        case "Supprimer":
+            $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+            $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
 
-        $controller->create($code,$libelle);
-    }
+            if(!empty($libelle) and !empty($code)){
+                $controller = new CategorieController(new Connexion()) ;
+
+                $controller->delete($code,$libelle);
+            }
+            break;
 }
-//Code php pour la page update
-if($action == "Modifier"){
-$libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-$code =  isset($_POST['code']) ? $_POST['code'] : '' ;
 
-if(!empty($libelle) and !empty($code)){
-    $controller = new CategorieController(new Connexion()) ;
 
-    $controller->Update($code,$libelle);
-}
-}
 ?>

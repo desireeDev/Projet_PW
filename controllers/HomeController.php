@@ -4,14 +4,20 @@ class HomeController {
 
     public function __construct(CategoriesDAO $CategoriesDAO) {
         $this->CategoriesDAO = $CategoriesDAO;
+      
     }
 
     public function index() {
         // RÃ©cupÃ©rer la liste de tous les contacts depuis le modÃ¨le
         $categories = $this->CategoriesDAO->getAll();
+        $licenses = $this->LicensesDAO->getAll();
 
         // Inclure la vue pour afficher la liste des contacts
         include('../views/categories/home.php');
+
+        include('../views/licences/home.php');
+
+
     }
 }
 

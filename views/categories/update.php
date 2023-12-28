@@ -43,8 +43,6 @@
 
         <input type="submit" name="action" value="Modifier">
     </form>
-    
-    
 
 </body>
 </html>

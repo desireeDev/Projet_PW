@@ -1,15 +1,14 @@
 <?php
 
 class Educateur {
-    private $Code_Educateur;
     private $Email_Educateur;
     private $Mdp_Educateur;
     private $Administrateur;  
     private $Num_Licencie;
 
     // Constructeur
-    public function __construct($Code_Educateur, $Email_Educateur, $Mdp_Educateur, $Administrateur,$Num_Licencie) {
-        $this->Code_Educateur = $Code_Educateur;
+    public function __construct( $Email_Educateur, $Mdp_Educateur, $Administrateur,$Num_Licencie) {
+    
         $this->Email_Educateur = $Email_Educateur;
         $this->Mdp_Educateur = $Mdp_Educateur;
         $this->Administrateur = $Administrateur;
@@ -18,10 +17,7 @@ class Educateur {
     }
 
     // Getters
-    public function getCode() {
-        return $this->Code_Educateur;
-      
-    }
+
 
     public function getNumeroLicence() {
         return $this->Num_Licencie;
@@ -38,18 +34,14 @@ class Educateur {
       
     }
 
-    public function isAdministrateur() {
+    public function isAdmin() {
         return $this->Administrateur;
       
     }
 
     // Setters
 
-    public function setCode($Code_Educateur) {
-        $this->Num_Licencie = $Code_Educateur;
-
-    
-    }
+  
 
 
     public function setNumeroLicence($Num_Licencie) {

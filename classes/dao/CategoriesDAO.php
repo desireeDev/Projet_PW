@@ -9,7 +9,7 @@ class CategoriesDAO {
     // MÃ©thode pour insÃ©rer une nouvelle categorie dans la base de donnÃ©es
     public function create(Categories $categorie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO categories (Code_Raccourci, Nom_Cat) VALUES (?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO categories(Code_Raccourci, Nom_Cat) VALUES (?, ?)");
             $stmt->execute([ $categorie->getCodeRaccourci(), $categorie->getCat()]);
             return true;
         } catch (PDOException $e) {
@@ -56,8 +56,8 @@ class CategoriesDAO {
     // MÃ©thode pour mettre Ã  jour un contact
     public function update(Categories $categorie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE categories SET  Nom_Cat = ? WHERE Code_Raccourci = ?");
-            $stmt->execute([$categorie->getNom(),  $categorie->getCodeRaccourci()]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE categories SET  Nom_Cat=? , Code_Raccourci=? WHERE Code_Raccourci=?");
+            $stmt->execute([$categorie->getCat(),  $categorie->getCodeRaccourci() , $categorie->getCodeRaccourci()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici

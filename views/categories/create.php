@@ -8,25 +8,35 @@
    
 </head>
 <body>
-    <h1>Ajouter un Contact</h1>
-    <a href="CategorieController.php">Retour à la liste des categories</a>
+    <h1>Ajouter une catégorie</h1>
+    <a href="../../controllers/HomeController.php"> List  </a>
+ 
 
-    <form action="index.php?action=store"  method="post" >
-        <label for="nom">NomCategorie :</label>
-        <input type="text" id="nom" name="nom" required><br>
+    <form action="../../controllers/CategorieController.php "  method="post" >
+        <label for="libelle">NomCategorie :</label>
+        <input type="text" id="libelle" name="libelle" required><br>
 
-        <label for="prenom">codeRaccourci:</label>
-        <input type="text" id="prenom" name="prenom" required><br>
-
-       
+        <label for="code">codeRaccourci:</label>
+        <input type="text" id="code" name="code" required><br>
 
         <input type="submit" name="action" value="Ajouter">
     </form>
 
-    <?php
-    // Inclure ici la logique pour traiter le formulaire d'ajout de contact
-    ?>
+ 
 
-</body>
-</html>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

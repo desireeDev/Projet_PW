@@ -4,7 +4,7 @@ class Licencie {
     private $Num_Licencie;
     private $Nom_Licencie;
     private $Prenom_Licencie; 
-    private $Contact_Licencie; // C'est une instance de la classe Contact
+    private $Contact_Licencie; 
     private $Code_Raccourci; 
 
     // Constructeur

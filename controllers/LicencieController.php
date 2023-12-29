@@ -15,17 +15,17 @@ class LicencieController {
 
     public function index() {
         // Liste toutes les catégories
-        $categories = $this->CategoriesDAO->getAll();
-        include '../views/categories/index.php';
+        $licencies = $this->LicenciesDAO->getAll();
+        include '../views/licencies/home.php';
     }
 
-    public function create($Code_Raccourci,$Nom_Cat) {
+    public function create($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci ) { // C'est une instance de la classe Contact//
 
-            // Créer un nouvel objet CategorieModel avec les données du formulaire
-            $nouvelleCategorie = new Categories($Code_Raccourci, $Nom_Cat);
+            // Créer un nouvel objet Licencies avec les données du formulaire
+            $nouveauLicencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci );
 
-            // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
-            if ($this->CategoriesDAO->create($nouvelleCategorie)) {
+            // Appeler la méthode du modèle (LicenciesDAO) pour ajouter le/la licencie
+            if ($this->licenciesDAO->create($nouveauLicencie)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:HomeController.php');
                 exit();
@@ -42,41 +42,40 @@ class LicencieController {
 //Fonction Store
    
 
-    public function edit($Code_Raccourci) {
-        // Affiche le formulaire d'édition pour une catégorie spécifique
-        $categorie = $this->CategoriesDAO->getByCode($Code_Raccourci);
-        include 'views/categorie/edit.php';
+    public function edit($Num_Licencie) {
+        // Affiche le formulaire d'édition pour un licencie spécifique
+        $licencie  = $this->licenciesDAO->getLicencieById($Num_Licencie);
+        include 'views/licencie/edit.php';
     }
 
-    public function Update($code, $libelle) {
-        $categorie = new Categories($code,$libelle);
+    public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci) {
+        $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci);
         // $categorie->setCodeRaccourci($code);
         // $categorie->setCat($code);
-        $this->CategoriesDAO->update($categorie); 
+        $this->licenciesDAO->updateLicencie($licencie); 
         header('Location:HomeController.php');
     }
     
     public function list() {
-        // Récupérez la liste des catégories depuis le CategorieDAO
-        $categories = $this->CategoriesDAO->getAll();
+        // Récupérez la liste des licencies depuis le LicencieDAO
+        $licencies = $this->licenciesDAO->getAllLicencies();
     
-        // Passez la liste des catégories à la vue
-        include 'views/categories/index.php';
+        // Passez la liste des licencies à la vue
+        include 'views/licencies/home.php';
     }
     
 
+    public function delete($licencieId) {
+        // Supprime un licencie
+        $this->licenciesDAO->deleteLicencie($licencieId);
 
-    public function delete($Code_Raccourci) {
-        // Supprime une catégorie
-        $this->CategoriesDAO->deleteByCode($Code_Raccourci);
-
-        // Redirige vers la liste des catégories
-        header('Location: index.php?action=index');
+        // Redirige vers la liste des licencies
+        header('Location: views/licencies/home.php?action=index');
     }
 
-
+// modifier categorie -> licencies jusqu'au delete
     
-    // Autres méthodes liées à la gestion des catégories
+    // Autres méthodes liées à la gestion des licecies
     // ...
 }
 //Code php pour les differentes pages

@@ -17,8 +17,6 @@ class Educateur {
     }
 
     // Getters
-
-
     public function getNum() {
         return $this->Num_Licencie;
        
@@ -41,9 +39,6 @@ class Educateur {
 
     // Setters
 
-  
-
-
     public function setNumeroLicence($Num_Licencie) {
         $this->Num_Licencie = $Num_Licencie;
 
@@ -53,7 +48,7 @@ class Educateur {
     public function setEmail($Email_Educateur) {
 
         $this->Email_Educateur = $Email_Educateur;
-      
+
 
     }
 
@@ -68,10 +63,7 @@ class Educateur {
        
     }
 
- 
-
 }
-
 
 ?>
 

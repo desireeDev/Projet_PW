@@ -68,7 +68,7 @@ class ContactDAO {
     }
 
     // MÃ©thode pour supprimer un contact par son code
-    public function deleteByCode($id) {
+    public function deleteByCode($Code_Contact) {
         try {
             $stmt = $this->connexion->pdo->prepare("DELETE FROM contact WHERE Code_Contact = ?");
             $stmt->execute([$Code_Contact]);

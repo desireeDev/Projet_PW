@@ -39,7 +39,7 @@ class CategorieController {
 
         // include '../views/categories/create.php';
     }
-//Fonction Store
+
    
 
     public function edit($Code_Raccourci) {

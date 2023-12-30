@@ -83,12 +83,10 @@ public function getAll() {
             } catch (PDOException $e) {
                 // GÃ©rer les erreurs de suppression ici
                 return false;
-            }
-        
+            }    
     }
-
-    // Autres méthodes liées à la gestion des éducateurs
-    // ...
+    // Recuperation des informations de connexion
+ 
 
 }
 

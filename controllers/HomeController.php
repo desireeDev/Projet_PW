@@ -16,8 +16,8 @@ class HomeController {
     public function index() {
         // RÃ©cupÃ©rer la liste de tous les elements depuis le modÃ¨le
         $categories = $this->CategoriesDAO->getAll();
-        $contact = $this->ContactDAO->getAll();
-        $licencies = $this->LicencieDAO->getAll();
+        $contacts = $this->ContactDAO->getAll();
+        $licencie = $this->LicencieDAO->getAll();
         $educateur = $this->EducateursDAO->getAll();
 
         // Inclure la vue pour afficher la liste des categories

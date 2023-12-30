@@ -12,7 +12,6 @@
                 <strong>Nom :</strong> <?php echo $licencie->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $licencie->getPrenom(); ?>,
                 <strong>Code la categorie:</strong> <?php echo $licencie->getCodeRaccourci(); ?>,
-
                 <a href="../views/licencies/update.php?id=<?= $licencie->getNum();?>"> Modifier</a>
                 <a href="../views/licencies/delete.php?id=<?= $licencie->getNum();?>"> Supprimer </a>
      

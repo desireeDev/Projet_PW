@@ -35,7 +35,6 @@
         }
     }
     ?>
-
     <!-- Formulaire de connexion -->
     <form method="post" action="">
         <label for="email">Email:</label>

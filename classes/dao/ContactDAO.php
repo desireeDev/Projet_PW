@@ -54,7 +54,7 @@ class ContactDAO {
     }
 
     // MÃ©thode pour mettre Ã  jour un contact
-    public function update(Contact $contact) {
+    public function Update(Contact $contact) {
         try {
             $stmt = $this->connexion->pdo->prepare("UPDATE contact SET Nom_Contact = ?, Prenom_Contact = ?, Email_Contact = ?,
              Numero_Contact = ?, Num_Licencie = ? WHERE Code_Contact = ?");

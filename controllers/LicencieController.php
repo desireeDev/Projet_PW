@@ -9,13 +9,13 @@ class LicencieController {
 
     private $licenciesDAO;
 
-    public function __construct() {
-        $this->LicenciesDAO = new LicencieDAO();
+    public function __construct( Connexion $connexion) {
+        $this->LicencieDAO = new LicencieDAO($connexion);
     }
 
     public function index() {
         // Liste toutes les catégories
-        $licencies = $this->LicenciesDAO->getAll();
+        $licencies = $this->LicencieDAO->getAll();
         include '../views/licencies/home.php';
     }
 
@@ -25,22 +25,23 @@ class LicencieController {
             $nouveauLicencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci );
 
             // Appeler la méthode du modèle (LicenciesDAO) pour ajouter le/la licencie
-            if ($this->licenciesDAO->create($nouveauLicencie)) {
+            if ($this->LicencieDAO->createLicencie($nouveauLicencie)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:HomeController.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
-                echo "Erreur lors de l'ajout du contact.";
+                echo "Erreur lors de l'ajout d'un licencié.";
             }
-
         
-        // }
-
-        // include '../views/categories/create.php';
     }
-//Fonction Store
-   
+
+
+    
+
+
+    
+
 
     public function edit($Num_Licencie) {
         // Affiche le formulaire d'édition pour un licencie spécifique
@@ -50,15 +51,13 @@ class LicencieController {
 
     public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci) {
         $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci);
-        // $categorie->setCodeRaccourci($code);
-        // $categorie->setCat($code);
         $this->licenciesDAO->updateLicencie($licencie); 
         header('Location:HomeController.php');
     }
     
     public function list() {
         // Récupérez la liste des licencies depuis le LicencieDAO
-        $licencies = $this->licenciesDAO->getAllLicencies();
+        $licencies = $this->licenciesDAO->getAll();
     
         // Passez la liste des licencies à la vue
         include 'views/licencies/home.php';
@@ -73,7 +72,7 @@ class LicencieController {
         header('Location: views/licencies/home.php?action=index');
     }
 
-// modifier categorie -> licencies jusqu'au delete
+// Exportation des données en format CSV et Importation des données en format CSV
     
     // Autres méthodes liées à la gestion des licecies
     // ...
@@ -83,30 +82,43 @@ $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 
 switch($action){
     case "Ajouter":
-        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+        
+        $num =  isset($_POST['num']) ? $_POST['num'] : '' ;
+        $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
+        $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
+        $contact =  isset($_POST['contact']) ? $_POST['contact'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
-            $controller = new CategorieController(new Connexion()) ;
-            $controller->create($code,$libelle);
+        if(!empty($num) and !empty($nom)  and !empty($prenom) and !empty($contact) and !empty($code)){
+            $controller = new LicencieController(new Connexion()) ;
+            $controller->create( $num,$nom,$prenom, $contact,$code);
         }
         break;
     case "Modifier":
-        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+
+        $num =  isset($_POST['num']) ? $_POST['num'] : '' ;
+        $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
+        $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
+        $contact =  isset($_POST['contact']) ? $_POST['contact'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
-            $controller = new CategorieController(new Connexion()) ;
-            $controller->Update($code,$libelle);
+
+        if(!empty($num) and !empty($nom)  and !empty($prenom) and !empty($contact) and !empty($code)){
+            $controller = new LicencieController(new Connexion()) ;
+            $controller->Update( $num,$nom,$prenom, $contact,$code);
         }
+       
         break;
 
         case "Supprimer":
-            $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+         
+            $num =  isset($_POST['num']) ? $_POST['num'] : '' ;
+            $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
+            $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
+            $contact =  isset($_POST['contact']) ? $_POST['contact'] : '' ;
             $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
 
-            if(!empty($libelle) and !empty($code)){
-                $controller = new CategorieController(new Connexion()) ;
-
-                $controller->delete($code,$libelle);
+            if(!empty($num) and !empty($nom)  and !empty($prenom) and !empty($contact) and !empty($code)){
+                $controller = new LicencieController(new Connexion()) ;
+                $controller->delete( $num,$nom,$prenom, $contact,$code);
             }
             break;
 }

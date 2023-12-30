@@ -1,4 +1,3 @@
-
 <?php
 
 
@@ -53,7 +52,7 @@
         <label for="code">codeRaccourci:</label>
         <input type="text" id="code" name="code" value="<?=$current_line->getCodeRaccourci()?>" required><br>
 
-        <input type="submit" name="action" value="Supprimer">
+        <input type="submit" name="action" value="Modifier">
     </form>
 
 </body>

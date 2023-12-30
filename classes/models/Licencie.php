@@ -34,7 +34,7 @@ class Licencie {
         return $this->Contact_Licencie;
     }
 
-    public function getCategorie() {
+    public function getCodeRaccourci() {
         return $this->Code_Raccourci;
     }
 

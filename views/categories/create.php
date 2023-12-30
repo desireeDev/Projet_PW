@@ -12,7 +12,6 @@
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="../../css/style.css">
 	</head>
-
 	<body>
     <a href="../../controllers/HomeController.php"> Listes des categories  </a>
 		<div class="wrapper">
@@ -21,11 +20,11 @@
 				<form action=" ../../controllers/CategorieController.php "  method="post">
 					<h3>Nouvel Enregistrement?</h3>
 					<div class="form-holder">
-						<span class="lnr lnr-user"></span>
+						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="libelle" name="libelle"  placeholder="Nom de la Categorie"required >
 					</div>
 					<div class="form-holder">
-						<span class="lnr lnr-phone-handset"></span>
+						<span class="lnr lnr-pencil"></span>
 						<input type="text" class="form-control" id="code" name="code" placeholder="Code de la categorie" required >
 					</div>
 				

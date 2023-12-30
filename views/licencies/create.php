@@ -22,8 +22,8 @@
         <label for="prenom">Prenom du Licencie :</label>
         <input type="text" id="prenom" name="prenom" required><br>
 
-        <label for="contact"> Contact  du licencie:</label>
-        <input type="text" id="contact" name="contact" required><br>
+    
+        
 
 
         <label for="code">Code de la categorie :</label>

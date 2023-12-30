@@ -10,7 +10,7 @@ class ContactDAO {
     public function create(Contact $contact) {
         try {
             $stmt = $this->connexion->pdo->prepare("INSERT INTO contact (Code_Contact, Nom_Contact, Prenom_Contact, Email_Contact,Numero_Contact,Num_Licencie) VALUES (?, ?, ?, ? ?, ?)");
-            $stmt->execute([ $contact->getCode(), $contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),$contact->getNumL()]);
+            $stmt->execute([ $contact->getCode(), $contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),$contact->getNum()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs d'insertion ici
@@ -59,7 +59,7 @@ class ContactDAO {
             $stmt = $this->connexion->pdo->prepare("UPDATE contact SET Nom_Contact = ?, Prenom_Contact = ?, Email_Contact = ?,
              Numero_Contact = ?, Num_Licencie = ? WHERE Code_Contact = ?");
             $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),
-            $contact->getNumL(), $contact->getCode()]);
+            $contact->getNum(), $contact->getCode()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici

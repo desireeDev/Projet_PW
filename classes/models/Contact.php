@@ -71,7 +71,7 @@ class Contact {
     }
 
     
-    public function getNumL() {
+    public function getNum() {
 
         return $this->Num_Licencie;
 
@@ -111,7 +111,7 @@ class Contact {
 
     }
     
-    public function setNumL($Num_Licencie) {
+    public function setNumeroLicence($Num_Licencie) {
 
         $this->Num_Licencie=$Num_Licencie;
 

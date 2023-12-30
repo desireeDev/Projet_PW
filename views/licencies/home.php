@@ -11,7 +11,6 @@
                 <strong>Numero du Licencie :</strong> <?php echo $licenses->getNum(); ?>,
                 <strong>Nom :</strong> <?php echo $licenses->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $licenses->getPrenom(); ?>,
-                <strong>Contact:</strong> <?php echo $licenses->getContact(); ?>,
                 <strong>Code la categorie:</strong> <?php echo $licenses->getCodeRaccourci(); ?>,
 
                 <a href="../views/contact/update.php?id=<?= $licenses->getNum();?>"> Modifier  </a>

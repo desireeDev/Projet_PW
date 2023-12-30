@@ -12,8 +12,8 @@ class LicencieDAO   {
 
     public function createLicencie(Licencie $licencie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (Num_Licencie, Nom_Licencie, Prenom_Licencie, Contact_Licencie,Code_Raccourci) VALUES (?, ?, ?, ? ?)");
-            $stmt->execute([ $licencie->getNum(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContact(), $licencie->getCodeRaccourci()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (Num_Licencie, Nom_Licencie, Prenom_Licencie,Code_Raccourci) VALUES (?, ?, ?, ?)");
+            $stmt->execute([ $licencie->getNum(), $licencie->getNom(), $licencie->getPrenom(),  $licencie->getCodeRaccourci()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs d'insertion ici
@@ -32,7 +32,7 @@ class LicencieDAO   {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            return new Licencie($row['Num_Licencie'], $row['Nom_Licencie'], $row['Prenom_Licencie'], $row['Contact_Licencie'], $row['Code_Raccourci']);
+            return new Licencie($row['Num_Licencie'], $row['Nom_Licencie'], $row['Prenom_Licencie'],  $row['Code_Raccourci']);
         } else {
             return null;
         }
@@ -43,7 +43,7 @@ class LicencieDAO   {
             $licenses = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $licenses[] = new Licencie($row['Num_Licencie'],$row['Nom_Licencie'],$row['Prenom_Licencie'],$row['Contact_Licencie'],$row['Code_Raccourci']);
+                $licenses[] = new Licencie($row['Num_Licencie'],$row['Nom_Licencie'],$row['Prenom_Licencie'],$row['Code_Raccourci']);
             }
 
             return $licenses;
@@ -57,14 +57,14 @@ class LicencieDAO   {
         $Num_Licencie = $licencie->getNum();
         $Nom_Licencie = $licencie->getNom();
         $Prenom_Licencie = $licencie->getPrenom();
-        $Contact_Licencie = $licencie->getContact();
+    
         $Code_Raccourci = $licencie->getCategorie();
 
         $query = "UPDATE licencies
                   SET Num_Licencie = '?', 
                   Nom_Licencie = '?', 
                   Prenom_Licencie = '?', 
-                  Contact_Licencie   = '?',
+              
                   Code_Raccourci    = '?'
                   WHERE Num_Licencie = ?";
 

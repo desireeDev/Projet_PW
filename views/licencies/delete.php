@@ -46,8 +46,6 @@
         <input type="text" id="prenom" value="<?=$current_line->getPrenom()?>" name="prenom" required><br>
 
 
-        <label for="contact">Contact :</label>
-        <input type="text" id="contact" value="<?=$current_line->getContact()?>" name="contact" required><br>
 
 
         <label for="code">codeRaccourci:</label>

@@ -20,7 +20,6 @@ $Nom_Cat = $categorie->getCat(); */
                 <strong>Code Raccourci:</strong> <?php echo $categorie->getCodeRaccourci(); ?>
                 <a href="../views/categories/update.php?id=<?= $categorie->getCodeRaccourci();?>"> Modifier  </a>
                 <a href="../views/categories/delete.php?id=<?= $categorie->getCodeRaccourci();?>"> Supprimer  </a>
-     
                 
             </li>
             <br>

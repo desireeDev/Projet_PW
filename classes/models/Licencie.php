@@ -4,15 +4,15 @@ class Licencie {
     private $Num_Licencie;
     private $Nom_Licencie;
     private $Prenom_Licencie; 
-    private $Contact_Licencie; 
+ 
     private $Code_Raccourci; 
 
     // Constructeur
-    public function __construct($Num_Licencie, $Nom_Licencie, $Prenom_Licencie, $Contact_Licencie,$Code_Raccourci) {
+    public function __construct($Num_Licencie, $Nom_Licencie, $Prenom_Licencie,$Code_Raccourci) {
         $this->Num_Licencie = $Num_Licencie;
         $this->Nom_Licencie = $Nom_Licencie;
         $this->Prenom_Licencie = $Prenom_Licencie;
-        $this->Contact_Licencie = $Contact_Licencie;
+      
         $this->Code_Raccourci = $Code_Raccourci;
         
     }
@@ -30,10 +30,7 @@ class Licencie {
         return $this->Prenom_Licencie;
     }
 
-    public function getContact() {
-        return $this->Contact_Licencie;
-    }
-
+ 
     public function getCodeRaccourci() {
         return $this->Code_Raccourci;
     }
@@ -51,11 +48,8 @@ class Licencie {
         $this->Prenom_Licencie = $Prenom_Licencie;
     }
 
-    public function setContact(Contact $Contact_Licencie) {
-        $this->Contact_Licencie = $Contact_Licencie;
-    }
 
-    public function setCategorie(Categories $categorie) {
+    public function setCodeRaccourci(Categories $categorie) {
         $this->Code_Raccourci = $Code_Raccourci;
     }
 

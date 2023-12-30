@@ -16,7 +16,7 @@ class ContactController {
     public function index() {
         // Liste toutes les contacts
         $contacts = $this->ContactDAO->getAll();
-        include '../views/contacts/home.php';
+        include '../views/contact/home.php';
       
     }
 
@@ -59,7 +59,7 @@ class ContactController {
         $contact = $this->ContactDAO->getAll();
     
         // Passez la liste des catégories à la vue
-        include 'views/categories/index.php';
+        include 'views/contact/index.php';
     }
     
 

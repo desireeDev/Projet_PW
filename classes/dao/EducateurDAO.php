@@ -2,21 +2,28 @@
 
 
 
-class EducateurDAO  {
+class EducateursDAO  {
+//Ajout de la fonction  connexion
+    private $connexion;
 
-    public function createEducateur(Educateur $educateur) {
-        $numeroLicence = $educateur->getNumeroLicence();
-        $email = $educateur->getEmail();
-        $motDePasse = $educateur->getMotDePasse();
-        $administrateur = $educateur->isAdministrateur() ? 1 : 0;
-
-        $query = "INSERT INTO educateurs ( Email_Educateur, Mdp_Educateur, Administrateur,Num_Licencie) 
-                  VALUES ( '?', '?', '?','?')";
-
-        return $this->conn->query($query);
+    public function __construct(Connexion $connexion) {
+        $this->connexion = $connexion;
     }
 
-    public function getEducateurById($Code_Educateur) {
+
+
+public function createEducateur(Educateur $educateur) {
+    try {
+        $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (Email_Educateur ,Mdp_Educateur, Administrateur,Num_Licencie) VALUES (?, ?,?, ?)");
+        $stmt->execute([ $educateur->getNum(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin()]);
+        return true;
+    } catch (PDOException $e) {
+        // GÃ©rer les erreurs d'insertion ici
+        return false;
+    }
+}
+    
+    public function getByCode($Email_Educateur) {
         $query = "SELECT * FROM educateurs WHERE Email_Educateur= ?";
         $result = $this->conn->query($query);
 
@@ -28,22 +35,29 @@ class EducateurDAO  {
         }
     }
 
-    public function getAllEducateurs() {
-        $educateurs = array();
+//Recup
 
-        $query = "SELECT * educateurs";
-        $result = $this->conn->query($query);
+public function getAll() {
+    try {
+        $stmt = $this->connexion->pdo->query("SELECT * FROM educateurs");
+        $educateur = [];
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $educateur = new Educateur($row['Num_Licencie'], $row['Email_Educateur'], $row['Mdp_Educateur'], $row['Administrateur']);
-                $educateur->setEmail($row['setEmail']);
-                $educateurs[] = $educateur;
-            }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $educateur[] = new Educateur($row['Num_Licencie'],$row['Email_Educateur'],$row['Mdp_Educateur'],$row['Administrateur']);
         }
 
-        return $educateurs;
+        return $educateur;
+    } catch (PDOException $e) {
+        // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+        return [];
     }
+}
+
+
+
+
+
+
 
     public function updateEducateur(Educateur $educateur) {
       

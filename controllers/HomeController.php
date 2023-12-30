@@ -3,11 +3,13 @@ class HomeController {
     private $CategoriesDAO;
     private $ContactDAO;
     private $LicencieDAO;
+    private $EducateursDAO;
 
-    public function __construct(CategoriesDAO $CategoriesDAO , ContactDAO  $ContactDAO, LicencieDAO $LicencieDAO ) {
+    public function __construct(CategoriesDAO $CategoriesDAO , ContactDAO  $ContactDAO, LicencieDAO $LicencieDAO, EducateursDAO $EducateursDAO ) {
         $this->CategoriesDAO = $CategoriesDAO;
         $this->ContactDAO = $ContactDAO;
         $this->LicencieDAO = $LicencieDAO;
+        $this->EducateursDAO = $EducateursDAO;
       
     }
 
@@ -16,6 +18,7 @@ class HomeController {
         $categories = $this->CategoriesDAO->getAll();
         $contact = $this->ContactDAO->getAll();
         $licencies = $this->LicencieDAO->getAll();
+        $educateur = $this->EducateursDAO->getAll();
 
         // Inclure la vue pour afficher la liste des categories
         include('../views/categories/home.php');
@@ -26,6 +29,10 @@ class HomeController {
           // Inclure la vue pour afficher la liste des licencies
 
           include('../views/licencies/home.php');
+
+             // Inclure la vue pour afficher la liste des educateurs
+
+             include('../views/educateur/home.php');
 
 
     }
@@ -39,13 +46,15 @@ require_once("../classes/models/Contact.php");
 require_once("../classes/dao/ContactDAO.php");
 require_once("../classes/models/Licencie.php");
 require_once("../classes/dao/LicencieDAO.php");
-
-
+require_once("../classes/models/Educateur.php");
+require_once("../classes/dao/EducateurDAO.php");
 
 $CategoriesDAO=new CategoriesDAO(new Connexion());
 $ContactDAO=new ContactDAO(new Connexion());
 $LicencieDAO=new LicencieDAO(new Connexion());
-$controller=new HomeController($CategoriesDAO,$ContactDAO,$LicencieDAO);
+$EducateursDAO=new EducateursDAO(new Connexion());
+
+$controller=new HomeController($CategoriesDAO,$ContactDAO,$LicencieDAO ,$EducateursDAO);
 
 $controller->index();
 

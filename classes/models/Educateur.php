@@ -19,7 +19,7 @@ class Educateur {
     // Getters
 
 
-    public function getNumeroLicence() {
+    public function getNum() {
         return $this->Num_Licencie;
        
     }

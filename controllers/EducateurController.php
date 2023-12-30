@@ -14,18 +14,19 @@ class EducateurController {
     }
 
     public function index() {
-        // Liste toutes les catégories
-        $categories = $this->CategoriesDAO->getAll();
-        include '../views/categories/index.php';
+        // Liste toutes les educateurs
+        $educateurs = $this->EducateursDAO->getAll();
+    
+        include '../views/educateur/index.php';
     }
 
-    public function create($Code_Raccourci,$Nom_Cat) {
+    public function create($Email_Educateur,$Mdp_Educateur, $Administrateur,$Num_Licencie) {
 
             // Créer un nouvel objet CategorieModel avec les données du formulaire
-            $nouvelleCategorie = new Categories($Code_Raccourci, $Nom_Cat);
+            $nouvelEducateur = new Educateur($Email_Educateur, $Mdp_Educateur,$Administrateur,$Num_Licencie);
 
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
-            if ($this->CategoriesDAO->create($nouvelleCategorie)) {
+            if ($this->EducateursDAO->createEducateur($nouvelEducateur)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:HomeController.php');
                 exit();
@@ -35,42 +36,40 @@ class EducateurController {
             }
 
         
-        // }
+  
 
-        // include '../views/categories/create.php';
     }
-//Fonction Store
+
    
 
-    public function edit($Code_Raccourci) {
+    public function edit($Email_Educateur) {
         // Affiche le formulaire d'édition pour une catégorie spécifique
-        $categorie = $this->CategoriesDAO->getByCode($Code_Raccourci);
-        include 'views/categorie/edit.php';
+        $educateur = $this->EducateursDAO->getByCode($Email_Educateur);
+        include 'views/educateur/edit.php';
     }
 
-    public function Update($code, $libelle) {
-        $categorie = new Categories($code,$libelle);
-        // $categorie->setCodeRaccourci($code);
-        // $categorie->setCat($code);
-        $this->CategoriesDAO->update($categorie); 
+    public function Update($email, $password, $admin, $numLicencie) {
+        $educateur = new Educateur($email, $password, $admin, $numLicencie);
+    
+        $this->EducateursDAO->updateEducateur($educateur); 
         header('Location:HomeController.php');
     }
     
     public function list() {
-        // Récupérez la liste des catégories depuis le CategorieDAO
-        $categories = $this->CategoriesDAO->getAll();
+        // Récupérez la liste des educateurs depuis le CategorieDAO
+        $educateur = $this->EducateursDAO->getAll();
     
-        // Passez la liste des catégories à la vue
-        include 'views/categories/index.php';
+        // Passez la liste des educateurs à la vue
+        include 'views/educateur/home.php';
     }
     
 
 
-    public function delete($Code_Raccourci) {
-        // Supprime une catégorie
-        $this->CategoriesDAO->deleteByCode($Code_Raccourci);
+    public function delete($Email_Educateur ) {
+        // Supprime un licenciz
+        $this->EducateursDAO->deleteEducateur($Email_Educateur);
 
-        // Redirige vers la liste des catégories
+        // Redirige vers la liste des licencies
         header('Location: index.php?action=index');
     }
 
@@ -84,30 +83,34 @@ $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 
 switch($action){
     case "Ajouter":
-        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-        $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
-            $controller = new CategorieController(new Connexion()) ;
-            $controller->create($code,$libelle);
+        $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
+        $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+        $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
+        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+        if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+            $controller = new EducateurController(new Connexion()) ;
+            $controller->create($email,$password,$admin,$numLicencie);
         }
         break;
     case "Modifier":
-        $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-        $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
-            $controller = new CategorieController(new Connexion()) ;
-            $controller->Update($code,$libelle);
+        $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
+        $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+        $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
+        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+        if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+            $controller = new EducateurController(new Connexion()) ;
+            $controller->Update($email,$password,$admin,$numLicencie);
         }
         break;
 
         case "Supprimer":
-            $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
-            $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-
-            if(!empty($libelle) and !empty($code)){
-                $controller = new CategorieController(new Connexion()) ;
-
-                $controller->delete($code,$libelle);
+            $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
+            $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+            $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
+            $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+            if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+                $controller = new EducateurController(new Connexion()) ;
+                $controller->delete($email,$password,$admin,$numLicencie);
             }
             break;
 }

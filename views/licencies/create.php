@@ -2,14 +2,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un licensié</title>
+   
     <!-- Ajoutez ici vos liens CSS ou styles pour la mise en forme -->
         <link rel="stylesheet" href="../css/styles.css">
    
 </head>
 <body>
-    <h1>Ajouter un  contact</h1>
-    <a href="../../controllers/HomeController.php"> Liste des differentes contacts  </a>
+    <h1>Ajouter un  licensie</h1>
+    <a href="../../controllers/HomeController.php"> Liste des licencies  </a>
  
 
     <form action="../../controllers/LicencieController.php "  method="post" >

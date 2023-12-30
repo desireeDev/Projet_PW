@@ -11,7 +11,6 @@
     <h1>Ajouter un  educateur</h1>
     <a href="../../controllers/HomeController.php"> Liste des educateurs  </a>
  
-
     <form action="../../controllers/EducateurController.php "  method="post" >
         <label for="email">Email :</label>
         <input type="text" id="email" name="email" required><br>

@@ -40,13 +40,13 @@ class LicencieDAO   {
     public function getAll() {
         try {
             $stmt = $this->connexion->pdo->query("SELECT * FROM licencies");
-            $licenses = [];
+            $licencie = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $licenses[] = new Licencie($row['Num_Licencie'],$row['Nom_Licencie'],$row['Prenom_Licencie'],$row['Code_Raccourci']);
+                $licencie[] = new Licencie($row['Num_Licencie'],$row['Nom_Licencie'],$row['Prenom_Licencie'],$row['Code_Raccourci']);
             }
 
-            return $licenses;
+            return $licencie;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return [];

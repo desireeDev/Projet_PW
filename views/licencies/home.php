@@ -5,16 +5,16 @@
 <ul>
     <?php
     if (isset($licenses) && (is_array($licenses) || is_object($licenses))) {
-        foreach ($license as $key => $licenses) {
+        foreach ($licenses as $key => $licencie) {
             ?>
             <li>
-                <strong>Numero du Licencie :</strong> <?php echo $licenses->getNum(); ?>,
-                <strong>Nom :</strong> <?php echo $licenses->getNom(); ?>
-                <strong>Prenom:</strong> <?php echo $licenses->getPrenom(); ?>,
-                <strong>Code la categorie:</strong> <?php echo $licenses->getCodeRaccourci(); ?>,
+                <strong>Numero du Licencie :</strong> <?php echo $licencie->getNum(); ?>,
+                <strong>Nom :</strong> <?php echo $licencie->getNom(); ?>
+                <strong>Prenom:</strong> <?php echo $licencie->getPrenom(); ?>,
+                <strong>Code la categorie:</strong> <?php echo $licencie->getCodeRaccourci(); ?>,
 
-                <a href="../views/contact/update.php?id=<?= $licenses->getNum();?>"> Modifier  </a>
-                <a href="../views/contact/delete.php?id=<?= $licenses->getNum();?>"> Supprimer  </a>
+                <a href="../views/licencies/update.php?id=<?= $licencie->getNum();?>"> Modifier</a>
+                <a href="../views/licencies/delete.php?id=<?= $licencie->getNum();?>"> Supprimer </a>
      
                 
             </li>

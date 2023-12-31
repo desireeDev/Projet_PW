@@ -29,7 +29,7 @@
 			<div class="inner">
 				<img src="../../images/image-1.png" alt="" class="image-1">
 				<form action="../../controllers/EducateurController.php "  method="post">
-					<h3>Ajout d'un licencié?</h3>
+					<h3>Ajout d'un educateur?</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
 						<input type="text" class="form-control" id="email" name="email" required placeholder="Email d'un educateur">
@@ -41,7 +41,7 @@
 
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" id="numLicencie" name="numLicencie" required  placeholder="Numero de licence ">
+						<input type="text" class="form-control" id="numLicencie" name="numLicencie" required  placeholder="Identite du licencie ">
 
 
 						<select id="numLicencie" name="numLicencie" required>
@@ -52,12 +52,8 @@
             <?php
                 }
             ?>
-        </select><br>
-						
+        </select><br>		
 					</div>
-
-
-
                     <div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
 						<input type="text" class="form-control" id="admin" name="admin" required placeholder="Role">

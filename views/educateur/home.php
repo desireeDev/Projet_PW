@@ -13,7 +13,7 @@
                 <strong>Email :</strong> <?php echo $educateur->getEmail(); ?>,
                 <strong>Mot de passe:</strong> <?php echo $educateur->getMotDePasse(); ?>
                 <strong>Role</strong> <?php echo $educateur->isAdmin(); ?>,
-                <strong> Numero du licencié:</strong> <?php echo $educateur->getNum(); ?>,
+                <strong> Nom du licencie:</strong> <?php echo $educateur->getNum(); ?>,
 
                 <a href="../views/educateur/update.php?id=<?= $educateur->getEmail();?>"> Modifier  </a>
                 <a href="../views/educateur/delete.php?id=<?= $educateur->getEmail();?>"> Supprimer  </a>

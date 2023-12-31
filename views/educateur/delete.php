@@ -1,7 +1,5 @@
 
 <?php
-
-
     require_once('../../config/config.php');
     require_once('../../classes/models/Connexion.php');
     require_once('../../classes/models/Educateur.php');
@@ -29,13 +27,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Supprimer un contact</title>
+  
     <!-- Ajoutez ici vos liens CSS ou styles pour la mise en forme -->
         <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <h1>Supprimer un contact</h1>
-    <a href="../../controllers/HomeController.php">Retour à la liste des categories</a>
+    <a href="../../controllers/HomeController.php">Retour à la liste des educateurs</a>
 
 
     <form action="../../controllers/EducateurController.php"  method="post" >

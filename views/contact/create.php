@@ -78,10 +78,10 @@
 
 
 				
-					<button>
+				
 					
                     <input type="submit" name="action" value="Ajouter">
-					</button>
+				
 				</form>
 				<img src="../../images/image-2.png" alt="" class="image-2">
 			</div>

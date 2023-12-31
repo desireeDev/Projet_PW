@@ -66,6 +66,15 @@ class LicencieController {
         header('Location:HomeController.php');
     }
 
+    
+public function importerLicenciés ($cheminFichier) {
+    $this->LicencieDAO->importer($cheminFichier);
+}
+
+public function exporterLicenciés($cheminFichier) {
+    $this->licenciéDAO->exporter($cheminFichier);
+} 
+
 // Exportation des données en format CSV et Importation des données en format CSV
     
     // Autres méthodes liées à la gestion des licecies
@@ -114,6 +123,6 @@ switch($action){
             }
             break;
 }
-
+//Importation des données en format CSV
 
 ?>

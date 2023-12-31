@@ -83,7 +83,34 @@ class LicencieDAO   {
     }
 
     // Autres méthodes liées à la gestion des licenciés
-    // ...
+      //  importation des licenciés
+
+      public function importer($cheminFichier) {
+        $file = fopen($cheminFichier, "r");
+        while (($data = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $licencie = new Licencie();
+            $licencie->setNom($data[0]);
+            // Définir d'autres propriétés de l'objet Licencié...
+            $this->createLicencie($licencie);
+        }
+        fclose($file);
+    }
+
+ //  exportation des licenciés
+
+ public function exporter($cheminFichier) {
+    $file = fopen($cheminFichier, "w");
+    $licencies = $this->lister();
+    foreach ($licencies as $licencie) {
+        fputcsv($file, get_object_vars($licencie));
+    }
+    fclose($file);
 }
+}
+
+
+
+    // ...
+
 
 ?>

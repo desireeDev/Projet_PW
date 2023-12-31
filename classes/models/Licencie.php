@@ -52,7 +52,18 @@ class Licencie {
         $this->Code_Raccourci = $Code_Raccourci;
     }
 
-    // Autres méthodes liées à la gestion des licenciés
+    // Recupération d'un tableau associatif à partir d'un objet
+
+    public function getProperties() {
+        return get_object_vars($this);
+    }
+  
+
+
+
+
+
+
     // ...
 }
 

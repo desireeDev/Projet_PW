@@ -16,6 +16,34 @@
                 <a href="../views/licencies/update.php?id=<?= $lic->getNum();?>"> Modifier</a>
 
                 <a href="../views/licencies/delete.php?id=<?= $lic->getNum();?>"> Supprimer </a>
+
+                <!-- Bouton d'importation -->
+               <input type="file" id="importFile" style="display: none;">
+               <button onclick="$('#importFile')[0].click();">Importer Licenciés</button>
+
+              <!-- Bouton d'exportation -->
+               <button id="exportButton">Exporter Licenciés</button>
+
+                     <!-- Code d'Exportation et' d'importation -->
+
+                     <script>
+       $(document).ready(function() {
+           var licenceController = new LicenceController();
+
+           $('#importFile').change(function() {
+               var file = this.files[0];
+               var reader = new FileReader();
+               reader.onload = function(e) {
+                  licenceController.importerLicenciés(e.target.result);
+               };
+               reader.readAsDataURL(file);
+           });
+
+           $('#exportButton').click(function() {
+               licenceController.exporterLicenciés('licenciés.csv');
+           });
+       });
+   </script> 
      
                 
             </li>

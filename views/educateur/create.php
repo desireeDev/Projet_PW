@@ -10,6 +10,16 @@
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="../../css/style.css">
 	</head>
+	<?php
+    require_once("../../config/config.php");
+    require_once("../../classes/models/Connexion.php");
+    require_once("../../classes/models/Licencie.php");
+    require_once("../../classes/dao/LicencieDAO.php");
+
+    $LicencieDAO=new LicencieDAO(new Connexion());
+    $licencies = $LicencieDAO->getAll();
+?>
+
 
 	<body>
 
@@ -32,6 +42,18 @@
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
 						<input type="text" class="form-control" id="numLicencie" name="numLicencie" required  placeholder="Numero de licence ">
+
+
+						<select id="numLicencie" name="numLicencie" required>
+            <?php
+                foreach ($licencies as $key => $lic) {
+            ?>
+            <option value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <?php
+                }
+            ?>
+        </select><br>
+						
 					</div>
 
 

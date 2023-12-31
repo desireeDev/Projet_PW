@@ -1,7 +1,5 @@
 <?php
 
-
-
 class EducateursDAO  {
 //Ajout de la fonction  connexion
     private $connexion;
@@ -53,19 +51,13 @@ public function getAll() {
     }
 }
 
-
-
-
-
-
-
-    public function updateEducateur(Educateur $educateur) {
+    public function Update(Educateur $educateur) {
       
             try {
                 $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Num_Licencie = ?, Email_Educateur = ?, Mdp_Educateur = ?,
                  Administrateur = ? WHERE setEmail = ?");
-                $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdministrateur(), $educateur->getEmail(),
-                $educateur->getNumeroLicence()]);
+                $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdministrateur(), $educateur->getEmail(),   $educateur->getNumeroLicence()]);
+             
                 return true;
             } catch (PDOException $e) {
                 // GÃ©rer les erreurs de mise Ã  jour ici

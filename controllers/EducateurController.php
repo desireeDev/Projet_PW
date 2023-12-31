@@ -35,9 +35,6 @@ class EducateurController {
                 echo "Erreur lors de l'ajout du contact.";
             }
 
-        
-  
-
     }
 
    

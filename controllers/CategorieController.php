@@ -7,7 +7,7 @@ require_once("../classes/dao/CategoriesDAO.php");
 
 class CategorieController {
 
-    private $categorieDAO;
+    private $CategoriesDAO;
 
     public function __construct(Connexion $connexion) {
         $this->CategoriesDAO = new CategoriesDAO($connexion);
@@ -48,11 +48,11 @@ class CategorieController {
         include 'views/categorie/edit.php';
     }
 
-    public function Update($code, $libelle) {
+    public function Update($code, $libelle , $lastCode) {
         $categorie = new Categories($code,$libelle);
         // $categorie->setCodeRaccourci($code);
         // $categorie->setCat($code);
-        $this->CategoriesDAO->update($categorie); 
+        $this->CategoriesDAO->update($categorie,$lastCode); 
         header('Location:HomeController.php');
     }
     
@@ -71,7 +71,7 @@ class CategorieController {
         $this->CategoriesDAO->deleteByCode($Code_Raccourci);
 
         // Redirige vers la liste des catégories
-        header('Location: index.php?action=index');
+        header('Location:HomeController.php');
     }
 
 
@@ -94,9 +94,10 @@ switch($action){
     case "Modifier":
         $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
+        $lastCode =  isset($_POST['lastCode']) ? $_POST['lastCode'] : '' ;
+        if(!empty($libelle) and !empty($code) and !empty($lastCode)){
             $controller = new CategorieController(new Connexion()) ;
-            $controller->Update($code,$libelle);
+            $controller->Update($code,$libelle,$lastCode);
         }
         break;
 

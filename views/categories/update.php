@@ -52,6 +52,10 @@
 					</div>
 				
                     <input type="submit" name="action" value="Modifier">
+
+					<input type="hidden" name="lastCode" value="<?=$code?>">
+
+
 				
 				</form>
 				<img src="images/image-2.png" alt="" class="image-2">

@@ -54,10 +54,10 @@ class CategoriesDAO {
     }
 
     // MÃ©thode pour mettre Ã  jour un contact
-    public function update(Categories $categorie) {
+    public function update(Categories $categorie , $lastCode) {
         try {
             $stmt = $this->connexion->pdo->prepare("UPDATE categories SET  Nom_Cat=? , Code_Raccourci=? WHERE Code_Raccourci=?");
-            $stmt->execute([$categorie->getCat(),  $categorie->getCodeRaccourci() , $categorie->getCodeRaccourci()]);
+            $stmt->execute([$categorie->getCat(),  $categorie->getCodeRaccourci() , $lastCode]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici

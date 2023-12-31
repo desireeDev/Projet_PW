@@ -4,7 +4,6 @@ class Licencie {
     private $Num_Licencie;
     private $Nom_Licencie;
     private $Prenom_Licencie; 
- 
     private $Code_Raccourci; 
 
     // Constructeur

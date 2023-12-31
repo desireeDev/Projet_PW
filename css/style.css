@@ -19,7 +19,8 @@ input, textarea, select, button {
   font-family: "Muli-Regular"; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
-  margin: 0; }
+  margin: 0;
+height: 20; }
 
 img {
   max-width: 100%; }

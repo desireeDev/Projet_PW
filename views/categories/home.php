@@ -1,5 +1,5 @@
 
-
+<link rel="stylesheet" href="../../css/style.css">
 <h2>Liste des Catégories</h2>
 <a href="../views/categories/create.php" > Créer  </a>
 <ul>

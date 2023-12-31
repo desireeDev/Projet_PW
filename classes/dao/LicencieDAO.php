@@ -53,23 +53,19 @@ class LicencieDAO   {
         }
     }
 
-    public function updateLicencie(Licencie $licencie) {
-        $Num_Licencie = $licencie->getNum();
-        $Nom_Licencie = $licencie->getNom();
-        $Prenom_Licencie = $licencie->getPrenom();
-    
-        $Code_Raccourci = $licencie->getCategorie();
 
-        $query = "UPDATE licencies
-                  SET Num_Licencie = '?', 
-                  Nom_Licencie = '?', 
-                  Prenom_Licencie = '?', 
-              
-                  Code_Raccourci    = '?'
-                  WHERE Num_Licencie = ?";
 
-        return $this->connexion->query($query);
+    public function update(Licencie $licencie) {
+        try {
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET  Num_Licencie=? , Nom_Licencie=?  , Prenom_Licencie = '?',  Code_Raccourci    = '?'  WHERE Num_Licencie=?");
+            $stmt->execute([$licencie->getNum(),  $licencie->getNom() ,  $licencie->getPrenom() ,  $licencie->getCodeRaccourci()]);
+            return true;
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de mise Ã  jour ici
+            return false;
+        }
     }
+
 
     public function deleteLicencie($licencieId) {
         try {

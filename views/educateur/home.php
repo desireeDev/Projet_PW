@@ -2,6 +2,8 @@
 
 <h2>Liste des Educateurs</h2>
 <a href="../views/educateur/create.php" > Créer  </a>
+
+<link rel="stylesheet" href="../../css/style.css">
 <ul>
     <?php
     if (isset($educateurs) && (is_array($educateurs) || is_object($educateurs))) {

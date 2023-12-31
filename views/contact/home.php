@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="../../css/style.css">
 
 <h2>Liste des Contacts</h2>
 <a href="../views/contact/create.php" > Créer  </a>

@@ -7,7 +7,7 @@ require_once("../classes/dao/LicencieDAO.php");
 
 class LicencieController {
 
-    private $licenciesDAO;
+    private $LicencieDAO;
 
     public function __construct( Connexion $connexion) {
         $this->LicencieDAO = new LicencieDAO($connexion);
@@ -45,19 +45,19 @@ class LicencieController {
 
     public function edit($Num_Licencie) {
         // Affiche le formulaire d'édition pour un licencie spécifique
-        $licencie  = $this->licenciesDAO->getLicencieById($Num_Licencie);
-        include 'views/licencie/edit.php';
+        $licencie  = $this->LicencieDAO->getLicencieById($Num_Licencie);
+        include 'views/licencies/edit.php';
     }
 
     public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci) {
-        $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Contact_Licencie,$Code_Raccourci);
-        $this->licenciesDAO->updateLicencie($licencie); 
+        $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci);
+        $this->LicencieDAO->update($licencie); 
         header('Location:HomeController.php');
     }
     
     public function list() {
         // Récupérez la liste des licencies depuis le LicencieDAO
-        $licencies = $this->licenciesDAO->getAll();
+        $licencies = $this->LicencieDAO->getAll();
     
         // Passez la liste des licencies à la vue
         include 'views/licencies/home.php';
@@ -66,7 +66,7 @@ class LicencieController {
 
     public function delete($licencieId) {
         // Supprime un licencie
-        $this->licenciesDAO->deleteLicencie($licencieId);
+        $this->LicencieDAO->deleteLicencie($licencieId);
 
         // Redirige vers la liste des licencies
         header('Location: views/licencies/home.php?action=index');

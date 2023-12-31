@@ -57,7 +57,6 @@ class LicencieController {
         include 'views/licencies/home.php';
     }
     
-
     public function delete($licencieId) {
         // Supprime un licencie
         $this->LicencieDAO->deleteLicencie($licencieId);
@@ -67,13 +66,13 @@ class LicencieController {
     }
 
     
-public function importerLicenciés ($cheminFichier) {
+   public function importerLicenciés ($cheminFichier) {
     $this->LicencieDAO->importer($cheminFichier);
-}
+  }
 
-public function exporterLicenciés($cheminFichier) {
-    $this->licenciéDAO->exporter($cheminFichier);
-} 
+   public function exporterLicenciés($cheminFichier) {
+    $this->LicencieDAO->exporter($cheminFichier);
+  } 
 
 // Exportation des données en format CSV et Importation des données en format CSV
     

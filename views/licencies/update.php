@@ -5,6 +5,8 @@
     require_once('../../classes/models/Connexion.php');
     require_once('../../classes/models/Licencie.php');
     require_once('../../classes/dao/LicencieDAO.php');
+    require_once("../../classes/models/Categories.php");
+    require_once("../../classes/dao/CategoriesDAO.php");
 
     $code = isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ;
 
@@ -20,6 +22,9 @@
         header("Location: " . $_SERVER["HTTP_REFERER"]);
     }
 
+    $CategoriesDAO=new CategoriesDAO(new Connexion());
+
+    $categories = $CategoriesDAO->getAll();
 ?>
 
 <!DOCTYPE html>
@@ -45,15 +50,21 @@
         <input type="text" id="prenom" value="<?=$current_line->getPrenom()?>" name="prenom" required><br>
 
 
-        <label for="contact">Contact :</label>
-        <input type="text" id="contact" value="<?=$current_line->getContact()?>" name="contact" required><br>
-
-
         <label for="code">codeRaccourci:</label>
         <input type="text" id="code" name="code" value="<?=$current_line->getCodeRaccourci()?>" required><br>
 
+        <?php
+                foreach ($categories as $key => $ctg) {
+            ?>
+            <option <?=$current_line->getCodeRaccourci()==$ctg->getCodeRaccourci() ? "selected" : "" ?> value="<?=$ctg->getCodeRaccourci()?>"><?=$ctg->getCat()?></option>
+            <?php
+                }
+            ?>
+
         <input type="submit" name="action" value="Modifier">
+
     </form>
+   
 
 </body>
 </html>

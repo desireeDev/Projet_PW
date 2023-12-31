@@ -27,13 +27,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Modifier les données d'un licencié</title>
+    <title>Suppression des données d'un licencié</title>
     <!-- Ajoutez ici vos liens CSS ou styles pour la mise en forme -->
         <link rel="stylesheet" href="../css/styles.css">
-        <a href="../../controllers/HomeController.php"> List  </a>            
+        <a href="../../controllers/HomeController.php"> Liste des licencies  </a>            
 </head>
 <body>
-    <h1>Modification</h1>
+ 
 
     <form action="../../controllers/LicencieController.php"  method="post" >
         <label for="num">Numero du licencié :</label>
@@ -45,13 +45,11 @@
         <label for="prenom">Prenom :</label>
         <input type="text" id="prenom" value="<?=$current_line->getPrenom()?>" name="prenom" required><br>
 
-
-
-
         <label for="code">codeRaccourci:</label>
         <input type="text" id="code" name="code" value="<?=$current_line->getCodeRaccourci()?>" required><br>
 
         <input type="submit" name="action" value="Supprimer">
+        
     </form>
 
 </body>

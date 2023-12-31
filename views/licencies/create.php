@@ -1,4 +1,18 @@
 
+
+<?php
+    require_once("../../config/config.php");
+    require_once("../../classes/models/Connexion.php");
+    require_once("../../classes/models/Licence.php");
+    require_once("../../classes/dao/LicencieDAO.php");
+
+    $LicencieDAO=new LicencieDAO(new Connexion());
+
+    $licence = $LicencieDAO->getAll();
+
+?>
+
+
     <!DOCTYPE html>
 <html>
 	<head>
@@ -33,15 +47,20 @@
 						<span class="lnr lnr-user"></span>
 						<input type="text" class="form-control" id="prenom" name="prenom" required  placeholder="Prenom d'un licencié ">
 					</div>
-
-
-
                     <div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
 						<input type="text" class="form-control" id="code" name="code" required placeholder="Code de la categorie">
 					</div>
-		
-					
+
+
+					<?php
+                foreach ($categories as $key => $ctg) {
+            ?>
+            <option value="<?=$ctg->getCodeRaccourci()?>"><?=$ctg->getCat()?></option>
+            <?php
+                }
+            ?>
+				
                     <input type="submit" name="action" value="Ajouter">
 			
 				</form>

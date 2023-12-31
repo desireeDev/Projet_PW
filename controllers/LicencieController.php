@@ -37,27 +37,21 @@ class LicencieController {
     }
 
 
-    
-
-
-    
-
-
     public function edit($Num_Licencie) {
         // Affiche le formulaire d'édition pour un licencie spécifique
-        $licencie  = $this->LicencieDAO->getLicencieById($Num_Licencie);
-        include 'views/licencies/edit.php';
+        $licencie  = $this->licenciesDAO->getLicencieById($Num_Licencie);
+        include 'views/licencie/edit.php';
     }
 
     public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci) {
         $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci);
-        $this->LicencieDAO->update($licencie); 
+        $this->LicencieDAO->updateLicencie($licencie); 
         header('Location:HomeController.php');
     }
     
     public function list() {
         // Récupérez la liste des licencies depuis le LicencieDAO
-        $licencies = $this->LicencieDAO->getAll();
+        $licencies = $this->licenciesDAO->getAll();
     
         // Passez la liste des licencies à la vue
         include 'views/licencies/home.php';
@@ -69,7 +63,7 @@ class LicencieController {
         $this->LicencieDAO->deleteLicencie($licencieId);
 
         // Redirige vers la liste des licencies
-        header('Location: views/licencies/home.php?action=index');
+        header('Location:HomeController.php');
     }
 
 // Exportation des données en format CSV et Importation des données en format CSV
@@ -87,9 +81,9 @@ switch($action){
         $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($num) and !empty($nom)  and !empty($prenom)  and !empty($code)){
+        if(!empty($num) and !empty($nom)  and !empty($prenom)  and !empty($code) ){
             $controller = new LicencieController(new Connexion()) ;
-            $controller->create( $num,$nom,$prenom, $code);
+            $controller->create( $num,$nom,$prenom,$code);
         }
         break;
     case "Modifier":
@@ -98,6 +92,7 @@ switch($action){
         $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+
 
         if(!empty($num) and !empty($nom)  and !empty($prenom)  and !empty($code)){
             $controller = new LicencieController(new Connexion()) ;

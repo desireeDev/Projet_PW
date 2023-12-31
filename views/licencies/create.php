@@ -53,13 +53,16 @@
 					</div>
 
 
-					<?php
+					<select name="code" id="code">
+            
+            <?php
                 foreach ($categories as $key => $ctg) {
             ?>
             <option value="<?=$ctg->getCodeRaccourci()?>"><?=$ctg->getCat()?></option>
             <?php
                 }
             ?>
+        </select><br>
 				
                     <input type="submit" name="action" value="Ajouter">
 			

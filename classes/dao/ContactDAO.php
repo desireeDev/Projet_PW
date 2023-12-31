@@ -9,10 +9,12 @@ class ContactDAO {
     // MÃ©thode pour insÃ©rer un nouveau contact dans la base de donnÃ©es
     public function create(Contact $contact) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact (Code_Contact, Nom_Contact, Prenom_Contact, Email_Contact,Numero_Contact,Num_Licencie) VALUES (?, ?, ?, ? ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact(Code_Contact, Nom_Contact, Prenom_Contact, Email_Contact,Numero_Contact,Num_Licencie) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([ $contact->getCode(), $contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),$contact->getNum()]);
             return true;
         } catch (PDOException $e) {
+            var_dump($e->getMessage());
+            die();
             // GÃ©rer les erreurs d'insertion ici
             return false;
         }

@@ -1,4 +1,20 @@
 
+
+
+
+<?php
+    require_once("../../config/config.php");
+    require_once("../../classes/models/Connexion.php");
+    require_once("../../classes/models/Licencie.php");
+    require_once("../../classes/dao/LicencieDAO.php");
+
+    $LicencieDAO=new LicencieDAO(new Connexion());
+    $licencies = $LicencieDAO->getAll();
+?>
+
+
+
+
     <!DOCTYPE html>
 <html>
 	<head>
@@ -24,9 +40,20 @@
 						<span class="lnr lnr-user"></span>
 						<input type="text" class="form-control"  id="id" name="id" required placeholder="Numero du contact">
 					</div>
+
 					<div class="form-holder">
 						<span class="lnr lnr-phone-handset"></span>
 						<input type="text" class="form-control"  id="numLicencie" name="numLicencie" required placeholder="Numéro du Licencié">
+
+						<select id="numLicencie" name="numLicencie" required>
+            <?php
+                foreach ($licencies as $key => $lic) {
+            ?>
+            <option value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <?php
+                }
+            ?>
+        </select><br>
 					</div>
 
 					<div class="form-holder">

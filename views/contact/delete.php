@@ -56,7 +56,7 @@
 
 
         <label for="numLicencie">Telephone du contact:</label>
-        <input type="text" id="numLicencie" name="numLicencie" value="<?=$current_line->getNumL()?>" required><br>
+        <input type="text" id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" required><br>
 
         <input type="submit" name="action" value="Supprimer">
     </form>

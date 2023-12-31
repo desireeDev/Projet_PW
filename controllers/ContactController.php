@@ -69,7 +69,7 @@ class ContactController {
         $this->ContactDAO->deleteByCode($Code_Contact);
 
         // Redirige vers la liste des catégories
-        header('Location: index.php?action=index');
+        header('Location:HomeController.php');
     }
 
 
@@ -88,42 +88,45 @@ switch($action){
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $telephone =  isset($_POST['telephone']) ? $_POST['telephone'] : '' ;
-        $code =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-      
-   
+        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+        
+
         if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
             $controller = new ContactController(new Connexion()) ;
             $controller->create($id, $nom, $prenom, $email, $telephone,$numLicencie);
+        }else{
+            echo "null";
         }
         break;
     case "Modifier":
-        $id =  isset($_POST['id']) ? $_POST['id'] : '' ;
+        $id =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
         $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $telephone =  isset($_POST['telephone']) ? $_POST['telephone'] : '' ;
-        $code =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-
-    
+        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
         if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
             $controller = new ContactController(new Connexion()) ;
             $controller->Update($id, $nom, $prenom, $email, $telephone,$numLicencie);
+        }else{
+            echo "null";
         }
         break;
 
         case "Supprimer":
-          
-
-            $id =  isset($_POST['id']) ? $_POST['id'] : '' ;
+            $id =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
             $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
             $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
             $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
             $telephone =  isset($_POST['telephone']) ? $_POST['telephone'] : '' ;
-            $code =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+            $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
+
 
             if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
                 $controller = new ContactController(new Connexion()) ;
                 $controller->delete($id, $nom, $prenom, $email, $telephone,$numLicencie);
+            }else{
+                echo 'null' ;
             }
             break;
 }

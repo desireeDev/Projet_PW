@@ -7,6 +7,9 @@
     require_once('../../classes/models/Contact.php');
     require_once('../../classes/dao/ContactDAO.php');
 
+    require_once("../../classes/models/Licencie.php");
+    require_once("../../classes/dao/LicencieDAO.php");
+
     $code = isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ;
 
     if(empty($code)){
@@ -20,6 +23,9 @@
     if($current_line == null){
         header("Location: " . $_SERVER["HTTP_REFERER"]);
     }
+
+    $LicencieDAO=new LicencieDAO(new Connexion());
+    $licencies = $LicencieDAO->getAll();
 
 ?>
 
@@ -55,8 +61,16 @@
         <input type="text" id="telephone" name="telephone" value="<?=$current_line->getTelephone()?>" required><br>
 
 
-        <label for="numLicencie">Telephone du contact:</label>
-        <input type="text" id="numLicencie" name="numLicencie" value="<?=$current_line->getNumL()?>" required><br>
+        <label for="numLicencie">Identite du licencie:</label>
+        <select id="numLicencie" name="numLicencie" required>
+            <?php
+                foreach ($licencies as $key => $lic) {
+            ?>
+            <option <?=$current_line->getNum()==$lic->getNum() ? "selected" : "" ?> value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <?php
+                }
+            ?>
+        </select><br>
 
         <input type="submit" name="action" value="Modifier">
     </form>

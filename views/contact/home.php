@@ -17,7 +17,11 @@
 
                 <a href="../views/contact/update.php?id=<?= $contact->getCode();?>"> Modifier  </a>
                 <a href="../views/contact/delete.php?id=<?= $contact->getCode();?>"> Supprimer  </a>
-     
+     	<!-- LINEARICONS -->
+		<link rel="stylesheet" href="../../fonts/linearicons/style.css">
+
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="../../css/style.css">
                 
             </li>
             <br>

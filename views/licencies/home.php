@@ -2,6 +2,11 @@
 
 <h2>Liste des Licencies</h2>
 <a href="../views/licencies/create.php" > Créer  </a>
+	<!-- LINEARICONS -->
+    <link rel="stylesheet" href="../../fonts/linearicons/style.css">
+
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="../../css/style.css">
 <ul>
     <?php
     if (isset($licencie) && (is_array($licencie) || is_object($licencie))) {

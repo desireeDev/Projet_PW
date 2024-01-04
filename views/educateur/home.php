@@ -2,7 +2,10 @@
 
 <h2>Liste des Educateurs</h2>
 <a href="../views/educateur/create.php" > Créer  </a>
+	<!-- LINEARICONS -->
+    <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 
+<!-- STYLE CSS -->
 <link rel="stylesheet" href="../../css/style.css">
 <ul>
     <?php

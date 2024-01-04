@@ -19,8 +19,6 @@
     $LicencieDAO=new LicencieDAO(new Connexion());
     $licencies = $LicencieDAO->getAll();
 ?>
-
-
 	<body>
 
     <a href="../../controllers/HomeController.php"> Liste des differents educateurs  </a>
@@ -43,7 +41,6 @@
 						<span class="lnr lnr-user"></span>
 						<input type="text" class="form-control" id="numLicencie" name="numLicencie" required  placeholder="Identite du licencie ">
 
-
 						<select id="numLicencie" name="numLicencie" required>
             <?php
                 foreach ($licencies as $key => $lic) {
@@ -58,8 +55,7 @@
 						<span class="lnr lnr-envelope"></span>
 						<input type="text" class="form-control" id="admin" name="admin" required placeholder="Role">
 					</div>
-		
-					
+
                     <input type="submit" name="action" value="Ajouter">
 			
 				</form>

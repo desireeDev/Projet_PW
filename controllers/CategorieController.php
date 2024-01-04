@@ -90,6 +90,7 @@ switch($action){
             $controller = new CategorieController(new Connexion()) ;
             $controller->create($code,$libelle);
         }
+        
         break;
     case "Modifier":
         $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;

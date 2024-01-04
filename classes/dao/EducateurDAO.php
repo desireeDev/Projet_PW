@@ -12,23 +12,32 @@ class EducateursDAO  {
 
 public function createEducateur(Educateur $educateur) {
     try {
-        $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (Email_Educateur ,Mdp_Educateur, Administrateur,Num_Licencie) VALUES (?, ?,?, ?)");
-        $stmt->execute([ $educateur->getNum(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin()]);
+    
+        $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs(Email_Educateur ,Mdp_Educateur, Administrateur,Num_Licencie) VALUES (?, ?,?, ?)");
+        $stmt->execute([ $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin(),$educateur->getNum(),]);
         return true;
     } catch (PDOException $e) {
         // GÃ©rer les erreurs d'insertion ici
+        var_dump($e);
+        die();
         return false;
     }
 }
-    
-    public function getByCode($Email_Educateur) {
-        $query = "SELECT * FROM educateurs WHERE Email_Educateur= ?";
-        $result = $this->conn->query($query);
+//Recupere par le code
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return new Educateur($row['Num_Licencie'], $row['Email_Educateur'], $row['Mdp_Educateur'], $row['Administrateur']);
-        } else {
+    public function getByCode($Email_Educateur) {
+        try {
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE Email_Educateur = ?");
+            $stmt->execute([$code]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['Num_Licencie']);
+            } else {
+                return null; // Aucun contact trouvÃ© avec cet ID
+            }
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return null;
         }
     }
@@ -41,7 +50,7 @@ public function getAll() {
         $educateur = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $educateur[] = new Educateur($row['Num_Licencie'],$row['Email_Educateur'],$row['Mdp_Educateur'],$row['Administrateur']);
+            $educateur[] = new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'],$row['Administrateur'],$row['Num_Licencie'],);
         }
 
         return $educateur;
@@ -78,6 +87,30 @@ public function getAll() {
             }    
     }
     // Recuperation des informations de connexion
+    public function getConnexion($Email_Educateur,$Mdp_Educateur) {
+        try {
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE Email_Educateur = ? AND Mdp_Educateur = ?");
+            $stmt->execute([$Email_Educateur,$Mdp_Educateur]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['Num_Licencie']);
+            } else {
+                return null; // Aucun contact trouvÃ© avec cet ID
+            }
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+            return null;
+        }
+    }
+
+
+
+
+
+
+
+    
  
 
 }

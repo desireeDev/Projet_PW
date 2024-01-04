@@ -15,7 +15,7 @@
     <nav>
         <!-- Ajoutez ici la navigation spécifique à l'administrateur -->
         <ul>
-            <li><a href="categories.php">Gérer les Catégories</a></li>
+            <li><a href="../categories/home.php">Gérer les Catégories</a></li>
             <li><a href="licencies.php">Gérer les Licenciés</a></li>
             <li><a href="educateurs.php">Gérer les Éducateurs</a></li>
             <!-- Ajoutez d'autres liens de navigation selon vos besoins -->

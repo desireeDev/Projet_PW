@@ -18,7 +18,7 @@ class HomeController {
         $categories = $this->CategoriesDAO->getAll();
         $contacts = $this->ContactDAO->getAll();
         $licencie = $this->LicencieDAO->getAll();
-        $educateur = $this->EducateursDAO->getAll();
+        $educateurs = $this->EducateursDAO->getAll();
 
         // Inclure la vue pour afficher la liste des categories
         include('../views/categories/home.php');

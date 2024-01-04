@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="../../css/style.css">
 <h2>Liste des Catégories</h2>
-<a href="../views/categories/create.php" > Créer  </a>
+<a href="create.php" > Créer  </a>
 <ul>
     <?php
     if (isset($categories) && (is_array($categories) || is_object($categories))) {

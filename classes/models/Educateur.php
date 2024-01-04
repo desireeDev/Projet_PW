@@ -8,7 +8,6 @@ class Educateur {
 
     // Constructeur
     public function __construct( $Email_Educateur, $Mdp_Educateur, $Administrateur,$Num_Licencie) {
-    
         $this->Email_Educateur = $Email_Educateur;
         $this->Mdp_Educateur = $Mdp_Educateur;
         $this->Administrateur = $Administrateur;

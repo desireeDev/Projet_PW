@@ -10,7 +10,7 @@ class EducateurController {
     private $educateurDAO;
 
     public function __construct(Connexion $connexion) {
-        $this->EducateursDAO = new EducateurDAO($connexion);
+        $this->EducateursDAO = new EducateursDAO($connexion);
     }
 
     public function index() {
@@ -22,22 +22,21 @@ class EducateurController {
 
     public function create($Email_Educateur,$Mdp_Educateur, $Administrateur,$Num_Licencie) {
 
-            // Créer un nouvel objet CategorieModel avec les données du formulaire
+            // Créer un nouvel objet EducateurModel avec les données du formulaire
             $nouvelEducateur = new Educateur($Email_Educateur, $Mdp_Educateur,$Administrateur,$Num_Licencie);
 
-            // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
+            // Appeler la méthode du modèle (EducateurDAO) pour ajouter le nouvel educateur à la base de données
             if ($this->EducateursDAO->createEducateur($nouvelEducateur)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:HomeController.php');
                 exit();
             } else {
-                // Gérer les erreurs d'ajout de contact
-                echo "Erreur lors de l'ajout du contact.";
+                // Gérer les erreurs d'ajout de l'educateur
+                echo "Erreur lors de l'ajout de l'educateur.";
+              
             }
 
     }
-
-   
 
     public function edit($Email_Educateur) {
         // Affiche le formulaire d'édition pour une catégorie spécifique
@@ -63,10 +62,10 @@ class EducateurController {
 
 
     public function delete($Email_Educateur ) {
-        // Supprime un licenciz
+        // Supprime un educateur spécifique en fonction de son ID
         $this->EducateursDAO->deleteEducateur($Email_Educateur);
 
-        // Redirige vers la liste des licencies
+        // Redirige vers la liste des educateurs
         header('Location: index.php?action=index');
     }
 
@@ -80,37 +79,38 @@ $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 
 switch($action){
     case "Ajouter":
+
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
-        $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+        $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+        if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
             $controller = new EducateurController(new Connexion()) ;
-            $controller->create($email,$password,$admin,$numLicencie);
+            $controller->create($email,$pwd,$admin,$numLicencie);
         }
+     
         break;
     case "Modifier":
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
-        $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+        $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+        if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
             $controller = new EducateurController(new Connexion()) ;
-            $controller->Update($email,$password,$admin,$numLicencie);
+            $controller->Update($email,$pwd,$admin,$numLicencie);
         }
         break;
 
         case "Supprimer":
             $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
-            $password =  isset($_POST['password']) ? $_POST['password'] : '' ;
+            $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
             $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
             $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-            if(!empty($email) and !empty($password) and !empty($admin) and !empty($numLicencie)){
+            if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
                 $controller = new EducateurController(new Connexion()) ;
-                $controller->delete($email,$password,$admin,$numLicencie);
+                $controller->delete($email,$pwd,$admin,$numLicencie);
             }
             break;
 }
-
 
 ?>

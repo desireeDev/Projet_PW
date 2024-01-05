@@ -16,27 +16,17 @@
         <!-- Ajoutez ici la navigation spécifique à l'administrateur -->
         <ul>
             <li><a href="../categories/home.php">Gérer les Catégories</a></li>
-            <li><a href="licencies.php">Gérer les Licenciés</a></li>
-            <li><a href="educateurs.php">Gérer les Éducateurs</a></li>
-            <!-- Ajoutez d'autres liens de navigation selon vos besoins -->
+            <li><a href="../contact/home.php">Gérer les Contats</a></li>
+            <li><a href="../licencies/home.php">Gérer les Licenciés</a></li>
+            <li><a href="../educateurs/home.php">Gérer les Éducateurs</a></li>
+       
         </ul>
     </nav>
 
-    <main>
-        <!-- Contenu principal de la page d'accueil de l'administrateur -->
-        <p>Vous êtes connecté en tant qu'administrateur. Voici quelques options de gestion :</p>
-        <ul>
-            <li><a href="categories.php">Gérer les Catégories</a></li>
-            <li><a href="licencies.php">Gérer les Licenciés</a></li>
-            <li><a href="educateurs.php">Gérer les Éducateurs</a></li>
-            <!-- Ajoutez d'autres liens vers des fonctionnalités d'administration -->
-        </ul>
-    </main>
 
-    <footer>
-        <!-- Ajoutez ici le contenu du pied de page -->
-    </footer>
+ 
 
-    <!-- Ajoutez ici vos liens vers des fichiers JavaScript ou d'autres ressources -->
+
+   
 </body>
 </html>

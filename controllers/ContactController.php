@@ -40,7 +40,6 @@ class ContactController {
 
     }
 
-   
     public function edit($Code_Contact) {
         // Affiche le formulaire d'édition pour un contact spécifique
         $contact = $this->ContactDAO->getByCode($Code_Contact);

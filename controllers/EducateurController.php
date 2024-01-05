@@ -44,13 +44,12 @@ class EducateurController {
          }
 
 
-
-
-
     public function delete($Email_Educateur ) {
         // Supprime un educateur spécifique en fonction de son ID
         $this->EducateursDAO->deleteEducateur($Email_Educateur); 
   
+}
+
 }
 //Code php pour les differentes pages
 $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;

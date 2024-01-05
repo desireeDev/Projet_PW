@@ -23,35 +23,62 @@
 
 ?>
 
+
+
+
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Suppression des données d'un licencié</title>
-    <!-- Ajoutez ici vos liens CSS ou styles pour la mise en forme -->
-        <link rel="stylesheet" href="../css/styles.css">
-        <a href="../../controllers/HomeController.php"> Liste des licencies  </a>            
-</head>
-<body>
- 
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Suppression  du licencie</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <form action="../../controllers/LicencieController.php"  method="post" >
-        <label for="num">Numero du licencié :</label>
-        <input type="text" id="num" value="<?=$current_line->getNum()?>" name="num" required><br>
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="../../fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="../../css/style.css">
+	</head>
+	<body>
+    <a href="../../controllers/HomeController.php"> Listes des licencies  </a>
+		<div class="wrapper">
+			<div class="inner">
+				<img src="../../images/image-1.png" alt="" class="image-1">
+                <form action="../../controllers/LicencieController.php"  method="post" >
+					<h3>Voulez vous le supprimer?</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="num" value="<?=$current_line->getNum()?>" name="num"  placeholder="Numéro du licencie"required >
+					</div>
 
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" value="<?=$current_line->getNom()?>" name="nom" required><br>
+                    <div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="nom" value="<?=$current_line->getNom()?>" name="nom" placeholder="Numéro du licencie"required >
+					</div>
 
-        <label for="prenom">Prenom :</label>
-        <input type="text" id="prenom" value="<?=$current_line->getPrenom()?>" name="prenom" required><br>
+                    <div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control"id="prenom" value="<?=$current_line->getPrenom()?>" name="prenom"  placeholder="Prenom du licencie"required >
+					</div>
 
-        <label for="code">codeRaccourci:</label>
-        <input type="text" id="code" name="code" value="<?=$current_line->getCodeRaccourci()?>" required><br>
 
-        <input type="submit" name="action" value="Supprimer">
-        
-    </form>
-
-</body>
+					<div class="form-holder">
+						<span class="lnr lnr-pencil"></span>
+						<input type="text" class="form-control" name="code" value="<?=$current_line->getCodeRaccourci()?>" placeholder="Code de la categorie" required >
+					</div>
+				
+                    <input type="submit" name="action" value="Supprimer">
+				
+				</form>
+				<img src="images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>
+
+
 

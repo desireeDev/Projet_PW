@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="../../css/style.css">
 	</head>
 	<body>
-    <a href="../../controllers/HomeController.php"> Listes des categories  </a>
+    <a href=".../../../controllers/HomeController.php"> Listes des categories  </a>
 		<div class="wrapper">
 			<div class="inner">
 				<img src="../../images/image-1.png" alt="" class="image-1">

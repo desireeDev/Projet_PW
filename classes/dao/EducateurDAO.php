@@ -60,23 +60,22 @@ public function getAll() {
     }
 }
 
-    public function update(Educateur $educateur) {
-      
-            try {
-                $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Num_Licencie = ?, Email_Educateur = ?, Mdp_Educateur = ?,
-                 Administrateur = ? WHERE setEmail = ?");
-                $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdministrateur(), $educateur->getEmail(),   $educateur->getNumeroLicence()]);
-             
-                return true;
-            } catch (PDOException $e) {
-                // GÃ©rer les erreurs de mise Ã  jour ici
-                return false;
-            }
-    
- 
+   
+
+    public function Update(Educateur $educateur) {
+        try {
+            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Mdp_Educateur = ?,  Administrateur = ?, Num_Licencie = ?,
+             WHERE  Email_Educateur = ?");
+            $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdmin(), $educateur->getNum(), $educateur->getEmail(),]);
+            return true;
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de mise Ã  jour ici
+            return false;
+        }
     }
 
-    public function deleteEducateur($Email_Educateur) {
+
+    public function Delete($Email_Educateur) {
             try {
                 $stmt = $this->connexion->pdo->prepare("DELETE FROM educateurs WHERE Email_Educateur = ?");
                 $stmt->execute([$Email_Educateur]);

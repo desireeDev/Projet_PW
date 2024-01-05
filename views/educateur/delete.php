@@ -3,7 +3,7 @@
     require_once('../../config/config.php');
     require_once('../../classes/models/Connexion.php');
     require_once('../../classes/models/Educateur.php');
-    require_once('../../classes/dao/EducateursDAO.php');
+    require_once('../../classes/dao/EducateurDAO.php');
 
     $code = isset($_REQUEST['id']) ? $_REQUEST['id'] : '' ;
 
@@ -21,8 +21,6 @@
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,31 +30,19 @@
         <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <h1>Supprimer un contact</h1>
+    <h1>Supprimer un educateur</h1>
     <a href="../../controllers/HomeController.php">Retour à la liste des educateurs</a>
-
-
     <form action="../../controllers/EducateurController.php"  method="post" >
         <label for="email">Email de l'educateur :</label>
         <input type="text" id="email" value="<?=$current_line->getEmail()?>" name="email" required><br>
-
         <label for="password">Mot de passe:</label>
         <input type="text" id="password" name="password" value="<?=$current_line->getMotDePasse()?>" required><br>
-
-    
-
-        <label for="admin">Role de l'admin:</label>
-        <input type="text" id="admin" name="admin" value="<?=$current_line->isAdmin()?>" required><br>
-
-
         <label for="numLicencie">Numero du licencié:</label>
         <input type="text" id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" required><br>
-
+        <label for="admin">Role de l'admin:</label>
+        <input type="text" id="admin" name="admin" value="<?=$current_line->isAdmin()?>" required><br>
         <input type="submit" name="action" value="Supprimer">
     </form>
-    
-    
-
 </body>
 </html>
 

@@ -39,10 +39,10 @@ class EducateurController {
             } 
          }
 
-         public function Update($email, $pwd, $admin,$numLicencie) {
+         public function update($email, $pwd, $admin,$numLicencie) {
             $educateur = new Educateur( $email, $pwd, $admin, $numLicencie);
           
-            $this->EducateursDAO->update($educateur); 
+            $this->EducateursDAO->Update($educateur); 
             header('Location:HomeController.php');
         }
         
@@ -55,7 +55,7 @@ class EducateurController {
         }
     public function delete($Email_Educateur ) {
         // Supprime un educateur spécifique en fonction de son ID
-        $this->EducateursDAO->deleteEducateur($Email_Educateur); 
+        $this->EducateursDAO->Delete($Email_Educateur); 
   
 }
 
@@ -70,20 +70,25 @@ switch($action){
         $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
+        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
             $controller = new EducateurController(new Connexion()) ;
             $controller->create($email,$pwd,$admin,$numLicencie);
         }
-     
+        else{
+            echo "null";
+        }
         break;
     case "Modifier":
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
+        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
             $controller = new EducateurController(new Connexion()) ;
-            $controller->Update($email,$pwd,$admin,$numLicencie);
+            $controller->update($email,$pwd,$admin,$numLicencie);
+        }
+        else{
+            echo "null";
         }
         break;
 
@@ -92,9 +97,12 @@ switch($action){
             $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
             $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
             $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-            if(!empty($email) and !empty($pwd) and !empty($admin) and !empty($numLicencie)){
+            if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
                 $controller = new EducateurController(new Connexion()) ;
                 $controller->delete($email,$pwd,$admin,$numLicencie);
+            }
+            else{
+                echo "null";
             }
             break;
 }

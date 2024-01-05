@@ -3,5 +3,9 @@
 pour une association sportive, permettant aux éducateurs administrateurs de gérer les catégories, les licenciés, les éducateurs 
 et les contacts associés.Les fonctionnalites sont les suivantes:Gestion des Catégories,
 Gestion des Licenciés,Gestion des Éducateurs,Gestion des Contacts,Authentification de l'educateur qui est un admionistrateur.Nous montrerons quelquees captures de cette première partie.
+Les parties d'authentification de l'administrateur,de gestion des grands axes ,et de création,modification et d'ajout d'une categorie.
 
 ![Connexion](https://github.com/desireeDev/Projet_Pw/assets/114066560/acc38d06-2e64-4da1-a904-800d53ab0f0e)
+![Home](https://github.com/desireeDev/Projet_Pw/assets/114066560/018aaad7-fff3-44ba-9521-11b59a0ee9f7)
+![Catego](https://github.com/desireeDev/Projet_Pw/assets/114066560/8fc19949-ed73-4d78-97a3-43aa6d5806f0)
+![Modif](https://github.com/desireeDev/Projet_Pw/assets/114066560/925df8d4-119e-4164-983a-e33a6438e09e)

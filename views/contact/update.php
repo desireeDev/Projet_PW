@@ -41,7 +41,7 @@
 		<link rel="stylesheet" href="../../css/style.css">
 	</head>
 	<body>
-    <a href="../../controllers/HomeController.php"> Listes des contacts </a>
+    <a href="home.php"> Listes des contacts </a>
 		<div class="wrapper">
 			<div class="inner">
 				<img src="../../images/image-1.png" alt="" class="image-1">
@@ -67,17 +67,10 @@
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control"  id="email" name="email" value="<?=$current_line->getEmail()?>"  placeholder="Email du contact"required >
 					</div>
-
-
-
-
-
                     <div class="form-holder">
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="telephone" name="telephone" value="<?=$current_line->getTelephone()?>"  placeholder="Telephone du contact"required >
 					</div>
-
-
 					<div class="form-holder">
 						<span class="lnr lnr-pencil"></span>
                         <select id="numLicencie" name="numLicencie" required>
@@ -93,10 +86,6 @@
 					</div>
 				
                     <input type="submit" name="action" value="Modifier">
-
-
-
-				
 				</form>
 				<img src="images/image-2.png" alt="" class="image-2">
 			</div>

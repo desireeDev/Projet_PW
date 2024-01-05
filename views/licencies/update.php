@@ -40,7 +40,7 @@
 		<link rel="stylesheet" href="../../css/style.css">
 	</head>
 	<body>
-    <a href="../../controllers/HomeController.php"> Listes des licencies </a>
+    <a href="home.php"> Listes des licencies </a>
 		<div class="wrapper">
 			<div class="inner">
 				<img src="../../images/image-1.png" alt="" class="image-1">

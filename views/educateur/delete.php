@@ -20,29 +20,57 @@
     }
 
 ?>
-
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-  
-    <!-- Ajoutez ici vos liens CSS ou styles pour la mise en forme -->
-        <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-    <h1>Supprimer un educateur</h1>
-    <a href="../../controllers/HomeController.php">Retour à la liste des educateurs</a>
-    <form action="../../controllers/EducateurController.php"  method="post" >
-        <label for="email">Email de l'educateur :</label>
-        <input type="text" id="email" value="<?=$current_line->getEmail()?>" name="email" required><br>
-        <label for="password">Mot de passe:</label>
-        <input type="text" id="password" name="password" value="<?=$current_line->getMotDePasse()?>" required><br>
-        <label for="numLicencie">Numero du licencié:</label>
-        <input type="text" id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" required><br>
-        <label for="admin">Role de l'admin:</label>
-        <input type="text" id="admin" name="admin" value="<?=$current_line->isAdmin()?>" required><br>
-        <input type="submit" name="action" value="Supprimer">
-    </form>
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Suppression d'un educateur</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="../../fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="../../css/style.css">
+	</head>
+	<body>
+    <a href="home.php"> Listes des educateurs </a>
+		<div class="wrapper">
+			<div class="inner">
+				<img src="../../images/image-1.png" alt="" class="image-1">
+				<form action=" ../../controllers/EducateurController.php"  method="post">
+					<h3>Voulez vous supprimer celui-ci?</h3>
+                    <div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="email" value="<?=$current_line->getEmail()?>" name="email"   placeholder="Email de l'educateur" required >
+					</div>
+                    <div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="password" name="password" value="<?=$current_line->getMotDePasse()?>"  placeholder="Mot de passe"required >
+					</div>
+
+                    <div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="admin" name="admin" value="<?=$current_line->isAdmin()?>"  placeholder="Role"required >
+					</div>
+
+					<div class="form-holder">
+					<span class="lnr lnr-pencil"></span>
+                     <input type="text" class="form-control" id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" placeholder="Numéro de licence"required >
+					</div>
+                    <input type="submit" name="action" value="Supprimer">
+				</form>
+				<img src="images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/main.js"></script>
+	</body>
 </html>
+
+
+
+
+
 

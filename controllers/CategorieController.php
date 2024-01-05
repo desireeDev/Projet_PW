@@ -16,7 +16,7 @@ class CategorieController {
     public function index() {
         // Liste toutes les catégories
         $categories = $this->CategoriesDAO->getAll();
-        include '../views/categories/index.php';
+        include '../views/categories/home.php';
     }
 
     public function create($Code_Raccourci,$Nom_Cat) {
@@ -27,7 +27,7 @@ class CategorieController {
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
             if ($this->CategoriesDAO->create($nouvelleCategorie)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location:./views/categories/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
@@ -53,7 +53,7 @@ class CategorieController {
         // $categorie->setCodeRaccourci($code);
         // $categorie->setCat($code);
         $this->CategoriesDAO->update($categorie,$lastCode); 
-        header('Location:HomeController.php');
+        header('Location:../views/categories/home.php');
     }
     
     public function list() {
@@ -71,7 +71,7 @@ class CategorieController {
         $this->CategoriesDAO->deleteByCode($Code_Raccourci);
 
         // Redirige vers la liste des catégories
-        header('Location:HomeController.php');
+        header('Location:../views/categories/home.php');
     }
 
 

@@ -21,7 +21,7 @@
 ?>
 	<body>
 
-    <a href="../../controllers/HomeController.php"> Liste des differents educateurs  </a>
+    <a href="home.php"> Liste des differents educateurs  </a>
 
 		<div class="wrapper">
 			<div class="inner">

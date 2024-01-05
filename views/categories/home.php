@@ -1,5 +1,15 @@
+<?php
+require_once("../../config/config.php");
+require_once("../../classes/models/Connexion.php");
+require_once("../../classes/models/Categories.php");
+require_once("../../classes/dao/CategoriesDAO.php");
+
+$CategoriesDAO=new CategoriesDAO(new Connexion());
+
+$categories = $CategoriesDAO->getAll();
 
 
+?>
 
 <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 <h2>Liste des Catégories</h2>
@@ -13,10 +23,8 @@
             <li>
                 <strong>Nom:</strong> <?php echo $categorie->getCat(); ?>,
                 <strong>Code Raccourci:</strong> <?php echo $categorie->getCodeRaccourci(); ?>
-
-                
-                <a href="../views/categories/update.php?id=<?= $categorie->getCodeRaccourci();?>"> Modifier  </a>
-                <a href="../views/categories/delete.php?id=<?= $categorie->getCodeRaccourci();?>"> Supprimer  </a>
+                <a href="update.php?id=<?= $categorie->getCodeRaccourci();?>"> Modifier  </a>
+                <a href="delete.php?id=<?= $categorie->getCodeRaccourci();?>"> Supprimer  </a>
                 
             </li>
             </div>

@@ -28,7 +28,7 @@ class ContactController {
             // Appeler la méthode du modèle (ContactDAO) pour ajouter le contact dans la base de données
             if ($this->ContactDAO->create($nouveauContact)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location:../views/contact/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
@@ -50,7 +50,7 @@ class ContactController {
         $contact = new Contact( $id, $nom, $prenom, $email, $telephone,$numLicencie);
       
         $this->ContactDAO->update($contact); 
-        header('Location:HomeController.php');
+        header('Location:../views/contact/home.php');
     }
     
     public function list() {
@@ -68,7 +68,7 @@ class ContactController {
         $this->ContactDAO->deleteByCode($Code_Contact);
 
         // Redirige vers la liste des catégories
-        header('Location:HomeController.php');
+        header('Location:../views/contact/home.php');
     }
 
 

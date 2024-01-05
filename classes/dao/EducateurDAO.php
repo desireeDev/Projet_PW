@@ -28,7 +28,7 @@ public function createEducateur(Educateur $educateur) {
     public function getByCode($Email_Educateur) {
         try {
             $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE Email_Educateur = ?");
-            $stmt->execute([$code]);
+            $stmt->execute([$Email_Educateur]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
@@ -64,7 +64,7 @@ public function getAll() {
 
     public function Update(Educateur $educateur) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Mdp_Educateur = ?,  Administrateur = ?, Num_Licencie = ?,
+            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Mdp_Educateur = ?,  Administrateur = ?, Num_Licencie = ?
              WHERE  Email_Educateur = ?");
             $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdmin(), $educateur->getNum(), $educateur->getEmail(),]);
             return true;
@@ -73,8 +73,6 @@ public function getAll() {
             return false;
         }
     }
-
-
     public function Delete($Email_Educateur) {
             try {
                 $stmt = $this->connexion->pdo->prepare("DELETE FROM educateurs WHERE Email_Educateur = ?");

@@ -19,17 +19,12 @@ class EducateurController {
 
     public function create($Email_Educateur,$Mdp_Educateur,$Administrateur,  $Num_Licencie) {
 
-            // Créer un nouvel objet EducateurModel avec les données du formulair
-            $nouvelEducateur = new Educateur($Email_Educateur, $Mdp_Educateur,$Administrateur,$Num_Licencie);
-
-            // Appeler la méthode du modèle (EducateurDAO) pour ajouter le nouvel educateur à la base de données
-            if ($this->EducateursDAO->createEducateur($nouvelEducateur)) 
             $nouveauEducateur = new Educateur($Email_Educateur,$Mdp_Educateur,$Administrateur,  $Num_Licencie);
 
             // Appeler la méthode du modèle (EducateurDAO) pour ajouter l'educateur
             if ($this->EducateursDAO->createEducateur($nouveauEducateur)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location:../views/educateur/home.php');
                 exit();
             } 
             else {
@@ -43,7 +38,7 @@ class EducateurController {
             $educateur = new Educateur( $email, $pwd, $admin, $numLicencie);
           
             $this->EducateursDAO->Update($educateur); 
-            header('Location:HomeController.php');
+            header('Location:../views/educateur/home.php');
         }
         
         public function list() {
@@ -56,6 +51,7 @@ class EducateurController {
     public function delete($Email_Educateur ) {
         // Supprime un educateur spécifique en fonction de son ID
         $this->EducateursDAO->Delete($Email_Educateur); 
+        header('Location:../views/educateur/home.php');
   
 }
 

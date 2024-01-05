@@ -1,7 +1,20 @@
 
+<?php
+require_once("../../config/config.php");
+require_once("../../classes/models/Connexion.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/dao/LicencieDAO.php");
+
+$LicencieDAO=new LicencieDAO(new Connexion());
+$licencie = $LicencieDAO->getAll();
+?>
+
+
+
+
 
 <h2>Liste des Licencies</h2>
-<a href="../../views/licencies/create.php" > Créer  </a>
+<a href="create.php" > Créer  </a>
 	<!-- LINEARICONS -->
     <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 
@@ -12,15 +25,16 @@
     if (isset($licencie) && (is_array($licencie) || is_object($licencie))) {
         foreach ($licencie as $key => $lic) {
             ?>
+            <div class="container">
             <li>
                 <strong>Numero du Licencie :</strong> <?php echo $lic->getNum(); ?>,
                 <strong>Nom :</strong> <?php echo $lic->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $lic->getPrenom(); ?>,
                 <strong>Code la categorie:</strong> <?php echo $lic->getCodeRaccourci(); ?>,
                 
-                <a href="../views/licencies/update.php?id=<?= $lic->getNum();?>"> Modifier</a>
+                <a href="update.php?id=<?= $lic->getNum();?>"> Modifier</a>
 
-                <a href="../views/licencies/delete.php?id=<?= $lic->getNum();?>"> Supprimer </a>
+                <a href="delete.php?id=<?= $lic->getNum();?>"> Supprimer </a>
 
                 <!-- Bouton d'importation -->
                <input type="file" id="importFile" style="display: none;">
@@ -30,28 +44,9 @@
                <button id="exportButton">Exporter Licenciés</button>
 
                      <!-- Code d'Exportation et' d'importation -->
-
-                     <script>
-       $(document).ready(function() {
-           var licenceController = new LicenceController();
-
-           $('#importFile').change(function() {
-               var file = this.files[0];
-               var reader = new FileReader();
-               reader.onload = function(e) {
-                  licenceController.importerLicenciés(e.target.result);
-               };
-               reader.readAsDataURL(file);
-           });
-
-           $('#exportButton').click(function() {
-               licenceController.exporterLicenciés('licenciés.csv');
-           });
-       });
-   </script> 
-     
-                
+                     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>     
             </li>
+            </div>
             <br>
             <?php
         }

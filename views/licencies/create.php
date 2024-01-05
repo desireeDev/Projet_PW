@@ -2,8 +2,8 @@
 <?php
     require_once("../../config/config.php");
     require_once("../../classes/models/Connexion.php");
-    require_once("../../classes/models/Licence.php");
-    require_once("../../../classes/dao/LicencieDAO.php");
+    require_once("../../classes/models/Licencie.php");
+    require_once("../../classes/dao/LicencieDAO.php");
 
     $LicencieDAO=new LicencieDAO(new Connexion());
 
@@ -26,7 +26,7 @@
 
 	<body>
 
-    <a href="../../controllers/HomeController.php"> Liste des differents licenciés  </a>
+    <a href="home.php"> Liste des differents licenciés  </a>
 
 		<div class="wrapper">
 			<div class="inner">

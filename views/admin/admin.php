@@ -10,26 +10,13 @@
     <meta name="author" content="Template Mo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
-    <title>Art Factory HTML CSS Template</title>
-<!--
-
-ART FACTORY
-
-https://templatemo.com/tm-537-art-factory
-
--->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="../../css/assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../css/assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../../css/assets/css/templatemo-art-factory.css">
     <link rel="stylesheet" type="text/css" href="../../css/assets/css/owl-carousel.css">
-
     </head>
-    
     <body>
- 
-    
-    
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -43,9 +30,9 @@ https://templatemo.com/tm-537-art-factory
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#welcome" class="active">Accueil</a></li>
                             <li class="scroll-to-section"><a href="../categories/home.php">Gestion des Catégories</a></li>
-                            <li class="scroll-to-section"><a href="../contact/home.php">Gérer les Contacts</a></li>
-                            <li class="scroll-to-section"><a href="../licencies/home.php">Gérer les Licenciés</a></li>
-                            <li class="scroll-to-section"><a href="../educateur/home.php">Gérer les Éducateurs</a></li>
+                            <li class="scroll-to-section"><a href="../contact/home.php">Gestion des Contacts</a></li>
+                            <li class="scroll-to-section"><a href="../licencies/home.php">Gestion des Licenciés</a></li>
+                            <li class="scroll-to-section"><a href="../educateur/home.php">Gestion des Éducateurs</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -202,19 +189,12 @@ https://templatemo.com/tm-537-art-factory
                         <p>Ut nibh velit, aliquam vitae pellentesque nec, convallis vitae lacus. Aliquam porttitor urna ut pellentesque.</p>
                         <a href="#" class="main-button">Detail</a>
                     </div>
-                    <div class="item service-item">
-                        <div class="icon">
-                            <i><img src="../../css/assets/images/service-icon-01.png" alt=""></i>
-                        </div>
-                        <h5 class="service-title">Seventh Title Box</h5>
-                        <p>Sed a consequat velit. Morbi lectus sapien, vestibulum et sapien sit amet, ultrices malesuada odio. Donec non quam.</p>
-                        <a href="#" class="main-button">Read More</a>
-                    </div>
+                   
                 </div>
             </div>
         </div>
     </section>
-    <!-- ***** Features Small End ***** -->
+
 
 
 

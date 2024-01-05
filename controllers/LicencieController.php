@@ -27,7 +27,7 @@ class LicencieController {
             // Appeler la méthode du modèle (LicenciesDAO) pour ajouter le/la licencie
             if ($this->LicencieDAO->createLicencie($nouveauLicencie)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:HomeController.php');
+                header('Location:../views/licencies/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
@@ -46,7 +46,7 @@ class LicencieController {
     public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci) {
         $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci);
         $this->LicencieDAO->updateLicencie($licencie); 
-        header('Location:HomeController.php');
+        header('Location:../views/licencies/home.php');
     }
     
     public function list() {
@@ -62,7 +62,7 @@ class LicencieController {
         $this->LicencieDAO->deleteLicencie($licencieId);
 
         // Redirige vers la liste des licencies
-        header('Location:HomeController.php');
+        header('Location:../views/licencies/home.php');
     }
 
     

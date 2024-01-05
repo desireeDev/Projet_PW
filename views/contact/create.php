@@ -24,7 +24,7 @@
 
 	<body>
 
-    <a href="../../controllers/HomeController.php"> Liste des differents contacts  </a>
+    <a href="home.php"> Liste des differents contacts  </a>
 
 		<div class="wrapper">
 			<div class="inner">

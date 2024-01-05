@@ -27,7 +27,7 @@ class CategorieController {
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
             if ($this->CategoriesDAO->create($nouvelleCategorie)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:./views/categories/home.php');
+                header('Location:../views/categories/home.php');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact

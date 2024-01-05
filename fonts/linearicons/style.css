@@ -1,3 +1,7 @@
+
+
+
+
 @font-face {
 	font-family: 'Linearicons-Free';
 	src:url('fonts/Linearicons-Free.eot?w118d');
@@ -354,6 +358,38 @@
 .lnr-thumbs-up:before {
 	content: "\e86d";
 }
+
+container {
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	background-color: #f8f8f8;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li strong {
+	color: #333;
+}
+
+a {
+	text-decoration: none;
+	color: #3498db;
+	margin-left: 10px;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+
 .lnr-thumbs-down:before {
 	content: "\e86e";
 }

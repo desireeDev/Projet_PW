@@ -1,7 +1,5 @@
 
 
-
-
 <?php
     require_once("../../config/config.php");
     require_once("../../classes/models/Connexion.php");
@@ -11,9 +9,6 @@
     $LicencieDAO=new LicencieDAO(new Connexion());
     $licencies = $LicencieDAO->getAll();
 ?>
-
-
-
 
     <!DOCTYPE html>
 <html>

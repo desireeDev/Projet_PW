@@ -4,9 +4,7 @@ require_once("../config/config.php");
 require_once("../classes/models/Connexion.php");
 require_once("../classes/models/Educateur.php");
 require_once("../classes/dao/EducateurDAO.php");
-
 class EducateurController {
-
     private $educateurDAO;
 
     public function __construct(Connexion $connexion) {
@@ -38,12 +36,23 @@ class EducateurController {
                 // Gérer les erreurs d'ajout de l'educateur
                 echo "Erreur lors de l'ajout de l'educateur.";     
 
-            }
-
-        
+            } 
          }
 
-
+         public function Update($email, $pwd, $admin,$numLicencie) {
+            $educateur = new Educateur( $email, $pwd, $admin, $numLicencie);
+          
+            $this->EducateursDAO->update($educateur); 
+            header('Location:HomeController.php');
+        }
+        
+        public function list() {
+            // Récupérez la liste des educateurs depuis l'EducateurDAO
+            $educateur = $this->EducateursDAO->getAll();
+        
+            // Passez la liste des catégories à la vue
+            include 'views/educateur/index.php';
+        }
     public function delete($Email_Educateur ) {
         // Supprime un educateur spécifique en fonction de son ID
         $this->EducateursDAO->deleteEducateur($Email_Educateur); 

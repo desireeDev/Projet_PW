@@ -4,6 +4,7 @@ class HomeController {
     private $ContactDAO;
     private $LicencieDAO;
     private $EducateursDAO;
+    
 
     public function __construct(CategoriesDAO $CategoriesDAO , ContactDAO  $ContactDAO, LicencieDAO $LicencieDAO, EducateursDAO $EducateursDAO ) {
         $this->CategoriesDAO = $CategoriesDAO;

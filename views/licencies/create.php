@@ -1,10 +1,9 @@
 
-
 <?php
     require_once("../../config/config.php");
     require_once("../../classes/models/Connexion.php");
     require_once("../../classes/models/Licence.php");
-    require_once("../../classes/dao/LicencieDAO.php");
+    require_once("../../../classes/dao/LicencieDAO.php");
 
     $LicencieDAO=new LicencieDAO(new Connexion());
 

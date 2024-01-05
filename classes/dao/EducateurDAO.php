@@ -60,7 +60,7 @@ public function getAll() {
     }
 }
 
-    public function Update(Educateur $educateur) {
+    public function update(Educateur $educateur) {
       
             try {
                 $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Num_Licencie = ?, Email_Educateur = ?, Mdp_Educateur = ?,

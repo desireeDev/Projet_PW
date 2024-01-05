@@ -1,7 +1,7 @@
 
 
 <h2>Liste des Contacts</h2>
-<a href="../views/contact/create.php" > Créer  </a>
+<a href="views/contact/create.php" > Créer  </a>
 <ul>
     <?php
     if (isset($contacts) && (is_array($contacts) || is_object($contacts))) {

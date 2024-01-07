@@ -18,3 +18,4 @@ class Categorie
         return $this->id;
     }
 }
+?>

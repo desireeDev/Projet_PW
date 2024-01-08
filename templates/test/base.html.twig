@@ -1,0 +1,26 @@
+{# templates/base.html.twig #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Application{% endblock %}</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="{{ path('accueil') }}">Accueil</a></li>
+            <li><a href="{{ path('liste_licencies', {'categorieId': 1}) }}">Liste des licenciés</a></li>
+            <li><a href="{{ path('liste_contacts', {'categorieId': 1}) }}">Liste des contacts</a></li>
+            <!-- Ajoutez d'autres liens de navigation selon vos besoins -->
+        </ul>
+    </nav>
+
+    <div>
+        {% block body %}{% endblock %}
+    </div>
+
+</body>
+</html>

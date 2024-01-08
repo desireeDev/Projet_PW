@@ -1,0 +1,15 @@
+{# templates/contact/liste_contacts.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block body %}
+    <h1>Liste des contacts de la catégorie {{ categorie.nom }}</h1>
+
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.nom }} {{ contact.prenom }} - Email: {{ contact.email }} - Téléphone: {{ contact.numero }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Licencie;
+use App\Entity\Licencies;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Licencie>
+ * @extends ServiceEntityRepository<Licencies>
  *
- * @method Licencie|null find($id, $lockMode = null, $lockVersion = null)
- * @method Licencie|null findOneBy(array $criteria, array $orderBy = null)
- * @method Licencie[]    findAll()
- * @method Licencie[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Licencies|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Licencies|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Licencies[]    findAll()
+ * @method Licencies[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LicencieRepository extends ServiceEntityRepository
+class LicenciesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Licencie::class);
+        parent::__construct($registry, Licencies::class);
     }
 
 //    /**
-//     * @return Licencie[] Returns an array of Licencie objects
+//     * @return Licencies[] Returns an array of Licencies objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class LicencieRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Licencie
+//    public function findOneBySomeField($value): ?Licencies
 //    {
 //        return $this->createQueryBuilder('l')
 //            ->andWhere('l.exampleField = :val')

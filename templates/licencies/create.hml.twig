@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LINEARICONS -->
+    <link rel="stylesheet" href="{{ asset('../public/fonts/linearicons/style.css') }}">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{{ asset('../public/css/style.css') }}">
+</head>
+
+<body>
+
+    <a href="{{ path('home') }}"> Liste des differents licenciés </a>
+
+    <div class="wrapper">
+        <div class="inner">
+            <img src="{{ asset('images/image-1.png') }}" alt="" class="image-1">
+            <form action="{{ path('LicencieController') }}" method="post">
+                <h3>Ajout d'un licencié?</h3>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" id="num" name="num" required placeholder="Numero du licencié">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" id="nom" name="nom" required placeholder="Nom du Licencié">
+                </div>
+
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" id="prenom" name="prenom" required placeholder="Prenom d'un licencié ">
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    <input type="text" class="form-control" id="code" name="code" required placeholder="Code de la categorie">
+                </div>
+
+                <select name="code" id="code">
+                    {% for ctg in categories %}
+                        <option value="{{ ctg.getCodeRaccourci() }}">{{ ctg.getCat() }}</option>
+                    {% endfor %}
+                </select><br>
+
+                <input type="submit" name="action" value="Ajouter">
+
+            </form>
+            <img src="{{ asset('../public/images/image-2.png') }}" alt="" class="image-2">
+        </div>
+
+    </div>
+
+    <script src="{{ asset('../public/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset(../public/'js/main.js') }}"></script>
+</body>
+
+</html>

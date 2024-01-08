@@ -1,0 +1,24 @@
+{# templates/contact/liste.html.twig #}
+
+<h2>Liste des Contacts</h2>
+<a href="{{ path('creer_contact') }}">Créer</a>
+<ul>
+    {% for contact in contacts %}
+        <div class="container">
+            <li>
+                <strong>CodeContact :</strong> {{ contact.getCode() }},
+                <strong>Nom Contact:</strong> {{ contact.getNom() }},
+                <strong>Prenom:</strong> {{ contact.getPrenom() }},
+                <strong>Email:</strong> {{ contact.getEmail() }},
+                <strong>Telephone:</strong> {{ contact.getTelephone() }},
+                <strong>Numero du licencié:</strong> {{ contact.getNum() }},
+
+                <a href="{{ path('modifier_contact', {'id': contact.getCode()}) }}">Modifier</a>
+                <a href="{{ path('supprimer_contact', {'id': contact.getCode()}) }}">Supprimer</a>
+                <!-- LINEARICONS -->
+                <link rel="stylesheet" href="{{ asset('../public/fonts/linearicons/style.css') }}">
+            </li>
+        </div>
+        <br>
+    {% endfor %}
+</ul>

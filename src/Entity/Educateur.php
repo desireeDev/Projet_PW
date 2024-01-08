@@ -3,77 +3,128 @@
 namespace App\Entity;
 
 use App\Repository\EducateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EducateurRepository::class)]
 class Educateur
 {
+  /**
+     * @ORM\Id()
+     * @ORM\Column(type="string", length=30)
+     * 
+     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+    private $emailEducateur;
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $mdpEducateur;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Mdp = null;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $administrateur;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Admin = null;
+    // ...
 
-    #[ORM\Column(length: 255)]
-    private ?string $NumL = null;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Licencie")
+     * @ORM\JoinColumn(name="num_licencie", referencedColumnName="numLicencie", nullable=false)
+     */
+    private $numLicencie;
 
-    public function getId(): ?int
+    #[ORM\OneToMany(mappedBy: 'educateurs', targetEntity: MailEdu::class, orphanRemoval: true)]
+    private Collection $messageenvoye;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->messageenvoye = new ArrayCollection();
     }
 
-    public function getEmail(): ?string
+    // ...
+
+    public function getEmailEducateur(): ?string
     {
-        return $this->email;
+        return $this->emailEducateur;
     }
 
-    public function setEmail(string $email): static
+    public function setEmailEducateur(string $emailEducateur): self
     {
-        $this->email = $email;
+        $this->emailEducateur = $emailEducateur;
 
         return $this;
     }
 
-    public function getMdp(): ?string
+    public function getMdpEducateur(): ?string
     {
-        return $this->Mdp;
+        return $this->mdpEducateur;
     }
 
-    public function setMdp(string $Mdp): static
+    public function setMdpEducateur(string $mdpEducateur): self
     {
-        $this->Mdp = $Mdp;
+        $this->mdpEducateur = $mdpEducateur;
 
         return $this;
     }
 
-    public function getAdmin(): ?string
+    public function isAdministrateur(): ?bool
     {
-        return $this->Admin;
+        return $this->administrateur;
     }
 
-    public function setAdmin(string $Admin): static
+    public function setAdministrateur(bool $administrateur): self
     {
-        $this->Admin = $Admin;
+        $this->administrateur = $administrateur;
 
         return $this;
     }
 
-    public function getNumL(): ?string
+    // ...
+
+    public function getNumLicencie(): ?Licencie
     {
-        return $this->NumL;
+        return $this->numLicencie;
     }
 
-    public function setNumL(string $NumL): static
+    public function setNumLicencie(?Licencie $numLicencie): self
     {
-        $this->NumL = $NumL;
+        $this->numLicencie = $numLicencie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MailEdu>
+     */
+    public function getMessageenvoye(): Collection
+    {
+        return $this->messageenvoye;
+    }
+
+    public function addMessageenvoye(MailEdu $messageenvoye): static
+    {
+        if (!$this->messageenvoye->contains($messageenvoye)) {
+            $this->messageenvoye->add($messageenvoye);
+            $messageenvoye->setEducateurs($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessageenvoye(MailEdu $messageenvoye): static
+    {
+        if ($this->messageenvoye->removeElement($messageenvoye)) {
+            // set the owning side to null (unless already changed)
+            if ($messageenvoye->getEducateurs() === $this) {
+                $messageenvoye->setEducateurs(null);
+            }
+        }
 
         return $this;
     }

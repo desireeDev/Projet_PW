@@ -1,0 +1,15 @@
+{# templates/licencie/liste_licencies.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des licenciés{% endblock %}
+
+{% block body %}
+    <h1>Liste des licenciés de la catégorie {{ categorie.nom }}</h1>
+
+    <ul>
+        {% for licencie in licencies %}
+            <li>{{ licencie.nom }} {{ licencie.prenom }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

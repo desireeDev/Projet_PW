@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Modification du licencie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINEARICONS -->
+    <link rel="stylesheet" href="{{ asset('../public/fonts/linearicons/style.css') }}">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{{ asset('../public/css/style.css') }}">
+</head>
+
+<body>
+    <a href="{{ path('home') }}"> Listes des licencies </a>
+
+    <div class="wrapper">
+        <div class="inner">
+            <img src="{{ asset('images/image-1.png') }}" alt="" class="image-1">
+            <form action="{{ path('LicencieController') }}" method="post">
+                <h3>Voulez vous le modifier?</h3>
+                <div class="form-holder">
+                    <span class="lnr lnr-drop"></span>
+                    <input type="text" class="form-control" id="num" value="{{ current_line.getNum() }}" name="num"
+                        required placeholder="Numéro du licencié">
+                </div>
+
+                <div class="form-holder">
+                    <span class="lnr lnr-drop"></span>
+                    <input type="text" class="form-control" id="nom" value="{{ current_line.getNom() }}" name="nom"
+                        required placeholder="Nom du licencie">
+                </div>
+
+                <div class="form-holder">
+                    <span class="lnr lnr-drop"></span>
+                    <input type="text" class="form-control" id="prenom" value="{{ current_line.getPrenom() }}"
+                        name="prenom" required placeholder="Prenom du Licencie">
+                </div>
+
+                <div class="form-holder">
+                    <span class="lnr lnr-pencil"></span>
+                    <select id="code" name="code" required>
+                        {% for ctg in categories %}
+                            <option {{ current_line.getCodeRaccourci() == ctg.getCodeRaccourci() ? 'selected' : '' }}
+                                value="{{ ctg.getCodeRaccourci() }}">{{ ctg.getCat() }}</option>
+                        {% endfor %}
+                    </select><br>
+                </div>
+
+                <input type="submit" name="action" value="Modifier">
+            </form>
+            <img src="{{ asset('../public/images/image-2.png') }}" alt="" class="image-2">
+        </div>
+    </div>
+
+    <script src="{{ asset('../public/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('../public/js/main.js') }}"></script>
+</body>
+
+</html>

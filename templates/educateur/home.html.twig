@@ -1,0 +1,22 @@
+<h2>Liste des Educateurs</h2>
+<a href="{{ path('create') }}"> Créer </a>
+<link rel="stylesheet" href="{{ asset('../public/fonts/linearicons/style.css') }}">
+<link rel="stylesheet" href="{{ asset('../public/css/style.css') }}">
+
+<ul>
+    {% if educateurs is defined and educateurs is iterable %}
+        {% for educateur in educateurs %}
+            <div class="container">
+                <li>
+                    <strong>Email :</strong> {{ educateur.getEmail() }},
+                    <strong>Mot de passe:</strong> {{ educateur.getMotDePasse() }}
+                    <strong>Role</strong> {{ educateur.isAdmin() }},
+                    <strong> Nom du licencié:</strong> {{ educateur.getNum() }},
+                    <a href="{{ path('update', {'id': educateur.getEmail()}) }}"> Modifier </a>
+                    <a href="{{ path('delete', {'id': educateur.getEmail()}) }}"> Supprimer </a>
+                </li>
+            </div>
+            <br>
+        {% endfor %}
+    {% endif %}
+</ul>

@@ -1,0 +1,21 @@
+{# templates/mail_edu/liste_mails_edu.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des mails envoyés aux éducateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des mails envoyés aux éducateurs</h1>
+
+    <ul>
+        {% for mailEdu in mailsEdu %}
+            <li>
+                Date d'envoi : {{ mailEdu.dateenvoi|date('Y-m-d H:i:s') }}<br>
+                Objet : {{ mailEdu.objet }}<br>
+                Message : {{ mailEdu.message }}<br>
+                Destinataire : {{ mailEdu.educateurDestinataire.nom }} {{ mailEdu.educateurDestinataire.prenom }}<br>
+                <a href="{{ path('supprimer_mail_edu', {'id': mailEdu.id}) }}">Supprimer</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

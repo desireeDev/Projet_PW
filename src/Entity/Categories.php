@@ -13,10 +13,10 @@ class Categories
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 30)]
     private ?string $Code_Raccourci = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $Nom_Cat = null;
 
     public function getId(): ?int

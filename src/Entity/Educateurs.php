@@ -19,7 +19,7 @@ class Educateurs
     #[ORM\Column(length: 50)]
     private ?string $Mdp_Educateur = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 1)]
     private ?int $Administrateur = null;
 
     #[ORM\Column(length: 30)]

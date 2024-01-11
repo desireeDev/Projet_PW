@@ -2,8 +2,6 @@
 
 
 <?php
-
-
     require_once('../../config/config.php');
     require_once('../../classes/models/Connexion.php');
     require_once('../../classes/models/Categories.php');
@@ -53,6 +51,12 @@
 						<span class="lnr lnr-pencil"></span>
 						<input type="text" class="form-control" id="code" name="code"  value="<?=$current_line->getCodeRaccourci()?>" placeholder="Code de la categorie" required >
 					</div>
+
+					<div class="form-holder">
+						<span class="lnr lnr-pencil"></span>
+						<input type="text" class="form-control" id="idt" name="idt"  value="<?=$current_line->getId()?>" placeholder="Identfiant de la categorie" required >
+					</div>
+				
 				
                     <input type="submit" name="action" value="Supprimer">
 				

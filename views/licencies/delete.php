@@ -45,7 +45,7 @@
 					<h3>Voulez vous le supprimer?</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-drop"></span>
-						<input type="text" class="form-control" id="num" value="<?=$current_line->getNum()?>" name="num"  placeholder="Numéro du licencie"required >
+						<input type="text" class="form-control" id="num" value="<?=$current_line->getId()?>" name="num"  placeholder="Numéro du licencie"required >
 					</div>
 
                     <div class="form-holder">

@@ -20,7 +20,6 @@
     $licencies = $LicencieDAO->getAll();
 ?>
 	<body>
-
     <a href="home.php"> Liste des differents educateurs  </a>
 
 		<div class="wrapper">
@@ -39,13 +38,13 @@
 
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" id="numLicencie" name="numLicencie" required  placeholder="Identite du licencie ">
+						<input type="text" class="form-control" id="id_licencie" name="id_licencie" required  placeholder="Identite du licencie ">
 
-						<select id="numLicencie" name="numLicencie" required>
+						<select id="id_licencie" name="id_licencie" required>
             <?php
                 foreach ($licencies as $key => $lic) {
             ?>
-            <option value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <option value="<?=$lic->getId()?>"><?=$lic->getNom()?></option>
             <?php
                 }
             ?>
@@ -54,6 +53,12 @@
                     <div class="form-holder">
 						<span class="lnr lnr-envelope"></span>
 						<input type="text" class="form-control" id="admin" name="admin" required placeholder="Role">
+					</div>
+
+
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" class="form-control" id="idt" name="idt" required placeholder="Numero d'un educateur">
 					</div>
 
                     <input type="submit" name="action" value="Ajouter">

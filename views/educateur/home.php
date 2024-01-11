@@ -24,11 +24,9 @@ $educateurs = $EducateursDAO->getAll();
           <div class="container">
             <li>
                 <strong>Email :</strong> <?php echo $educateur->getEmail(); ?>,
-                <strong>Mot de passe:</strong> <?php echo $educateur->getMotDePasse(); ?>
-                <strong>Role</strong> <?php echo $educateur->isAdmin(); ?>,
-                <strong> Nom du licencie:</strong> <?php echo $educateur->getNum(); ?>,
-                <a href="update.php?id=<?= $educateur->getEmail();?>"> Modifier  </a>
-                <a href="delete.php?id=<?= $educateur->getEmail();?>"> Supprimer  </a>  
+                <strong> Numero  du licencie:</strong> <?php echo $educateur->getId(); ?>,
+                <a href="update.php?id=<?= $educateur->getEdu();?>"> Modifier  </a>
+                <a href="delete.php?id=<?= $educateur->getEdu();?>"> Supprimer  </a>  
             </li>
             </div>
             <br>

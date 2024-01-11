@@ -19,10 +19,10 @@ class CategorieController {
         include '../views/categories/home.php';
     }
 
-    public function create($Code_Raccourci,$Nom_Cat) {
+    public function create($Code_Raccourci,$Nom_Cat,$id,) {
 
             // Créer un nouvel objet CategorieModel avec les données du formulaire
-            $nouvelleCategorie = new Categories($Code_Raccourci, $Nom_Cat);
+            $nouvelleCategorie = new Categories($Code_Raccourci, $Nom_Cat,$id,);
 
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter la catégorie
             if ($this->CategoriesDAO->create($nouvelleCategorie)) {
@@ -42,14 +42,14 @@ class CategorieController {
 
    
 
-    public function edit($Code_Raccourci) {
+    public function edit($id) {
         // Affiche le formulaire d'édition pour une catégorie spécifique
-        $categorie = $this->CategoriesDAO->getByCode($Code_Raccourci);
+        $categorie = $this->CategoriesDAO->getByCode($id);
         include 'views/categorie/edit.php';
     }
 
-    public function Update($code, $libelle , $lastCode) {
-        $categorie = new Categories($code,$libelle);
+    public function Update($code, $libelle ,$idt, $lastCode) {
+        $categorie = new Categories($code,$libelle,$idt);
         // $categorie->setCodeRaccourci($code);
         // $categorie->setCat($code);
         $this->CategoriesDAO->update($categorie,$lastCode); 
@@ -66,9 +66,9 @@ class CategorieController {
     
 
 
-    public function delete($Code_Raccourci) {
+    public function delete($id) {
         // Supprime une catégorie
-        $this->CategoriesDAO->deleteByCode($Code_Raccourci);
+        $this->CategoriesDAO->deleteByCode($id);
 
         // Redirige vers la liste des catégories
         header('Location:../views/categories/home.php');
@@ -86,30 +86,34 @@ switch($action){
     case "Ajouter":
         $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-        if(!empty($libelle) and !empty($code)){
+        $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
+
+        if(!empty($libelle) and !empty($code)and !empty($idt)){
             $controller = new CategorieController(new Connexion()) ;
-            $controller->create($code,$libelle);
+            $controller->create($code,$libelle,$idt);
         }
         
         break;
     case "Modifier":
         $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
         $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
+        $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
+
         $lastCode =  isset($_POST['lastCode']) ? $_POST['lastCode'] : '' ;
-        if(!empty($libelle) and !empty($code) and !empty($lastCode)){
+        if(!empty($libelle) and !empty($code) and !empty($lastCode)and !empty($idt)){
             $controller = new CategorieController(new Connexion()) ;
-            $controller->Update($code,$libelle,$lastCode);
+            $controller->Update($code,$libelle,$lastCode,$idt);
         }
         break;
 
         case "Supprimer":
             $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
             $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
-
-            if(!empty($libelle) and !empty($code)){
+            $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
+            if(!empty($libelle) and !empty($code)and !empty($idt)){
                 $controller = new CategorieController(new Connexion()) ;
 
-                $controller->delete($code,$libelle);
+                $controller->delete($code,$libelle,$idt);
             }
             break;
 }

@@ -12,7 +12,6 @@
     }
     
     $dao = new ContactDAO(new Connexion());
-
     $current_line = $dao->getByCode($code) ;
 
     if($current_line == null){
@@ -41,6 +40,7 @@
 				<img src="../../images/image-1.png" alt="" class="image-1">
 				<form action=" ../../controllers/ContactController.php "  method="post">
 					<h3>Voulez vous le supprimer?</h3>
+
                     <div class="form-holder">
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="id" value="<?=$current_line->getCode()?>" name="libelle"   placeholder="Identifiant du Contact" required >
@@ -62,10 +62,6 @@
 						<input type="text" class="form-control"  id="email" name="email" value="<?=$current_line->getEmail()?>"  placeholder="Email du contact"required >
 					</div>
 
-
-
-
-
                     <div class="form-holder">
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="telephone" name="telephone" value="<?=$current_line->getTelephone()?>"  placeholder="Telephone du contact"required >
@@ -74,16 +70,12 @@
 
 					<div class="form-holder">
 						<span class="lnr lnr-pencil"></span>
-                        <input type="text" class="form-control"id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" placeholder="Numero du licencie"  required >
-           
-
-					</div>
+                        <input type="text" class="form-control"id="numLicencie" name="numLicencie" value="<?=$current_line->getId()?>" placeholder="Numero du licencie"  required >
+				    </div>
 				
                     <input type="submit" name="action" value="Supprimer">
+					
 
-
-
-				
 				</form>
 				<img src="images/image-2.png" alt="" class="image-2">
 			</div>

@@ -19,6 +19,7 @@
 				<img src="../../images/image-1.png" alt="" class="image-1">
 				<form action=" ../../controllers/CategorieController.php "  method="post">
 					<h3>Nouvel Enregistrement?</h3>
+				
 					<div class="form-holder">
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="libelle" name="libelle"  placeholder="Nom de la Categorie"required >
@@ -27,7 +28,11 @@
 						<span class="lnr lnr-pencil"></span>
 						<input type="text" class="form-control" id="code" name="code" placeholder="Code de la categorie" required >
 					</div>
-				
+
+					<div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="idt" name="idt"  placeholder="Identifiant de la categorie"required >
+						</div>
                     <input type="submit" name="action" value="Ajouter">
 				
 				</form>

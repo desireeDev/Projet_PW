@@ -50,6 +50,10 @@
 						<span class="lnr lnr-pencil"></span>
 						<input type="text" class="form-control" id="code" name="code"  value="<?=$current_line->getCodeRaccourci()?>" placeholder="Code de la categorie" required >
 					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="idt" name="idt" value="<?=$current_line->getId()?>"  placeholder="Nom de la Categorie"required >
+					</div>
 				
                     <input type="submit" name="action" value="Modifier">
 

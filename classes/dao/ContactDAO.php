@@ -9,8 +9,8 @@ class ContactDAO {
     // MÃ©thode pour insÃ©rer un nouveau contact dans la base de donnÃ©es
     public function create(Contact $contact) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact(Code_Contact, Nom_Contact, Prenom_Contact, Email_Contact,Numero_Contact,Num_Licencie) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([ $contact->getCode(), $contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),$contact->getNum()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact(id, Nom_Contact, Prenom_Contact, Email_Contact,Numero_Contact,id_licencie) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([ $contact->getCode(), $contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),$contact->getId()]);
             return true;
         } catch (PDOException $e) {
             var_dump($e->getMessage());
@@ -23,12 +23,12 @@ class ContactDAO {
     // MÃ©thode pour rÃ©cupÃ©rer un contact par son ID
     public function getByCode($code) {
         try {
-            $stmt = $this->connexion->pdo->prepare("SELECT * FROM contact WHERE Code_Contact = ?");
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM contact WHERE id = ?");
             $stmt->execute([$code]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new Contact($row['Code_Contact'],$row['Nom_Contact'], $row['Prenom_Contact'], $row['Email_Contact'], $row['Numero_Contact'],$row['Num_Licencie']);
+                return new Contact($row['id'],$row['Nom_Contact'], $row['Prenom_Contact'], $row['Email_Contact'], $row['Numero_Contact'],$row['id_licencie']);
             } else {
                 return null; // Aucun contact trouvÃ© avec cet ID
             }
@@ -45,7 +45,7 @@ class ContactDAO {
             $contacts = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contacts[] = new Contact($row['Code_Contact'],$row['Nom_Contact'], $row['Prenom_Contact'], $row['Email_Contact'], $row['Numero_Contact'],$row['Num_Licencie']);
+                $contacts[] = new Contact($row['id'],$row['Nom_Contact'], $row['Prenom_Contact'], $row['Email_Contact'], $row['Numero_Contact'],$row['id_licencie']);
             }
 
             return $contacts;
@@ -59,9 +59,9 @@ class ContactDAO {
     public function Update(Contact $contact) {
         try {
             $stmt = $this->connexion->pdo->prepare("UPDATE contact SET Nom_Contact = ?, Prenom_Contact = ?, Email_Contact = ?,
-             Numero_Contact = ?, Num_Licencie = ? WHERE Code_Contact = ?");
+             Numero_Contact = ?, id_licencie = ? WHERE id = ?");
             $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(),
-            $contact->getNum(), $contact->getCode()]);
+            $contact->getId(), $contact->getCode()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici
@@ -70,10 +70,10 @@ class ContactDAO {
     }
 
     // MÃ©thode pour supprimer un contact par son code
-    public function deleteByCode($Code_Contact) {
+    public function deleteByCode($id) {
         try {
-            $stmt = $this->connexion->pdo->prepare("DELETE FROM contact WHERE Code_Contact = ?");
-            $stmt->execute([$Code_Contact]);
+            $stmt = $this->connexion->pdo->prepare("DELETE FROM contact WHERE id = ?");
+            $stmt->execute([$id]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de suppression ici

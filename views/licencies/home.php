@@ -27,14 +27,14 @@ $licencie = $LicencieDAO->getAll();
             ?>
             <div class="container">
             <li>
-                <strong>Numero du Licencie :</strong> <?php echo $lic->getNum(); ?>,
+                <strong>Numero du Licencie :</strong> <?php echo $lic->getId(); ?>,
                 <strong>Nom :</strong> <?php echo $lic->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $lic->getPrenom(); ?>,
                 <strong>Code la categorie:</strong> <?php echo $lic->getCodeRaccourci(); ?>,
                 
-                <a href="update.php?id=<?= $lic->getNum();?>"> Modifier</a>
+                <a href="update.php?id=<?= $lic->getId();?>"> Modifier</a>
 
-                <a href="delete.php?id=<?= $lic->getNum();?>"> Supprimer </a>
+                <a href="delete.php?id=<?= $lic->getId();?>"> Supprimer </a>
 
                 <!-- Bouton d'importation -->
                <input type="file" id="importFile" style="display: none;">

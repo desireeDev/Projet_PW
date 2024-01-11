@@ -21,11 +21,11 @@ $categories = $CategoriesDAO->getAll();
             ?>
             <div class="container">
             <li>
+                <strong>Code:</strong> <?php echo $categorie->getId(); ?>,
                 <strong>Nom:</strong> <?php echo $categorie->getCat(); ?>,
                 <strong>Code Raccourci:</strong> <?php echo $categorie->getCodeRaccourci(); ?>
-                <a href="update.php?id=<?= $categorie->getCodeRaccourci();?>"> Modifier  </a>
-                <a href="delete.php?id=<?= $categorie->getCodeRaccourci();?>"> Supprimer  </a>
-                
+                <a href="update.php?id=<?= $categorie->getId();?>"> Modifier  </a>
+                <a href="delete.php?id=<?= $categorie->getId();?>"> Supprimer  </a>   
             </li>
             </div>
             <br>

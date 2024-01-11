@@ -3,22 +3,25 @@
 class Categories {
 
     // Attributs
+
     private $Code_Raccourci;
 
     private $Nom_Cat;
+    private $id;
 
     // Constructeur
 
 
-    public function __construct($Code_Raccourci,$Nom_Cat) {
+    public function __construct($Code_Raccourci,$Nom_Cat,$id,) {
 
         $this->Code_Raccourci = $Code_Raccourci;
         $this->Nom_Cat = $Nom_Cat;
+        $this->id = $id;
      
 
     }
 
-
+    // Getters & Setters
 
     public function getCodeRaccourci() {
 
@@ -33,7 +36,11 @@ class Categories {
         return $this->Nom_Cat;
 
     }
+    public function getId() {
 
+        return $this->id;
+
+    }
 
 
     public function setCodeRaccourci($Code_Raccourci) {
@@ -49,7 +56,12 @@ class Categories {
         }
 
 
+        public function setId($id) {
 
+            $this->id=$id;
+    
+        }
+    
 
    
 

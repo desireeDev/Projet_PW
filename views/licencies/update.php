@@ -48,7 +48,7 @@
 					<h3>Voulez vous le modifier?</h3>
                     <div class="form-holder">
 						<span class="lnr lnr-drop"></span>
-						<input type="text" class="form-control"id="num" value="<?=$current_line->getNum()?>" name="num" required  placeholder="Numéro du licencié" >
+						<input type="text" class="form-control"id="num" value="<?=$current_line->getId()?>" name="num" required  placeholder="Numéro du licencié" >
 					</div>
 
                     <div class="form-holder">

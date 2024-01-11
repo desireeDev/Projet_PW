@@ -1,23 +1,28 @@
 <?php
-
 class Educateur {
+    // Attributs
     private $Email_Educateur;
     private $Mdp_Educateur;
     private $Administrateur;  
-    private $Num_Licencie;
-
+    private $id_licencie;
+    private $id;
     // Constructeur
-    public function __construct( $Email_Educateur, $Mdp_Educateur, $Administrateur,$Num_Licencie) {
+    public function __construct( $Email_Educateur, $Mdp_Educateur, $Administrateur, $id_licencie, $id) {
         $this->Email_Educateur = $Email_Educateur;
         $this->Mdp_Educateur = $Mdp_Educateur;
         $this->Administrateur = $Administrateur;
-        $this->Num_Licencie = $Num_Licencie;
+        $this->id_licencie = $id_licencie;
+        $this->id = $id;
      
     }
 
     // Getters
-    public function getNum() {
-        return $this->Num_Licencie;
+
+    public function getId() {
+        return $this->id_licencie;
+    }
+    public function getEdu() {
+        return $this->id;
        
     }
 
@@ -38,8 +43,14 @@ class Educateur {
 
     // Setters
 
-    public function setNumeroLicence($Num_Licencie) {
-        $this->Num_Licencie = $Num_Licencie;
+
+    public function setId($id) {
+        $this->id = $id;
+    
+    }   
+
+    public function setNumeroLicence($id_licencie) {
+        $this->id_licencie = $id_licencie;
 
     
     }

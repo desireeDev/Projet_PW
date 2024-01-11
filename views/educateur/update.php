@@ -64,28 +64,32 @@
 
 					<div class="form-holder">
 						<span class="lnr lnr-pencil"></span>
-                        <select id="numLicencie" name="numLicencie" required>
+                        <select id="id_licencie" name="id_licencie" required>
             <?php
                 foreach ($licencies as $key => $lic) {
             ?>
-            <option <?=$current_line->getNum()==$lic->getNum() ? "selected" : "" ?> value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <option <?=$current_line->getId()==$lic->getId() ? "selected" : "" ?> value="<?=$lic->getId()?>"><?=$lic->getNom()?></option>
             <?php
                 }
             ?>
         </select><br>
 
-					</div>
-                    <input type="submit" name="action" value="Modifier">
-				</form>
-				<img src="images/image-2.png" alt="" class="image-2">
-			</div>
+		</div>
+		<div class="form-holder">
+		<span class="lnr lnr-drop"></span>
+		<input type="text" class="form-control" id="idt" name="idt" value="<?=$current_line->getEdu()?>"  placeholder="Role"required >
+		</div>			
+
+        <input type="submit" name="action" value="Modifier">
+		</form>
+		<img src="images/image-2.png" alt="" class="image-2">
+		</div>
 			
 		</div>
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>
-
 
 
 

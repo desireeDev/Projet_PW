@@ -44,40 +44,36 @@
             <?php
                 foreach ($licencies as $key => $lic) {
             ?>
-            <option value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <option value="<?=$lic->getId()?>"><?=$lic->getNom()?></option>
             <?php
                 }
             ?>
         </select><br>
-					</div>
+		</div>	
 
-					<div class="form-holder">
-						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" id="nom" name="nom" required  placeholder="Nom du Contact ">
-					</div>
+			<div class="form-holder">
+			<span class="lnr lnr-user"></span>
+			<input type="text" class="form-control" id="nom" name="nom" required  placeholder="Nom du Contact ">		
+			</div>
 
-                    <div class="form-holder">
-						<span class="lnr lnr-user"></span>
-						<input type="text" class="form-control" id="prenom" name="prenom" required  placeholder="Prenom du Contact ">
-					</div>
+            <div class="form-holder">
+			<span class="lnr lnr-user"></span>
+			<input type="text" class="form-control" id="prenom" name="prenom" required  placeholder="Prenom du Contact ">
+			</div>
 
-                    <div class="form-holder">
-						<span class="lnr lnr-envelope"></span>
-						<input type="text" class="form-control"id="email" name="email" required placeholder="Email du Contact ">
-					</div>
+            <div class="form-holder">
+			<span class="lnr lnr-envelope"></span>
+			<input type="text" class="form-control"id="email" name="email" required placeholder="Email du Contact ">
+			</div>
 
-                    <div class="form-holder">
-						<span class="lnr lnr-phone"></span>
-						<input type="text" class="form-control"id="telephone" name="telephone" required placeholder="Telephone du Contact ">
-					</div>
-
-
-				
-				
+            <div class="form-holder">
+			<span class="lnr lnr-phone"></span>
+			<input type="text" class="form-control"id="telephone" name="telephone" required placeholder="Telephone du Contact ">
+			</div>
 					
-                    <input type="submit" name="action" value="Ajouter">
+           <input type="submit" name="action" value="Ajouter">
 				
-				</form>
+			</form>
 				<img src="../../images/image-2.png" alt="" class="image-2">
 			</div>
 			

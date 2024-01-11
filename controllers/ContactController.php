@@ -20,10 +20,10 @@ class ContactController {
       
     }
 
-    public function create($Code_Contact,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$Num_Licencie) {
+    public function create($id,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$id_licencie) {
 
             // Créer un nouvel objet ContactModel avec les données du formulaire
-            $nouveauContact = new Contact($Code_Contact,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$Num_Licencie);
+            $nouveauContact = new Contact($id,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$id_licencie);
 
             // Appeler la méthode du modèle (ContactDAO) pour ajouter le contact dans la base de données
             if ($this->ContactDAO->create($nouveauContact)) {
@@ -40,14 +40,14 @@ class ContactController {
 
     }
 
-    public function edit($Code_Contact) {
+    public function edit($id) {
         // Affiche le formulaire d'édition pour un contact spécifique
-        $contact = $this->ContactDAO->getByCode($Code_Contact);
+        $contact = $this->ContactDAO->getByCode($id);
         include 'views/contact/edit.php';
     }
 
-    public function Update($id, $nom, $prenom, $email, $telephone,$numLicencie) {
-        $contact = new Contact( $id, $nom, $prenom, $email, $telephone,$numLicencie);
+    public function Update($idt, $nom, $prenom, $email, $telephone,$numLicencie) {
+        $contact = new Contact( $idt, $nom, $prenom, $email, $telephone,$numLicencie);
       
         $this->ContactDAO->update($contact); 
         header('Location:../views/contact/home.php');
@@ -63,9 +63,9 @@ class ContactController {
     
 
 
-    public function delete($Code_Contact) {
+    public function delete($id) {
         // Supprime un contact
-        $this->ContactDAO->deleteByCode($Code_Contact);
+        $this->ContactDAO->deleteByCode($id);
 
         // Redirige vers la liste des catégories
         header('Location:../views/contact/home.php');
@@ -82,7 +82,7 @@ $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 switch($action){
     case "Ajouter":
 
-        $id =  isset($_POST['id']) ? $_POST['id'] : '' ;
+        $idt =  isset($_POST['id']) ? $_POST['id'] : '' ;
         $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
@@ -90,30 +90,30 @@ switch($action){
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
         
 
-        if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
+        if(!empty($idt) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
             $controller = new ContactController(new Connexion()) ;
-            $controller->create($id, $nom, $prenom, $email, $telephone,$numLicencie);
+            $controller->create($idt, $nom, $prenom, $email, $telephone,$numLicencie);
         }else{
             echo "null";
         }
         break;
     case "Modifier":
-        $id =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+        $idt =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
         $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
         $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $telephone =  isset($_POST['telephone']) ? $_POST['telephone'] : '' ;
         $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
+        if(!empty($idt) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
             $controller = new ContactController(new Connexion()) ;
-            $controller->Update($id, $nom, $prenom, $email, $telephone,$numLicencie);
+            $controller->Update($idt, $nom, $prenom, $email, $telephone,$numLicencie);
         }else{
             echo "null";
         }
         break;
 
         case "Supprimer":
-            $id =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
+            $idt =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
             $nom =  isset($_POST['nom']) ? $_POST['nom'] : '' ;
             $prenom =  isset($_POST['prenom']) ? $_POST['prenom'] : '' ;
             $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
@@ -121,9 +121,9 @@ switch($action){
             $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
 
 
-            if(!empty($id) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
+            if(!empty($idt) && !empty($nom) && !empty($prenom) && !empty($email) && !empty($telephone) && !empty($numLicencie)){
                 $controller = new ContactController(new Connexion()) ;
-                $controller->delete($id, $nom, $prenom, $email, $telephone,$numLicencie);
+                $controller->delete($idt, $nom, $prenom, $email, $telephone,$numLicencie);
             }else{
                 echo 'null' ;
             }

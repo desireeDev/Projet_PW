@@ -17,9 +17,9 @@ class EducateurController {
         include '../views/educateur/home.php';
     }
 
-    public function create($Email_Educateur,$Mdp_Educateur,$Administrateur,  $Num_Licencie) {
+    public function create( $Email_Educateur,$Mdp_Educateur,$Administrateur, $id_licencie,$id) {
 
-            $nouveauEducateur = new Educateur($Email_Educateur,$Mdp_Educateur,$Administrateur,  $Num_Licencie);
+            $nouveauEducateur = new Educateur($Email_Educateur,$Mdp_Educateur,$Administrateur,$id_licencie,$id);
 
             // Appeler la méthode du modèle (EducateurDAO) pour ajouter l'educateur
             if ($this->EducateursDAO->createEducateur($nouveauEducateur)) {
@@ -34,8 +34,8 @@ class EducateurController {
             } 
          }
 
-         public function update($email, $pwd, $admin,$numLicencie) {
-            $educateur = new Educateur( $email, $pwd, $admin, $numLicencie);
+         public function update($email, $pwd, $admin,$id_licencie,$idt) {
+            $educateur = new Educateur($email, $pwd, $admin, $id_licencie, $idt);
           
             $this->EducateursDAO->Update($educateur); 
             header('Location:../views/educateur/home.php');
@@ -61,27 +61,28 @@ $action =  isset($_REQUEST['action']) ? $_REQUEST['action'] : "" ;
 
 switch($action){
     case "Ajouter":
-
+        $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
-        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
+        $id_licencie =  isset($_POST['id_licencie']) ? $_POST['id_licencie'] : '' ;
+        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($id_licencie)&& !empty($idt)){
             $controller = new EducateurController(new Connexion()) ;
-            $controller->create($email,$pwd,$admin,$numLicencie);
+            $controller->create($email,$pwd,$admin,$id_licencie,$idt);
         }
         else{
             echo "null";
         }
         break;
     case "Modifier":
+        $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
         $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
         $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
         $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
-        $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
+        $id_licencie =  isset($_POST['id_licencie']) ? $_POST['id_licencie'] : '' ;
+        if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($id_licencie)&& !empty($idt)){
             $controller = new EducateurController(new Connexion()) ;
-            $controller->update($email,$pwd,$admin,$numLicencie);
+            $controller->update($email,$pwd,$admin,$id_licencie,$idt);
         }
         else{
             echo "null";
@@ -89,13 +90,14 @@ switch($action){
         break;
 
         case "Supprimer":
+            $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
             $email =  isset($_POST['email']) ? $_POST['email'] : '' ;
             $pwd =  isset($_POST['password']) ? $_POST['password'] : '' ;
             $admin =  isset($_POST['admin']) ? $_POST['admin'] : '' ;
-            $numLicencie =  isset($_POST['numLicencie']) ? $_POST['numLicencie'] : '' ;
-            if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($numLicencie)){
+            $id_licencie =  isset($_POST['id_licencie']) ? $_POST['id_licencie'] : '' ;
+            if(!empty($email) && !empty($pwd) && !empty($admin) && !empty($id_licencie)&& !empty($idt)){
                 $controller = new EducateurController(new Connexion()) ;
-                $controller->delete($email,$pwd,$admin,$numLicencie);
+                $controller->delete($email,$pwd,$admin,$id_licencie,$idt);
             }
             else{
                 echo "null";

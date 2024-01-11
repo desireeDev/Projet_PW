@@ -22,7 +22,7 @@ $contacts = $ContactDAO->getAll();
                 <strong>Prenom:</strong> <?php echo $contact->getPrenom(); ?>,
                 <strong>Email:</strong> <?php echo $contact->getEmail(); ?>,
                 <strong>Telephone:</strong> <?php echo $contact->getTelephone(); ?>,
-                <strong> Numero du licencié:</strong> <?php echo $contact->getNum(); ?>,
+                <strong> Numero du licencié:</strong> <?php echo $contact->getId(); ?>,
 
                 <a href="update.php?id=<?= $contact->getCode();?>"> Modifier  </a>
                 <a href="delete.php?id=<?= $contact->getCode();?>"> Supprimer  </a>

@@ -13,26 +13,26 @@ class EducateursDAO  {
 public function createEducateur(Educateur $educateur) {
     try {
     
-        $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs(Email_Educateur ,Mdp_Educateur, Administrateur,Num_Licencie) VALUES (?, ?,?, ?)");
-        $stmt->execute([ $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin(),$educateur->getNum(),]);
+        $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs(Email_Educateur ,Mdp_Educateur, Administrateur,id_licencie,id) VALUES (?,?,?, ?,?)");
+        $stmt->execute([ $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin(),$educateur->getId(),$educateur->getEdu()]);
         return true;
     } catch (PDOException $e) {
         // GÃ©rer les erreurs d'insertion ici
-        var_dump($e);
-        die();
+        // var_dump($e);
+        // die();
         return false;
     }
 }
 //Recupere par le code
 
-    public function getByCode($Email_Educateur) {
+    public function getByCode($id) {
         try {
-            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE Email_Educateur = ?");
-            $stmt->execute([$Email_Educateur]);
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE id = ?");
+            $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['Num_Licencie']);
+                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['id_licencie'],$row['id']);
             } else {
                 return null; // Aucun contact trouvÃ© avec cet ID
             }
@@ -50,7 +50,7 @@ public function getAll() {
         $educateur = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $educateur[] = new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'],$row['Administrateur'],$row['Num_Licencie'],);
+            $educateur[] = new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'],$row['Administrateur'],$row['id_licencie'],$row['id']);
         }
 
         return $educateur;
@@ -64,19 +64,19 @@ public function getAll() {
 
     public function Update(Educateur $educateur) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET Mdp_Educateur = ?,  Administrateur = ?, Num_Licencie = ?
-             WHERE  Email_Educateur = ?");
-            $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdmin(), $educateur->getNum(), $educateur->getEmail(),]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET  Email_Educateur = ? ,Mdp_Educateur = ?,  Administrateur = ?, id_licencie = ?
+             WHERE  id = ?");
+            $stmt->execute([$educateur->getMotDePasse(), $educateur->isAdmin(), $educateur->getId(), $educateur->getEmail(),$educateur->getEdu()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici
             return false;
         }
     }
-    public function Delete($Email_Educateur) {
+    public function Delete($id) {
             try {
-                $stmt = $this->connexion->pdo->prepare("DELETE FROM educateurs WHERE Email_Educateur = ?");
-                $stmt->execute([$Email_Educateur]);
+                $stmt = $this->connexion->pdo->prepare("DELETE FROM educateurs WHERE id = ?");
+                $stmt->execute([$id]);
                 return true;
             } catch (PDOException $e) {
                 // GÃ©rer les erreurs de suppression ici
@@ -91,7 +91,7 @@ public function getAll() {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['Num_Licencie']);
+                return new Educateur($row['Email_Educateur'],$row['Mdp_Educateur'], $row['Administrateur'], $row['id_licencie'],$row['id']);
             } else {
                 return null; // Aucun contact trouvÃ© avec cet ID
             }

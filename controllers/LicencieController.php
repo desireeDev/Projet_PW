@@ -19,10 +19,10 @@ class LicencieController {
         include '../views/licencies/home.php';
     }
 
-    public function create($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci ) { // C'est une instance de la classe Contact//
+    public function create( $Nom_Licencie,$Prenom_Licencie,$id,$id_cat ) { // C'est une instance de la classe Contact//
 
             // Créer un nouvel objet Licencies avec les données du formulaire
-            $nouveauLicencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci );
+            $nouveauLicencie = new Licencie( $Nom_Licencie,$Prenom_Licencie,$id,$id_cat );
 
             // Appeler la méthode du modèle (LicenciesDAO) pour ajouter le/la licencie
             if ($this->LicencieDAO->createLicencie($nouveauLicencie)) {
@@ -37,14 +37,14 @@ class LicencieController {
     }
 
 
-    public function edit($Num_Licencie) {
+    public function edit($id) {
         // Affiche le formulaire d'édition pour un licencie spécifique
-        $licencie  = $this->licenciesDAO->getLicencieById($Num_Licencie);
+        $licencie  = $this->licenciesDAO->getLicencieById($id);
         include 'views/licencie/edit.php';
     }
 
-    public function Update($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci) {
-        $licencie = new Licencie($Num_Licencie, $Nom_Licencie,$Prenom_Licencie,$Code_Raccourci);
+    public function Update($id, $Nom_Licencie,$Prenom_Licencie,$id_cat) {
+        $licencie = new Licencie($id, $Nom_Licencie,$Prenom_Licencie,$id_cat);
         $this->LicencieDAO->updateLicencie($licencie); 
         header('Location:../views/licencies/home.php');
     }

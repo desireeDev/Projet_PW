@@ -1,24 +1,23 @@
 <?php
 
 class Licencie {
-    private $Num_Licencie;
+    private $id;
     private $Nom_Licencie;
     private $Prenom_Licencie; 
-    private $Code_Raccourci; 
+    private $id_cat; 
 
     // Constructeur
-    public function __construct($Num_Licencie, $Nom_Licencie, $Prenom_Licencie,$Code_Raccourci) {
-        $this->Num_Licencie = $Num_Licencie;
+    public function __construct($id, $Nom_Licencie, $Prenom_Licencie,$id_cat) {
+        $this->id = $id;
         $this->Nom_Licencie = $Nom_Licencie;
         $this->Prenom_Licencie = $Prenom_Licencie;
-      
-        $this->Code_Raccourci = $Code_Raccourci;
+        $this->id_cat = $id_cat;
         
     }
 
     // Getters
-    public function getNum() {
-        return $this->Num_Licencie;
+    public function getId() {
+        return $this->id;
     }
 
     public function getNom() {
@@ -31,12 +30,12 @@ class Licencie {
 
  
     public function getCodeRaccourci() {
-        return $this->Code_Raccourci;
+        return $this->id_cat;
     }
 
     // Setters
-    public function setNumeroLicence($Num_Licencie) {
-        $this->Num_Licencie = $Num_Licencie;
+    public function setId($Num_Licencie) {
+        $this->id = $id;
     }
 
     public function setNom($Nom_Licencie) {
@@ -49,7 +48,7 @@ class Licencie {
 
 
     public function setCodeRaccourci(Categories $categorie) {
-        $this->Code_Raccourci = $Code_Raccourci;
+        $this->id_cat = $id_cat;
     }
 
     // Recupération d'un tableau associatif à partir d'un objet

@@ -40,6 +40,10 @@
 				<img src="../../images/image-1.png" alt="" class="image-1">
 				<form action=" ../../controllers/EducateurController.php"  method="post">
 					<h3>Voulez vous supprimer celui-ci?</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-drop"></span>
+						<input type="text" class="form-control" id="idt" value="<?=$current_line->getEdu()?>" name="idt"   placeholder="Numero de l'educateur" required >
+					</div>
                     <div class="form-holder">
 						<span class="lnr lnr-drop"></span>
 						<input type="text" class="form-control" id="email" value="<?=$current_line->getEmail()?>" name="email"   placeholder="Email de l'educateur" required >
@@ -56,9 +60,11 @@
 
 					<div class="form-holder">
 					<span class="lnr lnr-pencil"></span>
-                     <input type="text" class="form-control" id="numLicencie" name="numLicencie" value="<?=$current_line->getNum()?>" placeholder="Numéro de licence"required >
+                     <input type="text" class="form-control" id="id_licencie" name="id_licencie" value="<?=$current_line->getId()?>" placeholder="Numéro de licence"required >
 					</div>
+
                     <input type="submit" name="action" value="Supprimer">
+
 				</form>
 				<img src="images/image-2.png" alt="" class="image-2">
 			</div>

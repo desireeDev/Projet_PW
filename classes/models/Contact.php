@@ -2,7 +2,7 @@
 
 class Contact {
 
-    private $Code_Contact;
+    private $id;
 
     private $Nom_Contact;
 
@@ -12,21 +12,18 @@ class Contact {
 
     private $Numero_Contact;
 
-    private $Num_Licencie;
+    private $id_licencie;
 
 
 
-    public function __construct($Code_Contact,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$Num_Licencie) {
+    public function __construct($id,$Nom_Contact, $Prenom_Contact, $Email_Contact, $Numero_Contact,$id_licencie) {
 
-        $this->Code_Contact = $Code_Contact;
+        $this->id = $id;
         $this->Nom_Contact = $Nom_Contact;
         $this->Prenom_Contact = $Prenom_Contact;
         $this->Email_Contact = $Email_Contact;
         $this->Numero_Contact = $Numero_Contact;
-
-        $this->Num_Licencie = $Num_Licencie;
-
-     
+        $this->id_licencie = $id_licencie;  
 
     }
 
@@ -34,7 +31,7 @@ class Contact {
 
     public function getCode() {
 
-        return $this->Code_Contact;
+        return $this->id;
 
     }
 
@@ -71,19 +68,15 @@ class Contact {
     }
 
     
-    public function getNum() {
+    public function getId() {
 
-        return $this->Num_Licencie;
+        return $this->id_licencie;
 
     }
 
-    
+    public function setCode($id) {
 
-    
-
-    public function setCode($Code_Contact) {
-
-        $this->Code_Contact=$Code_Contact;
+        $this->id=$id;
 
     }
 
@@ -111,9 +104,9 @@ class Contact {
 
     }
     
-    public function setNumeroLicence($Num_Licencie) {
+    public function setNumeroLicence($id_licencie) {
 
-        $this->Num_Licencie=$Num_Licencie;
+        $this->id_licencie=$id_licencie;
 
     }
 

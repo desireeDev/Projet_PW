@@ -77,7 +77,7 @@
             <?php
                 foreach ($licencies as $key => $lic) {
             ?>
-            <option <?=$current_line->getNum()==$lic->getNum() ? "selected" : "" ?> value="<?=$lic->getNum()?>"><?=$lic->getNom()?></option>
+            <option <?=$current_line->getId()==$lic->getId() ? "selected" : "" ?> value="<?=$lic->getId()?>"><?=$lic->getId()?></option>
             <?php
                 }
             ?>

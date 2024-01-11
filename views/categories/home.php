@@ -28,7 +28,7 @@ $categories = $CategoriesDAO->getAll();
 <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 
 </head>
-<h2>Liste des Catégories</h2>
+<h2 class ="text-center">Liste des Catégories</h2>
 
 
 

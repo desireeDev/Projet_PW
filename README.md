@@ -13,6 +13,11 @@ Les parties d'authentification de l'administrateur,de gestion des grands axes ,e
 
 ![plus](https://github.com/desireeDev/Projet_Pw/assets/114066560/551b3182-4f1b-4ec6-a68e-fae3934a7359)
 
+![image](https://github.com/desireeDev/Projet_Pw/assets/114066560/92436689-379f-4920-8ed1-6ae89eef636e)
+
+![image](https://github.com/desireeDev/Projet_Pw/assets/114066560/e9dc7137-8f39-421a-9ad7-dbac3997b3ed)
+
+
 
 
 

@@ -8,33 +8,67 @@ $ContactDAO=new ContactDAO(new Connexion());
 
 $contacts = $ContactDAO->getAll();
 ?>
-<h2>Liste des Contacts</h2>
-<a href="create.php" > Créer  </a>
-<ul>
-    <?php
-    if (isset($contacts) && (is_array($contacts) || is_object($contacts))) {
-        foreach ($contacts as $key => $contact) {
-            ?>
-            <div class="container">
-            <li>
-                <strong>CodeContact :</strong> <?php echo $contact->getCode(); ?>,
-                <strong>Nom Contact:</strong> <?php echo $contact->getNom(); ?>
-                <strong>Prenom:</strong> <?php echo $contact->getPrenom(); ?>,
-                <strong>Email:</strong> <?php echo $contact->getEmail(); ?>,
-                <strong>Telephone:</strong> <?php echo $contact->getTelephone(); ?>,
-                <strong> Numero du licencié:</strong> <?php echo $contact->getId(); ?>,
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Contacts</title>
+    <!-- Ajouter le lien vers la bibliothèque Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+   
+    
+ 	<!-- LINEARICONS -->
+     <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 
-                <a href="update.php?id=<?= $contact->getCode();?>"> Modifier  </a>
-                <a href="delete.php?id=<?= $contact->getCode();?>"> Supprimer  </a>
-     	<!-- LINEARICONS -->
-		<link rel="stylesheet" href="../../fonts/linearicons/style.css">
-
-
-            </li>
-            </div>
-            <br>
-            <?php
+     <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
         }
-    } 
-    ?>
-</ul>
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<h2 class="text-center">Liste des Contacts</h2>
+
+<ul>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nom Contact</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Numéro du Licencié</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($contacts as $contact) { ?>
+                <tr>
+                    <td><?php echo $contact->getNom(); ?></td>
+                    <td><?php echo $contact->getPrenom(); ?></td>
+                    <td><?php echo $contact->getEmail(); ?></td>
+                    <td><?php echo $contact->getTelephone(); ?></td>
+                    <td  ><?php echo $contact->getId(); ?></td>
+                    <td class="text-center">
+                        <a class="btn btn-warning" href="update.php?id=<?= $contact->getCode(); ?>">Modifier</a>
+                        <a class="btn btn-danger" href="delete.php?id=<?= $contact->getCode(); ?>">Supprimer</a>
+                        <a class="btn btn-success" href="create.php">Ajout de contact</a>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+    <a class="btn btn-primary return-btn" href="../admin/admin.php">Retour à l'accueil</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

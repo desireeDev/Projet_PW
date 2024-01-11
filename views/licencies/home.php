@@ -40,8 +40,6 @@ $licencie = $LicencieDAO->getAll();
                <input type="file" id="importFile" style="display: none;">
                <button onclick="$('#importFile')[0].click();">Importer Licenciés</button>
 
-              <!-- Bouton d'exportation -->
-               <button id="exportButton">Exporter Licenciés</button>
 
                      <!-- Code d'Exportation et' d'importation -->
                      <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>     
@@ -52,4 +50,5 @@ $licencie = $LicencieDAO->getAll();
         }
     } 
     ?>
+     <a class="btn btn-primary return-btn" href="../admin/admin.php">Retour à l'accueil</a>
 </ul>

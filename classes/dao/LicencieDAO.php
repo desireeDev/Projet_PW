@@ -61,14 +61,14 @@ class LicencieDAO   {
         $id_cat = $licencie->getCodeRaccourci();
 
         $query = "UPDATE licencies
-                  SET id = ?, 
+                  SET 
                   Nom_Licencie = ?, 
                   Prenom_Licencie = ?, 
                   id_cat    = ?
                   WHERE id = ?";
 
         $stmt = $this->connexion->pdo->prepare($query);
-        $stmt->execute([$id,$Nom_Licencie,$Prenom_Licencie,$id_cat,$id]);
+        $stmt->execute([$id,$Nom_Licencie,$Prenom_Licencie,$id_cat]);
     }
 
     public function deleteLicencie($licencieId) {

@@ -45,7 +45,6 @@ class CategoriesDAO {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $categorie[] = new Categories($row['Code_Raccourci'],$row['Nom_Cat'],$row['id'],);
             }
-
             return $categorie;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
@@ -67,12 +66,15 @@ class CategoriesDAO {
 
     // MÃ©thode pour supprimer une categorie par son id
     public function deleteByCode($id) {
+       
         try {
-            $stmt = $this->connexion->pdo->prepare("DELETE FROM categories WHERE id = ?");
-            $stmt->execute([$id]);
+          
+            $stmt = $this->connexion->pdo->prepare("DELETE FROM categories WHERE id=:id");
+            $status = $stmt->execute(["id"=>$id]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de suppression ici
+          
             return false;
         }
     }

@@ -29,7 +29,7 @@ class LicencieDAO   {
     public function getLicencieById($Num_Licencie) {
         $query = "SELECT * FROM licencies WHERE id = ?";
         $result = $this->connexion->pdo->prepare($query);
-        $result->execute([$id]);
+        $result->execute([$Num_Licencie]);
         $row = $result->fetch(PDO::FETCH_ASSOC);
         if ($row) {
             return new Licencie($row['id'], $row['Nom_Licencie'], $row['Prenom_Licencie'],  $row['id_cat']);

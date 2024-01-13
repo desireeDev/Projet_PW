@@ -13,12 +13,9 @@ class Categories {
 
 
     public function __construct($Code_Raccourci,$Nom_Cat,$id,) {
-
         $this->Code_Raccourci = $Code_Raccourci;
         $this->Nom_Cat = $Nom_Cat;
         $this->id = $id;
-     
-
     }
 
     // Getters & Setters
@@ -28,9 +25,6 @@ class Categories {
         return $this->Code_Raccourci;
 
     }
-
-
-
     public function getCat() {
 
         return $this->Nom_Cat;
@@ -41,7 +35,6 @@ class Categories {
         return $this->id;
 
     }
-
 
     public function setCodeRaccourci($Code_Raccourci) {
 

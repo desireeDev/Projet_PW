@@ -110,10 +110,11 @@ switch($action){
             $libelle =  isset($_POST['libelle']) ? $_POST['libelle'] : '' ;
             $code =  isset($_POST['code']) ? $_POST['code'] : '' ;
             $idt =  isset($_POST['idt']) ? $_POST['idt'] : '' ;
-            if(!empty($libelle) and !empty($code)and !empty($idt)){
+      
+            if(!empty($libelle) and !empty($code) and !empty($idt)){
                 $controller = new CategorieController(new Connexion()) ;
 
-                $controller->delete($code,$libelle,$idt);
+                $controller->delete($idt);
             }
             break;
 }

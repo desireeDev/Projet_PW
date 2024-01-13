@@ -8,18 +8,12 @@ require_once("../../classes/dao/LicencieDAO.php");
 $LicencieDAO=new LicencieDAO(new Connexion());
 $licencie = $LicencieDAO->getAll();
 ?>
-
-
-
-
-
 <h2>Liste des Licencies</h2>
 <a href="create.php" > Créer  </a>
 	<!-- LINEARICONS -->
     <link rel="stylesheet" href="../../fonts/linearicons/style.css">
 
-<!-- STYLE CSS -->
-<link rel="stylesheet" href="../../css/style.css">
+
 <ul>
     <?php
     if (isset($licencie) && (is_array($licencie) || is_object($licencie))) {
@@ -30,7 +24,6 @@ $licencie = $LicencieDAO->getAll();
                 <strong>Numero du Licencie :</strong> <?php echo $lic->getId(); ?>,
                 <strong>Nom :</strong> <?php echo $lic->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $lic->getPrenom(); ?>,
-                <strong>Code la categorie:</strong> <?php echo $lic->getCodeRaccourci(); ?>,
                 
                 <a href="update.php?id=<?= $lic->getId();?>"> Modifier</a>
 

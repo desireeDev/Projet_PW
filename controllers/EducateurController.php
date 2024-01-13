@@ -18,11 +18,11 @@ class EducateurController {
     }
 
     public function create( $Email_Educateur,$Mdp_Educateur,$Administrateur, $id_licencie,$id) {
-
             $nouveauEducateur = new Educateur($Email_Educateur,$Mdp_Educateur,$Administrateur,$id_licencie,$id);
-
+         
             // Appeler la méthode du modèle (EducateurDAO) pour ajouter l'educateur
             if ($this->EducateursDAO->createEducateur($nouveauEducateur)) {
+        
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:../views/educateur/home.php');
                 exit();

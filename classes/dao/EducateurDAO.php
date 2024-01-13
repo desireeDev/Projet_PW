@@ -14,12 +14,12 @@ public function createEducateur(Educateur $educateur) {
     try {
     
         $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs(Email_Educateur ,Mdp_Educateur, Administrateur,id_licencie,id) VALUES (?,?,?, ?,?)");
-        $stmt->execute([ $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->isAdmin(),$educateur->getId(),$educateur->getEdu()]);
+        $stmt->execute([ $educateur->getEmail(), sha1(md5($educateur->getMotDePasse())), $educateur->isAdmin(),$educateur->getId(),$educateur->getEdu()]);
         return true;
     } catch (PDOException $e) {
         // GÃ©rer les erreurs d'insertion ici
-        // var_dump($e);
-        // die();
+        var_dump("Désolé l'addresse mail ".$educateur->getEmail()." est déjà utilisé");
+        die();
         return false;
     }
 }

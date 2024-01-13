@@ -30,9 +30,6 @@ $categories = $CategoriesDAO->getAll();
 </head>
 <h2 class ="text-center">Liste des Catégories</h2>
 
-
-
-
 <div class="container">
     <table id="categoriesTable" class="table table-striped table-bordered">
         <thead class="thead-dark">

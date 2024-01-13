@@ -20,8 +20,7 @@ $educateurs = $EducateursDAO->getAll();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
-<!-- STYLE CSS -->
-<link rel="stylesheet" href="../../css/style.css">
+
 <ul>
     <?php
     if (isset($educateurs) && (is_array($educateurs) || is_object($educateurs))) {
@@ -29,7 +28,7 @@ $educateurs = $EducateursDAO->getAll();
             ?>
 <div class="container mt-4">
     <table class="table">
-        <thead class="thead-light">
+        <thead class="thead-dark">
             <tr>
                 <th>Email</th>
                 <th>Numéro du licencié</th>

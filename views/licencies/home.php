@@ -21,7 +21,7 @@ $licencie = $LicencieDAO->getAll();
             ?>
             <div class="container">
             <li>
-                <strong>Numero du Licencie :</strong> <?php echo $lic->getId(); ?>,
+            
                 <strong>Nom :</strong> <?php echo $lic->getNom(); ?>
                 <strong>Prenom:</strong> <?php echo $lic->getPrenom(); ?>,
                 

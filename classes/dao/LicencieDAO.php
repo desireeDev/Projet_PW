@@ -22,10 +22,6 @@ class LicencieDAO   {
     }
     
 
- 
-
-
-
     public function getLicencieById($Num_Licencie) {
         $query = "SELECT * FROM licencies WHERE id = ?";
         $result = $this->connexion->pdo->prepare($query);

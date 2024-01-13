@@ -14,19 +14,19 @@
 		<link rel="stylesheet" href="{{ asset('../public/css/style.css') }}">
 	</head>
 	<body>
-        <a href="{{ path('liste_categories') }}">Liste des catégories</a>
+        <a href="{{ path('delete_categories') }}">Liste des catégories</a>
 		<div class="wrapper">
 			<div class="inner">
 				<img src="{{ asset('../public/images/image-1.png') }}" alt="" class="image-1">
-				<form action="{{ path('categorie_suppression') }}" method="post">
+				<form action="{{ path('delete_categories') }}" method="post">
 					<h3>Voulez-vous la supprimer?</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-drop"></span>
-						<input type="text" class="form-control" id="libelle" name="libelle" value="{{ current_line.getCat() }}" placeholder="Nom de la Catégorie" required>
+						<input type="text" class="form-control" id="libelle" name="libelle" placeholder="Nom de la Catégorie" required>
 					</div>
 					<div class="form-holder">
 						<span class="lnr lnr-pencil"></span>
-						<input type="text" class="form-control" id="code" name="code" value="{{ current_line.getCodeRaccourci() }}" placeholder="Code de la catégorie" required>
+						<input type="text" class="form-control" id="code" name="code"  placeholder="Code de la catégorie" required>
 					</div>
 				
                     <input type="submit" name="action" value="Supprimer">

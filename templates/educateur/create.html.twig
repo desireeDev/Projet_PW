@@ -13,12 +13,12 @@
 
 <body>
 
-    <a href="{{ path('home') }}"> Liste des différents éducateurs </a>
+    <a href="{{ path('add_educateurs') }}"> Liste des différents éducateurs </a>
 
     <div class="wrapper">
         <div class="inner">
             <img src="../public/images/image-1.png" alt="" class="image-1">
-            <form action="{{ path('educateur_controller') }}" method="post">
+            <form action="{{ path('add_educateurs') }}" method="post">
                 <h3>Ajout d'un éducateur?</h3>
                 <div class="form-holder">
                     <span class="lnr lnr-user"></span>
@@ -33,10 +33,6 @@
                     <span class="lnr lnr-user"></span>
                     <input type="text" class="form-control" id="numLicencie" name="numLicencie" required placeholder="Identité du licencié ">
 
-                    <select id="numLicencie" name="numLicencie" required>
-                        {% for lic in licencies %}
-                        <option value="{{ lic.getNum() }}">{{ lic.getNom() }}</option>
-                        {% endfor %}
                     </select><br>
                 </div>
                 <div class="form-holder">

@@ -3,126 +3,172 @@
 namespace App\Entity;
 
 use App\Repository\EducateurRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EducateurRepository::class)]
 class Educateur
 {
-  /**
-     * @ORM\Id()
-     * @ORM\Column(type="string", length=30)
-     * 
-     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    private $emailEducateur;
 
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $mdpEducateur;
+    #[ORM\Column(length: 30)]
+    private ?string $Email_Educateur = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $administrateur;
+    #[ORM\Column(length: 50)]
+    private ?string $Mdp_Educateur = null;
 
-    // ...
+    #[ORM\Column(length: 1)]
+    private ?bool $Administrateur = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Licencie")
-     * @ORM\JoinColumn(name="num_licencie", referencedColumnName="numLicencie", nullable=false)
-     */
-    private $numLicencie;
+    #[ORM\Column(length: 30)]
+    private ?string $id_licencie = null;
 
-    #[ORM\OneToMany(mappedBy: 'educateurs', targetEntity: MailEdu::class, orphanRemoval: true)]
-    private Collection $messageenvoye;
+    #[ORM\OneToMany(mappedBy:'expediteur',targetEntity:MailEducateur::class)]
+    private  Collection $mailEnvoyes;
+
+    #[ORM\OneToMany(mappedBy: 'expediteur', targetEntity: MailContact::class)]
+    private Collection  $mailsContactEnvoyes;
+
+    #[ORM\ManyToMany(targetEntity: MailEducateur::class, mappedBy: 'destinataires', fetch: 'EAGER')]
+    private  Collection $mailRecus;
+
+ 
 
     public function __construct()
     {
-        $this->messageenvoye = new ArrayCollection();
+        $this->mailEnvoyes = new ArrayCollection();
+        $this->mailRecus = new ArrayCollection();
+        $this->mailsContactEnvoyes = new ArrayCollection();
     }
 
-    // ...
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getEmailEducateur(): ?string
     {
-        return $this->emailEducateur;
+        return $this->Email_Educateur;
     }
 
-    public function setEmailEducateur(string $emailEducateur): self
+    public function setEmailEducateur(string $Email_Educateur): static
     {
-        $this->emailEducateur = $emailEducateur;
+        $this->Email_Educateur = $Email_Educateur;
 
         return $this;
     }
 
     public function getMdpEducateur(): ?string
     {
-        return $this->mdpEducateur;
+        return $this->Mdp_Educateur;
     }
 
-    public function setMdpEducateur(string $mdpEducateur): self
+    public function setMdpEducateur(string $Mdp_Educateur): static
     {
-        $this->mdpEducateur = $mdpEducateur;
+        $this->Mdp_Educateur = $Mdp_Educateur;
 
         return $this;
     }
 
-    public function isAdministrateur(): ?bool
+    public function getAdministrateur(): ?int
     {
-        return $this->administrateur;
+        return $this->Administrateur;
     }
 
-    public function setAdministrateur(bool $administrateur): self
+    public function getMailEnvoyes(): Collection
     {
-        $this->administrateur = $administrateur;
+        return $this->mailEnvoyes;
+    }
+
+    public function getMailsContactEnvoyes(): Collection
+    {
+        return $this->mailsContactEnvoyes;
+    }
+
+  public function getMailRecus(): Collection
+    {
+        return $this->mailRecus;
+    }
+
+
+    public function setAdministrateur(int $Administrateur): static
+    {
+        $this->Administrateur = $Administrateur;
 
         return $this;
     }
 
-    // ...
-
-    public function getNumLicencie(): ?Licencie
+    public function getNumLicencie(): ?string
     {
-        return $this->numLicencie;
+        return $this->id_licencie;
     }
 
-    public function setNumLicencie(?Licencie $numLicencie): self
+    public function setNumLicencie(string $id_licencie): static
     {
-        $this->numLicencie = $numLicencie;
+        $this->id_licencie = $id_licencie;
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, MailEdu>
-     */
-    public function getMessageenvoye(): Collection
+    public function addMailEducateur(MailEducateur $mailEducateur): static
     {
-        return $this->messageenvoye;
-    }
-
-    public function addMessageenvoye(MailEdu $messageenvoye): static
-    {
-        if (!$this->messageenvoye->contains($messageenvoye)) {
-            $this->messageenvoye->add($messageenvoye);
-            $messageenvoye->setEducateurs($this);
+        if (!$this->mailEnvoyes->contains($mailEducateur)) {
+            $this->mailEnvoyes->add($mailEducateur);
+            $mailEducateur->setExpediteur($this);
         }
 
         return $this;
     }
 
-    public function removeMessageenvoye(MailEdu $messageenvoye): static
+    public function removeMailEducateur(MailEducateur $mailEducateur): static
     {
-        if ($this->messageenvoye->removeElement($messageenvoye)) {
+        if ($this->mailEnvoyes->removeElement($mailEducateur)) {
             // set the owning side to null (unless already changed)
-            if ($messageenvoye->getEducateurs() === $this) {
-                $messageenvoye->setEducateurs(null);
+            if ($mailEducateur->getExpediteur() === $this) {
+                $mailEducateur->setExpediteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function addMailRecu(MailEducateur $mailRecu): static
+    {
+        if (!$this->mailRecus->contains($mailRecu)) {
+            $this->mailRecus->add($mailRecu);
+            $mailRecu->addDestinataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMailRecu(MailEducateur $mailRecu): static
+    {
+        if ($this->mailRecus->removeElement($mailRecu)) {
+            $mailRecu->removeDestinataire($this);
+        }
+
+        return $this;
+    }
+
+    public function addMailContact(MailContact $mailContact): static
+    {
+        if (!$this->mailContactEnvoyes->contains($mailContact)) {
+            $this->mailContactEnvoyes->add($mailContact);
+            $mailContact->setExpediteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMailContact(MailContact $mailContact): static
+    {
+        if ($this->mailContactEnvoyes->removeElement($mailContact)) {
+            // set the owning side to null (unless already changed)
+            if ($mailContact->getExpediteur() === $this) {
+                $mailContact->setExpediteur(null);
             }
         }
 

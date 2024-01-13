@@ -15,12 +15,12 @@
 
 	<body>
 
-    <a href="{{ path('liste_contacts') }}">Liste des différents contacts</a>
+    <a href="{{ path('add_contact') }}">Liste des différents contacts</a>
 
 		<div class="wrapper">
 			<div class="inner">
-				<img src="{{ asset('../public/images/image-1.png') }}" alt="" class="image-1">
-				<form action="{{ path('ajouter_contact') }}"  method="post">
+				<img src="{{ asset('../../public/images/image-1.png') }}" alt="" class="image-1">
+				<form action="{{ path('add_contact') }}"  method="post">
 					<h3>Ajout d'un contact?</h3>
 					<div class="form-holder">
 						<span class="lnr lnr-user"></span>
@@ -30,9 +30,7 @@
 					<div class="form-holder">
 						<span class="lnr lnr-phone-handset"></span>
 						<select id="numLicencie" name="numLicencie" required>
-            {% for lic in licencies %}
-                <option value="{{ lic.getNum() }}">{{ lic.getNom() }}</option>
-            {% endfor %}
+        
         </select><br>
 					</div>
 

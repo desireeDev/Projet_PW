@@ -8,88 +8,65 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: LicenciesRepository::class)]
 class Licencies
 {
- /**
-     * @ORM\Id()
-     * @ORM\Column(type="string", length=30)
-     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
-    private $numLicencie;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $nomLicencie;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $prenomLicencie;
 
-    // ...
+    #[ORM\Column(length: 30)]
+    private ?string $Nom_Licencie = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie")
-     * @ORM\JoinColumn(name="code_raccourci", referencedColumnName="codeRaccourci", nullable=false)
-     */
-    private $categorie;
+    #[ORM\Column(length: 39)]
+    private ?string $Prenom_Licencie = null;
 
-    // ...
 
-    public function getNumLicencie(): ?string
+
+    #[ORM\Column(length: 30)]
+    private ?string $id_cat = null;
+
+    public function getId(): ?int
     {
-        return $this->numLicencie;
-    }
-
-    public function setNumLicencie(string $numLicencie): self
-    {
-        $this->numLicencie = $numLicencie;
-
-        return $this;
+        return $this->id;
     }
 
     public function getNomLicencie(): ?string
     {
-        return $this->nomLicencie;
+        return $this->Nom_Licencie;
     }
 
-    public function setNomLicencie(string $nomLicencie): self
+    public function setNomLicencie(string $Nom_Licencie): static
     {
-        $this->nomLicencie = $nomLicencie;
+        $this->Nom_Licencie = $Nom_Licencie;
 
         return $this;
     }
 
     public function getPrenomLicencie(): ?string
     {
-        return $this->prenomLicencie;
+        return $this->Prenom_Licencie;
     }
 
-    public function setPrenomLicencie(string $prenomLicencie): self
+    public function setPrenomLicencie(string $Prenom_Licencie): static
     {
-        $this->prenomLicencie = $prenomLicencie;
+        $this->Prenom_Licencie = $Prenom_Licencie;
 
         return $this;
     }
 
-    // ...
-
-    public function getCategorie(): ?Categorie
+    public function getIdCat(): ?string
     {
-        return $this->categorie;
+        return $this->id_cat;
+
     }
 
-    public function setCategorie(?Categorie $categorie): self
+
+    public function setIdCat(string $id_cat): static
     {
-        $this->categorie = $categorie;
+        $this->id_cat = $id_cat;
 
         return $this;
     }
-
-    // ...
-
 
 }

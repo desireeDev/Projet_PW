@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Contacts de categorie {{ categories.Nom_Cat }}</h1>
+        <table class="table table-bordered table-striped mx-auto">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Numéro de téléphone</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ contact.Nom_Contact}}</td>
+                    <td>{{ contact.Prenom_Contact }}</td>
+                    <td>{{ contact.Email_Contact }}</td>
+                    <td>{{ contact.Numero_Contact }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

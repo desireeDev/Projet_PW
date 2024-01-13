@@ -14,39 +14,34 @@
 </head>
 
 <body>
-    <a href="{{ path('home') }}"> Listes des licencies </a>
+    <a href="{{ path('update_licencies') }}"> Listes des licencies </a>
 
     <div class="wrapper">
         <div class="inner">
             <img src="{{ asset('images/image-1.png') }}" alt="" class="image-1">
-            <form action="{{ path('LicencieController') }}" method="post">
+            <form action="{{ path('update_licencies') }}" method="post">
                 <h3>Voulez vous le modifier?</h3>
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="num" value="{{ current_line.getNum() }}" name="num"
+                    <input type="text" class="form-control" id="num"  name="num"
                         required placeholder="Numéro du licencié">
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="nom" value="{{ current_line.getNom() }}" name="nom"
+                    <input type="text" class="form-control" id="nom" name="nom"
                         required placeholder="Nom du licencie">
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="prenom" value="{{ current_line.getPrenom() }}"
+                    <input type="text" class="form-control" id="prenom"
                         name="prenom" required placeholder="Prenom du Licencie">
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-pencil"></span>
-                    <select id="code" name="code" required>
-                        {% for ctg in categories %}
-                            <option {{ current_line.getCodeRaccourci() == ctg.getCodeRaccourci() ? 'selected' : '' }}
-                                value="{{ ctg.getCodeRaccourci() }}">{{ ctg.getCat() }}</option>
-                        {% endfor %}
-                    </select><br>
+                
                 </div>
 
                 <input type="submit" name="action" value="Modifier">

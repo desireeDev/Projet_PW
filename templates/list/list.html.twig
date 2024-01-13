@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center  mt-5">
+        <div class="card mx-auto w-50">
+            <div class="card-body">
+                <h1 class="h3 mb-3 font-weight-normal">Quelles données aimeriez-vous lister ?</h1>
+                {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.liste, null, {'class': 'form-label'}) }}
+                    {{ form_errors(form.liste) }}
+                    {{ form_widget(form.liste, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.categories, null, {'class': 'form-label'}) }}
+                    {{ form_errors(form.categories) }}
+                    {{ form_widget(form.categories, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary">Lister</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

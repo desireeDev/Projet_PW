@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method MailEdu[]    findAll()
  * @method MailEdu[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MailEduRepository extends ServiceEntityRepository
+class MailEducateurRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

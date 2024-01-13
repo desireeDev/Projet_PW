@@ -14,34 +14,34 @@
 </head>
 
 <body>
-    <a href="{{ path('home') }}"> Listes des licencies </a>
+    <a href="{{ path('delete_licencies') }}"> Listes des licencies </a>
 
     <div class="wrapper">
         <div class="inner">
             <img src="{{ asset('../public/images/image-1.png') }}" alt="" class="image-1">
-            <form action="{{ path('LicencieController') }}" method="post">
+            <form action="{{ path('delete_licencies') }}" method="post">
                 <h3>Voulez vous le supprimer?</h3>
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="num" value="{{ current_line.getNum() }}" name="num"
+                    <input type="text" class="form-control" id="num"  name="num"
                         placeholder="Numéro du licencie" required>
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="nom" value="{{ current_line.getNom() }}" name="nom"
+                    <input type="text" class="form-control" id="nom"  name="nom"
                         placeholder="Numéro du licencie" required>
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="prenom" value="{{ current_line.getPrenom() }}"
+                    <input type="text" class="form-control" id="prenom" 
                         name="prenom" placeholder="Prenom du licencie" required>
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-pencil"></span>
-                    <input type="text" class="form-control" name="code" value="{{ current_line.getCodeRaccourci() }}"
+                    <input type="text" class="form-control" name="code" 
                         placeholder="Code de la categorie" required>
                 </div>
 

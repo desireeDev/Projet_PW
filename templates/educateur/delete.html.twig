@@ -14,29 +14,29 @@
 </head>
 
 <body>
-    <a href="{{ path('home') }}"> Listes des éducateurs </a>
+    <a href="{{ path('delete_educateurs') }}"> Listes des éducateurs </a>
     <div class="wrapper">
         <div class="inner">
             <img src="{{ asset('../public/images/image-1.png') }}" alt="" class="image-1">
-            <form action="{{ path('educateur_controller') }}" method="post">
+            <form action="{{ path('delete_educateurs') }}" method="post">
                 <h3>Voulez-vous supprimer celui-ci?</h3>
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="email" value="{{ current_line.getEmail() }}" name="email" placeholder="Email de l'éducateur" required>
+                    <input type="text" class="form-control" id="email"  name="email" placeholder="Email de l'éducateur" required>
                 </div>
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="password" name="password" value="{{ current_line.getMotDePasse() }}" placeholder="Mot de passe" required>
+                    <input type="text" class="form-control" id="password" name="password" " placeholder="Mot de passe" required>
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-drop"></span>
-                    <input type="text" class="form-control" id="admin" name="admin" value="{{ current_line.isAdmin() }}" placeholder="Role" required>
+                    <input type="text" class="form-control" id="admin" name="admin"  placeholder="Role" required>
                 </div>
 
                 <div class="form-holder">
                     <span class="lnr lnr-pencil"></span>
-                    <input type="text" class="form-control" id="numLicencie" name="numLicencie" value="{{ current_line.getNum() }}" placeholder="Numéro de licence" required>
+                    <input type="text" class="form-control" id="numLicencie" name="numLicencie"  placeholder="Numéro de licence" required>
                 </div>
                 <input type="submit" name="action" value="Supprimer">
             </form>

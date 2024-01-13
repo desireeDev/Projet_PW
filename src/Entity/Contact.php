@@ -3,162 +3,120 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {
- /**
-     * @ORM\Id()
-     * @ORM\Column(type="string", length=50)
-     */
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    private $Code_Contact;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $Nom_Contact;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $Prenom_Contact;
+    #[ORM\Column(length: 30)]
+    private ?string $Nom_Contact = null;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $Email_Contact;
+    #[ORM\Column(length: 30)]
+    private ?string $Prenom_Contact = null;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Numero_Contact;
+    #[ORM\Column(length: 30)]
+    private ?string $Email_Contact = null;
 
-    // ...
+    #[ORM\Column]
+    private ?int $Numero_Contact = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Licencie")
-     * @ORM\JoinColumn(name="num_licencie", referencedColumnName="numLicencie", nullable=false)
-     */
-    private $Num_Licencie;
+    #[ORM\Column(length: 11)]
+    private ?string $id_licencie = null;
 
-    #[ORM\ManyToMany(targetEntity: MailContact::class, mappedBy: 'contact')]
-    private Collection $messagenvoye;
+    #[ORM\OneToMany(mappedBy: 'contact', targetEntity: Contact::class)]
+    private Collection  $contact;
+
+    #[ORM\ManyToMany( targetEntity: MailContact::class, mappedBy: 'destinataires', fetch: 'EAGER')]
+    private Collection  $mailRecus;
+
+
 
     public function __construct()
     {
-        $this->messagenvoye = new ArrayCollection();
+        $this->contact = new ArrayCollection();
+        $this->mailRecus = new ArrayCollection();
     }
 
-    // ...
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getCodeContact(): ?string
     {
-        return $this->codeContact;
+        return $this->Code_Contact;
     }
 
-    public function setCodeContact(string $codeContact): self
+    public function setCodeContact(string $Code_Contact): static
     {
-        $this->codeContact = $codeContact;
+        $this->Code_Contact = $Code_Contact;
 
         return $this;
     }
 
     public function getNomContact(): ?string
     {
-        return $this->nomContact;
+        return $this->Nom_Contact;
     }
 
-    public function setNomContact(string $nomContact): self
+    public function setNomContact(string $Nom_Contact): static
     {
-        $this->nomContact = $nomContact;
+        $this->Nom_Contact = $Nom_Contact;
 
         return $this;
     }
 
     public function getPrenomContact(): ?string
     {
-        return $this->prenomContact;
+        return $this->Prenom_Contact;
     }
 
-    public function setPrenomContact(string $prenomContact): self
+    public function setPrenomContact(string $Prenom_Contact): static
     {
-        $this->prenomContact = $prenomContact;
+        $this->Prenom_Contact = $Prenom_Contact;
 
         return $this;
     }
 
     public function getEmailContact(): ?string
     {
-        return $this->emailContact;
+        return $this->Email_Contact;
     }
 
-    public function setEmailContact(string $emailContact): self
+    public function setEmailContact(string $Email_Contact): static
     {
-        $this->emailContact = $emailContact;
+        $this->Email_Contact = $Email_Contact;
 
         return $this;
     }
 
     public function getNumeroContact(): ?int
     {
-        return $this->numeroContact;
+        return $this->Numero_Contact;
     }
 
-    public function setNumeroContact(int $numeroContact): self
+    public function setNumeroContact(int $Numero_Contact): static
     {
-        $this->numeroContact = $numeroContact;
+        $this->Numero_Contact = $Numero_Contact;
 
         return $this;
     }
 
-    // ...
-
-    public function getNumLicencie(): ?Licencie
+    public function getNumLicencie(): ?string
     {
-        return $this->numLicencie;
+        return $this->id_licencie;
     }
 
-    public function setNumLicencie(?Licencie $numLicencie): self
+    public function setNumLicencie(string $id_licencie): static
     {
-        $this->numLicencie = $numLicencie;
+        $this->id_licencie = $id_licencie;
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, MailContact>
-     */
-    public function getMessagenvoye(): Collection
-    {
-        return $this->messagenvoye;
-    }
-
-    public function addMessagenvoye(MailContact $messagenvoye): static
-    {
-        if (!$this->messagenvoye->contains($messagenvoye)) {
-            $this->messagenvoye->add($messagenvoye);
-            $messagenvoye->addContact($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMessagenvoye(MailContact $messagenvoye): static
-    {
-        if ($this->messagenvoye->removeElement($messagenvoye)) {
-            $messagenvoye->removeContact($this);
-        }
-
-        return $this;
-    }
-
-
-    
 }

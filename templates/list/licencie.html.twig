@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Licenciés de la catégorie {{ categories.Nom_Cat }}</h1>
+        <table class="table table-bordered table-hover mx-auto">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for licencie in licencie %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ licencie.Nom_Licencie }}</td>
+                    <td>{{ licencie.Prenom_Licencie }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

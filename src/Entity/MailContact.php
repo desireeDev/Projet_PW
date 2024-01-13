@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[ORM\Entity(repositoryClass: MailContactRepository::class)]
 class MailContact
@@ -17,20 +18,25 @@ class MailContact
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateenvoi = null;
+    private ?\DateTimeInterface $date_envoi = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 255)]
     private ?string $objet = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 255)]
     private ?string $message = null;
 
-    #[ORM\ManyToMany(targetEntity: Contact::class, inversedBy: 'messagenvoye')]
-    private Collection $contact;
+    #[ORM\ManyToMany(targetEntity: Contact::class)]
+    #[ORM\JoinTable(name: 'mail_educateur_contact')]
+    private Collection $destinataires;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Educateur $expediteur = null;
 
     public function __construct()
     {
-        $this->contact = new ArrayCollection();
+        $this->destinataires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,14 +44,14 @@ class MailContact
         return $this->id;
     }
 
-    public function getDateenvoi(): ?\DateTimeInterface
+    public function getDateEnvoi(): ?\DateTimeInterface
     {
-        return $this->dateenvoi;
+        return $this->date_envoi;
     }
 
-    public function setDateenvoi(\DateTimeInterface $dateenvoi): static
+    public function setDateEnvoi(\DateTimeInterface $date_envoi): static
     {
-        $this->dateenvoi = $dateenvoi;
+        $this->date_envoi = $date_envoi;
 
         return $this;
     }
@@ -77,23 +83,35 @@ class MailContact
     /**
      * @return Collection<int, Contact>
      */
-    public function getContact(): Collection
+    public function getDestinataires(): Collection
     {
-        return $this->contact;
+        return $this->destinataires;
     }
 
-    public function addContact(Contact $contact): static
+    public function addDestinataire(Contact $destinataire): static
     {
-        if (!$this->contact->contains($contact)) {
-            $this->contact->add($contact);
+        if (!$this->destinataires->contains($destinataire)) {
+            $this->destinataires->add($destinataire);
         }
 
         return $this;
     }
 
-    public function removeContact(Contact $contact): static
+    public function removeDestinataire(Contact $destinataire): static
     {
-        $this->contact->removeElement($contact);
+        $this->destinataires->removeElement($destinataire);
+
+        return $this;
+    }
+
+    public function getExpediteur(): ?Educateur
+    {
+        return $this->expediteur;
+    }
+
+    public function setExpediteur(?Educateur $expediteur): static
+    {
+        $this->expediteur = $expediteur;
 
         return $this;
     }

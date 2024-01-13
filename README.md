@@ -19,6 +19,18 @@ Les parties d'authentification de l'administrateur,de gestion des grands axes ,e
 
 
 
+https://github.com/desireeDev/Projet_Pw/assets/114066560/aa45e46d-1328-4b00-9e13-84d657532e6d
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -15,5 +15,5 @@ Contexte :
 Ces fonctionnalités doivent être accessible seulement par les administrateurs.
 
 ## Partie 2 : Symfony, réalisation de la partie front-end de l'application
-Ces parties se feront sur des branches differentes.La partie 1 se fera sur la branche backend et la partie 2 se fera sur la branche master.
+Ces parties se feront sur des branches differentes.La partie 1 se fera sur la branche backend et la partie 2 se fera sur la branche partie2.
 Excellente lecture et toutes les remarques possibles nous aideront pour l'amelioration du projet.

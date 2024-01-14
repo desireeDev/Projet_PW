@@ -75,7 +75,7 @@ class EmailController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/mails/educateur', name: 'app_mail_educateur')]
+    #[Route(path: '/mail/educateur', name: 'app_mail_educateur')]
     public function educateurEmails(Request $request): Response
     {
         $userId = $this->getUser()->getId();
@@ -132,23 +132,9 @@ class EmailController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/mail/view', name: 'app_view_mail_educateur')]
-    public function viewMailEducateur(Request $request): Response {
-        $id = $request->query->get('id');
-        $mail = $this->mailEducateurRepository->findOneBy(["id" => $id]);
-        return $this->render('mail/educateur/view.html.twig', [
-            'mail' => $mail
-        ]);
-    }
 
-    #[Route(path: '/mail/delete', name: 'app_delete_mail_educateur')]
-    public function deleteMailEducateur(Request $request): Response {
-        $id = $request->query->get('id');
-        $this->mailEducateurRepository->deleteById($id);
-        return $this->redirectToRoute('app_mail_educateur');
-    }
 
-    #[Route(path: '/mails/contact', name: 'app_mail_contact')]
+    #[Route(path: '/mail/contact', name: 'app_mail_contact')]
     public function contactEmails(Request $request): Response
     {
         $userId = $this->getUser()->getId();
@@ -209,20 +195,8 @@ class EmailController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/mail/contact/delete', name: 'app_delete_mail_contact')]
-    public function deleteMailContact(Request $request): Response {
-        $id = $request->query->get('id');
-        $this->mailContactRepository->deleteById($id);
-        return $this->redirectToRoute('app_mail_contact');
-    }
 
-    #[Route(path: '/mail/contact/view', name: 'app_view_mail_contact')]
-    public function viewMailContact(Request $request): Response {
-        $id = $request->query->get('id');
-        $mail = $this->mailContactRepository->findOneBy(["id" => $id]);
-        return $this->render('mail/contact/view.html.twig', [
-            'mail' => $mail
-        ]);
-    }
+
+   
 }
 

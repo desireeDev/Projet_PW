@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}Envoyé un mail{% endblock %}
+{% block body %}
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <div class="card mx-auto w-50">
+            <div class="card-body">
+                <h1 class="h3 mb-3 font-weight-normal">Envoyé un mail</h1>
+                {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.objet, null, {'class': 'form-label'}) }}
+                    {{ form_errors(form.objet) }}
+                    {{ form_widget(form.objet, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.message, null, {'class': 'form-label'}) }}
+                    {{ form_errors(form.message) }}
+                    {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows': '10'}}) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.destinataires, null, {'class': 'form-label'}) }}
+                    {{ form_errors(form.destinataires) }}
+                    {{ form_widget(form.destinataires, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div class="d-flex justify-content-between mt-3">
+                    <!-- Lien pour supprimer le mail -->
+                    <button type="submit" class="btn btn-lg btn-primary">Envoyer</button>
+                    <!-- Lien pour retourner à la liste des mails -->
+                    <a href="{{ path('app_mail_contact') }}" class="btn btn-danger">Retour</a>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

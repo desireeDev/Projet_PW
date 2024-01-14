@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Mails envoyés aux contacts</h1>
+        <a href="{{ path('app_send_mail_contact') }}" class="btn btn-primary mb-3">Nouveau mail</a>
+        <table class="table table-bordered table-striped mx-auto">
+            <thead>
+            <tr>
+                <th>Date d'envoie</th>
+                <th>Objet</th>
+                <th>Destinataires</th>
+                <th colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for mail in mails %}
+                <tr>
+                    <td>{{ mail.dateEnvoi | date('d/m/Y  H:i:s') }}</td>
+                    <td>{{ mail.objet }}</td>
+                    <td>
+                        {% for destinataire in mail.destinataires %}
+                            {{ destinataire.email }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{ path('app_view_mail_contact', {'id': mail.id}) }}" class="btn btn-primary">Voir</a></td>
+                    <td><a href="{{ path('app_delete_mail_contact', {'id': mail.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

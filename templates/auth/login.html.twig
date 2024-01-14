@@ -6,20 +6,107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .error,
+        .success {
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .error {
+            color: #ff0000;
+            background-color: #ffcdd2;
+        }
+
+        .success {
+            color: #008000;
+            background-color: #c8e6c9;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Connexion</h2>
+    <h2>Bienvenue</h2>
 
     <!-- Formulaire de connexion -->
-    <form method="post" action="">
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+    <form method="post" action="" autocomplete="off">
+        <fieldset>
+            <label for="email">Email :</label>
+            <div class="icon">&#128231;</div>
+            <input type="text" id="email" name="email" required autocomplete="username">
 
-        <label for="motDePasse">Mot de passe:</label>
-        <input type="password" id="motDePasse" name="motDePasse" required><br>
+            <label for="motDePasse">Mot de passe :</label>
+            <div class="icon">&#128273;</div>
+            <input type="password" id="motDePasse" name="motDePasse" required autocomplete="current-password">
 
-        <input type="submit" value="Se connecter">
+            <input type="submit" value="Se connecter">
+        </fieldset>
     </form>
 </body>
 

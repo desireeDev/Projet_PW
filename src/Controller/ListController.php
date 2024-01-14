@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Categorie;
+use App\Entity\Categories;
 use App\Repository\CategorieRepository;
 use App\Repository\ContactRepository;
 use App\Repository\LicenciesRepository;
@@ -40,23 +40,27 @@ class ListController extends AbstractController
                 'expanded' => false,
             ]) ->add('categories', ChoiceType::class, [
                 'choices' => $categories,
-                'choice_label' => 'nom',
+                'choice_label' => 'Nom_Cat',
                 'choice_value' => 'id',
                 'multiple' => false,
                 'expanded' => false,
             ]) ->getForm();
+        
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            // var_dump($data);
+            // die();
             $list = $data['liste'];
             $categories = $data['categories'];
             if($list == 'contact') {
                 $contacts = $this->contactRepository->getContactsByCategory($categorie->getId());
                 return $this->render('list/contact.html.twig', ["contacts" => $contacts, "categories" => $categories]);
             } else {
-                $licencie = $this->licencieRepository->findBy(["categories" => $categorie->getId()]);
+                $licencie = $this->licencieRepository->findBy(["id_cat" => $categories->getId()]);
+              
                 return $this->render('list/licencie.html.twig', ["licencies" => $licencie, "categories" => $categories]);
             }
         }
@@ -73,7 +77,7 @@ class ListController extends AbstractController
         return $this->render('list/licencie.html.twig',
             [
                 'licencies' => $licencie,
-                "categories" => $categories,
+                "categories" => $categorie,
             ]
         );
     }

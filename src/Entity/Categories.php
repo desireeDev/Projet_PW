@@ -6,7 +6,7 @@ use App\Repository\CategoriesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
-class Categorie
+class Categories
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

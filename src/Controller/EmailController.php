@@ -64,9 +64,9 @@ class EmailController extends AbstractController
             $data = $form->getData();
             $list = $data['liste'];
             if($list == 'educateur') {
-                return $this->redirectToRoute('app_mail_educateur');
+                return $this->redirectToRoute('app_mail_educateur' , array("data"=>$data));
             } else {
-                return $this->redirectToRoute('app_mail_contact');
+                return $this->redirectToRoute('app_mail_contact' , array("data"=>$data));
             }
         }
 
@@ -78,6 +78,9 @@ class EmailController extends AbstractController
     #[Route(path: '/mail/educateur', name: 'app_mail_educateur')]
     public function educateurEmails(Request $request): Response
     {
+        var_dump($_GET);
+        var_dump($this->getUser());
+        die();
         $userId = $this->getUser()->getId();
         $mails = $this->mailEducateurRepository->getByEducateurId($userId);
         return $this->render('mail/educateur/list.html.twig', ["mails" => $mails]);

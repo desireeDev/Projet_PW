@@ -28,3 +28,14 @@ Pour la partie front-end de l'application destinée aux éducateurs, l'interface
 Ces classes et fonctionnalités seront utilisées pour construire une interface conviviale permettant aux éducateurs d'interagir avec les données
 liées aux licenciés, contacts, et aux échanges de mails. L'interface devrait être intuitive, 
 avec des formulaires pour la saisie des mails et des tableaux pour la visualisation des listes de licenciés, contacts, et mails.
+Quelques captures d'image de ce qui a ete fait a savoir la page de connexion et quelques listes.
+
+
+![image](https://github.com/desireeDev/Projet_Pw/assets/114066560/a8f71152-5ae2-4a78-95be-cd9cd278c9c0)
+
+![image](https://github.com/desireeDev/Projet_Pw/assets/114066560/cd33e48f-6dc2-4efa-9168-f250cc2ad00f)
+
+
+
+
+

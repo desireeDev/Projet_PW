@@ -100,6 +100,37 @@ class Educateur
         return $this;
     }
 
+
+//User
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $admin = $this->est_administrateur;
+
+        if($admin == 1){
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        in_array('ROLE_ADMIN', $roles) ? $this->est_administrateur = 0 : $this->est_administrateur = 1 ;
+        return $this;
+    }
+
     public function getNumLicencie(): ?string
     {
         return $this->id_licencie;

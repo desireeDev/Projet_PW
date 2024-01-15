@@ -36,6 +36,9 @@ Quelques captures d'image de ce qui a ete fait a savoir la page de connexion et 
 ![image](https://github.com/desireeDev/Projet_Pw/assets/114066560/cd33e48f-6dc2-4efa-9168-f250cc2ad00f)
 
 
+![image](https://github.com/desireeDev/Projet_PW/assets/114066560/8c8a9c60-2a8e-413e-93e0-7cc4b44cd893)
+
+
 
 
 
